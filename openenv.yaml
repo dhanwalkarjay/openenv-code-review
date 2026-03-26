@@ -1,0 +1,72 @@
+name: openenv-code-review
+description: >
+  Real-world code review simulation environment for evaluating agent quality across
+  style, correctness, and security review tasks.
+version: 1.0.0
+tags:
+  - openenv
+  - code-review
+  - evaluation
+entrypoint: api.main:app
+
+api:
+  reset: /reset
+  step: /step
+  state: /state
+  tasks: /tasks
+  grader: /grader
+  baseline: /baseline
+
+actions:
+  model: Action
+  fields:
+    - name: comment
+      type: string
+      required: true
+    - name: line_number
+      type: integer
+      required: true
+    - name: suggested_fix
+      type: string
+      required: false
+    - name: label
+      type: string
+      required: false
+    - name: confidence
+      type: float
+      required: false
+
+observations:
+  model: Observation
+  fields:
+    - name: task_id
+      type: string
+    - name: task_type
+      type: string
+    - name: title
+      type: string
+    - name: objective
+      type: string
+    - name: code
+      type: string
+    - name: step_count
+      type: integer
+    - name: max_steps
+      type: integer
+    - name: discovered_findings
+      type: list
+    - name: remaining_findings
+      type: integer
+
+reward:
+  model: Reward
+  type: float
+  range: [-1.0, 1.0]
+
+tasks:
+  - task_id: cr-001
+    difficulty: easy
+  - task_id: cr-002
+    difficulty: medium
+  - task_id: cr-003
+    difficulty: hard
