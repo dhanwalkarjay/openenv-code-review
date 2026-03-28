@@ -2,6 +2,7 @@ import json
 import subprocess
 
 from fastapi import FastAPI
+from api.ui import get_ui
 from env.environment import CodeReviewEnv
 from env.models import Action
 
@@ -9,8 +10,8 @@ app = FastAPI()
 env = CodeReviewEnv()
 
 @app.get("/")
-def home():
-    return {"message": "OpenEnv Code Review Environment"}
+def ui():
+    return get_ui()
 
 @app.get("/reset")
 def reset(task: str = "easy"):

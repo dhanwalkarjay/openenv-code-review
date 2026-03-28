@@ -8,6 +8,8 @@ class CodeReviewEnv:
     def __init__(self):
         self.state_data = EpisodeState()
         self._seen_action_signatures: Set[str] = set()
+        self.history: Set[str] = set()
+        self.progress: List[str] = []
 
     def reset(self, task_type="easy"):
         if task_type not in TASKS:
@@ -15,6 +17,10 @@ class CodeReviewEnv:
 
         self.state_data = EpisodeState(active_task=TASKS[task_type])
         self._seen_action_signatures = set()
+        self.history = set()
+        self.progress = []
+        self.state_data.progress = []
+        self.state_data.steps_taken = 0
         return self.state()
 
     def _build_observation(self) -> Observation:
@@ -31,6 +37,8 @@ class CodeReviewEnv:
             max_steps=task.max_steps,
             discovered_findings=discovered,
             remaining_findings=max(len(task.expected_findings) - len(discovered), 0),
+            progress=self.progress,
+            steps_taken=len(self.progress),
         )
 
     def step(self, action: Action):
@@ -46,63 +54,69 @@ class CodeReviewEnv:
         self.state_data.step_count += 1
         self.state_data.actions.append(action)
 
+        self.progress.append(action.comment)
+        self.state_data.progress = list(self.progress)
+        self.state_data.steps_taken = len(self.progress)
+
+        reward = 0.0
         reward_components: Dict[str, float] = {
-            "new_finding": 0.0,
-            "suggested_fix": 0.0,
-            "precision": 0.0,
-            "duplicate_penalty": 0.0,
-            "line_penalty": 0.0,
-            "loop_penalty": 0.0,
+            "repetition_penalty": 0.0,
+            "ground_truth_match": 0.0,
+            "suggested_fix_bonus": 0.0,
+            "useless_penalty": 0.0,
         }
 
-        signature = f"{action.line_number}|{action.comment.strip().lower()}"
-        if signature in self._seen_action_signatures:
-            reward_components["duplicate_penalty"] = -0.15
+        # Penalize repeated actions.
+        normalized_comment = action.comment.strip().lower()
+        if normalized_comment in self.history:
+            reward -= 0.2
+            reward_components["repetition_penalty"] = -0.2
         else:
-            self._seen_action_signatures.add(signature)
+            self.history.add(normalized_comment)
 
-        line_count = len(task.code.splitlines())
-        if action.line_number > line_count:
-            reward_components["line_penalty"] = -0.1
+        # Reward matching against task ground truth descriptions.
+        ground_truth = [finding.description for finding in task.expected_findings]
+        for gt in ground_truth:
+            if gt.lower() in action.comment.lower():
+                reward += 0.4
+                reward_components["ground_truth_match"] += 0.4
+
+        # Bonus for any concrete suggested fix text.
+        if action.suggested_fix:
+            reward += 0.2
+            reward_components["suggested_fix_bonus"] = 0.2
+
+        # Penalize low-value actions that gain no score.
+        if reward == 0:
+            reward -= 0.1
+            reward_components["useless_penalty"] = -0.1
 
         episode_grade = grade_episode(self.state_data.actions, task)
-        previous_matches = set(self.state_data.matched_finding_ids)
-        current_matches = set(episode_grade.matched_findings)
-        new_matches = len(current_matches - previous_matches)
-
-        if new_matches > 0:
-            reward_components["new_finding"] = 0.35 * new_matches
-
-        if action.suggested_fix and len(action.suggested_fix.strip()) >= 12 and new_matches > 0:
-            reward_components["suggested_fix"] = 0.1
-
-        if len(action.comment.strip()) >= 24:
-            reward_components["precision"] = 0.05
-
-        self.state_data.matched_finding_ids = sorted(list(current_matches))
+        self.state_data.matched_finding_ids = sorted(list(episode_grade.matched_findings))
         self.state_data.last_grade = episode_grade.score
 
-        if self.state_data.step_count >= task.max_steps and episode_grade.score < 0.85:
-            reward_components["loop_penalty"] = -0.2
-
-        reward_value = sum(reward_components.values())
-        reward = Reward(value=max(min(reward_value, 1.0), -1.0), components=reward_components)
+        reward_obj = Reward(value=max(min(reward, 1.0), -1.0), components=reward_components)
 
         if episode_grade.score >= 0.85 or self.state_data.step_count >= task.max_steps:
             self.state_data.done = True
 
-        return self.state(), reward.value, self.state_data.done, {
+        return self.state(), reward_obj.value, self.state_data.done, {
             "score": episode_grade.score,
             "coverage": episode_grade.coverage,
             "precision": episode_grade.precision,
             "line_accuracy": episode_grade.line_accuracy,
             "fix_quality": episode_grade.fix_quality,
             "matched_findings": episode_grade.matched_findings,
-            "reward_components": reward.components,
+            "reward_components": reward_obj.components,
         }
 
     def state(self):
-        return self._build_observation().model_dump()
+        observation = self._build_observation().model_dump()
+        return {
+            **observation,
+            "progress": list(self.progress),
+            "steps_taken": len(self.progress),
+        }
 
     def get_last_grader_result(self):
         if self.state_data.active_task is None:

@@ -8,11 +8,9 @@ from env.environment import CodeReviewEnv
 from env.models import Action
 from env.tasks import TASK_ORDER
 
-
-# Required environment variables for hackathon inference.
 API_BASE_URL = os.getenv("API_BASE_URL", "https://api.openai.com/v1")
 MODEL_NAME = os.getenv("MODEL_NAME", "gpt-4o-mini")
-API_KEY = os.getenv("HF_TOKEN") or os.getenv("OPENAI_API_KEY")
+API_KEY = os.getenv("HF_TOKEN") or os.getenv("API_KEY") or os.getenv("OPENAI_API_KEY")
 
 
 def _get_client() -> Optional[OpenAI]:
@@ -137,6 +135,8 @@ def run_baseline(model: Optional[str] = None) -> dict:
 
 
 def main() -> None:
+    if not MODEL_NAME:
+        raise RuntimeError("MODEL_NAME is required")
     print(run_baseline())
 
 

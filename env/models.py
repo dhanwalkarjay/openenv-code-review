@@ -21,6 +21,8 @@ class Observation(BaseModel):
     max_steps: int
     discovered_findings: List[str]
     remaining_findings: int
+    progress: List[str] = Field(default_factory=list)
+    steps_taken: int = 0
 
 
 class Reward(BaseModel):
@@ -52,6 +54,8 @@ class EpisodeState(BaseModel):
     actions: List[Action] = Field(default_factory=list)
     matched_finding_ids: List[str] = Field(default_factory=list)
     last_grade: float = 0.0
+    progress: List[str] = Field(default_factory=list)
+    steps_taken: int = 0
 
 
 class GraderResult(BaseModel):
