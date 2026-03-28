@@ -1,0 +1,16 @@
+[project]
+name = "openenv-code-review"
+version = "0.1.0"
+description = "OpenEnv Code Review Environment"
+authors = [
+  { name = "Jay Dhanwalkar" }
+]
+dependencies = [
+  "fastapi",
+  "uvicorn",
+  "pydantic",
+  "openai"
+]
+
+[tool.openenv]
+entrypoint = "api.main:app"
