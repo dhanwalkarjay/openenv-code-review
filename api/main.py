@@ -1,7 +1,9 @@
+import json
+import subprocess
+
 from fastapi import FastAPI
 from env.environment import CodeReviewEnv
 from env.models import Action
-from baseline.run import run_baseline
 
 app = FastAPI()
 env = CodeReviewEnv()
@@ -37,11 +39,34 @@ def grader():
     return env.get_last_grader_result()
 
 @app.get("/baseline")
-def baseline(model: str = "gpt-4o-mini"):
+def baseline():
     try:
-        return run_baseline(model=model)
+        result = subprocess.run(
+            ["python", "inference.py"],
+            capture_output=True,
+            text=True,
+            timeout=60,
+            check=False,
+        )
+
+        output = result.stdout.strip()
+        if not output and result.stderr.strip():
+            return {
+                "error": "inference.py produced no stdout",
+                "stderr": result.stderr.strip(),
+                "returncode": result.returncode,
+            }
+
+        try:
+            parsed = json.loads(output.replace("'", '"'))
+        except Exception:
+            parsed = {"raw_output": output}
+
+        if result.returncode != 0:
+            parsed["returncode"] = result.returncode
+            if result.stderr.strip():
+                parsed["stderr"] = result.stderr.strip()
+
+        return parsed
     except Exception as exc:
-        return {
-            "error": str(exc),
-            "hint": "Set OPENAI_API_KEY before calling /baseline.",
-        }
+        return {"error": str(exc)}

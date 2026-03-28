@@ -90,13 +90,18 @@ docker run --rm -p 7860:7860 openenv-code-review
 
 ## Baseline Inference
 Set credentials:
-- OPENAI_API_KEY
+- API_BASE_URL (optional, default: https://api.openai.com/v1)
+- MODEL_NAME (optional, default: gpt-4o-mini)
+- HF_TOKEN (preferred) or OPENAI_API_KEY
+
+Run script directly:
+- python inference.py
 
 Run endpoint after server starts:
 - GET /baseline
 
 Or from Python:
-- from baseline.run import run_baseline
+- from inference import run_baseline
 - run_baseline(model="gpt-4o-mini")
 
 The baseline uses deterministic prompting with temperature 0 and returns per-task grader score and aggregate score.
@@ -105,7 +110,7 @@ The baseline uses deterministic prompting with temperature 0 and returns per-tas
 1. Create a Docker Space.
 2. Push this repository.
 3. Ensure Space port is 7860.
-4. Add secret OPENAI_API_KEY for baseline endpoint.
+4. Add secret HF_TOKEN (or OPENAI_API_KEY) for baseline endpoint.
 5. Tag the Space with openenv.
 
 ## Validation Checklist Mapping
