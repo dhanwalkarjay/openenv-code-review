@@ -5,6 +5,7 @@ from fastapi import FastAPI
 from api.ui import get_ui
 from env.environment import CodeReviewEnv
 from env.models import Action
+from fastapi import Body
 
 app = FastAPI()
 env = CodeReviewEnv()
@@ -13,9 +14,9 @@ env = CodeReviewEnv()
 def ui():
     return get_ui()
 
-@app.get("/reset")
-def reset(task: str = "easy"):
-    return {"observation": env.reset(task), "done": False}
+@app.post("/reset")
+def reset(task: str = Body(default="easy")):
+    return env.reset(task)
 
 @app.post("/step")
 def step(action: Action):
