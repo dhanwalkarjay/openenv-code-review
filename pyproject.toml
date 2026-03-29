@@ -5,6 +5,7 @@ description = "OpenEnv Code Review Environment"
 authors = [
   { name = "Jay Dhanwalkar" }
 ]
+
 dependencies = [
   "fastapi",
   "uvicorn",
@@ -12,5 +13,9 @@ dependencies = [
   "openai"
 ]
 
+[project.scripts]
+server = "server.app:app"
+
 [tool.openenv]
-entrypoint = "api.main:app"
+entrypoint = "server.app:app"
+requires = ["openenv>=0.2.0"]
