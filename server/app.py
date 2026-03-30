@@ -1,6 +1,10 @@
-[project.scripts]
-server = "server.app:main"
+from api.main import app
+import uvicorn
 
-[tool.openenv]
-entrypoint = "server.app:main"
-requires = ["openenv>=0.2.0"]
+
+def main():
+    uvicorn.run(app, host="0.0.0.0", port=7860)
+
+
+if __name__ == "__main__":
+    main()
