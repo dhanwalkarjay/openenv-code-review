@@ -34,13 +34,15 @@ def grade(predictions: List[str], ground_truth: List[str]) -> float:
         best = max([semantic_match(p, gt) for p in predictions], default=0.0)
         total += best
 
-    return min(total / len(ground_truth), 1.0) if ground_truth else 0.0
+    epsilon = 0.01
+    raw_score = total / len(ground_truth) if ground_truth else 0.0
+    return min(max(raw_score, epsilon), 1.0 - epsilon)
 
 
 def grade_episode(actions: List[Action], task: TaskSpec) -> GraderResult:
     if not actions:
         return GraderResult(
-            score=0.0,
+            score=0.01,
             coverage=0.0,
             precision=0.0,
             line_accuracy=0.0,
@@ -55,6 +57,17 @@ def grade_episode(actions: List[Action], task: TaskSpec) -> GraderResult:
     ]
 
     semantic_score = grade(predictions, finding_ground_truth)
+
+    score = (
+        0.5 * semantic_score +
+        0.2 * coverage +
+        0.15 * precision +
+        0.1 * line_accuracy +
+        0.05 * fix_quality
+    )
+
+    epsilon = 0.01
+    score = min(max(score, epsilon), 1.0 - epsilon)
 
     matched_findings: List[str] = []
     for idx, finding in enumerate(task.expected_findings):
@@ -92,7 +105,8 @@ def grade_episode(actions: List[Action], task: TaskSpec) -> GraderResult:
     line_accuracy = (line_hits / checked) if checked else 0.0
     fix_quality = sum(1 for a in actions if a.suggested_fix and a.suggested_fix.strip()) / len(actions)
 
-    score = min(max(semantic_score, 0.0), 1.0)
+    epsilon = 0.01
+    score = min(max(semantic_score, epsilon), 1.0 - epsilon)
 
     return GraderResult(
         score=score,
