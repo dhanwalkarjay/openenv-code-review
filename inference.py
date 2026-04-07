@@ -135,9 +135,51 @@ def run_baseline(model: Optional[str] = None) -> dict:
 
 
 def main() -> None:
-    if not MODEL_NAME:
-        raise RuntimeError("MODEL_NAME is required")
-    print(run_baseline())
+    client = _get_client()
+    env = CodeReviewEnv()
+
+    for task in TASK_ORDER:
+        obs = env.reset(task)
+        total_reward = 0.0
+        step_count = 0
+        info = {}
+
+        print(f"[START] task={task}", flush=True)
+
+        for step in range(1, obs["max_steps"] + 1):
+            step_count += 1
+
+            if client:
+                try:
+                    prompt = _build_prompt(obs)
+                    res = client.chat.completions.create(
+                        model=MODEL_NAME,
+                        messages=[{"role": "user", "content": prompt}],
+                        temperature=0,
+                    )
+                    content = res.choices[0].message.content or ""
+                    action = _parse_action(content)
+                except Exception:
+                    action = None
+
+                if not action:
+                    action = _fallback(obs)
+            else:
+                action = _fallback(obs)
+
+            obs, reward, done, info = env.step(action)
+            total_reward += reward
+
+            print(f"[STEP] step={step} reward={round(reward, 4)}", flush=True)
+
+            if done:
+                break
+
+        final_score = info.get("score", 0.0)
+        print(
+            f"[END] task={task} score={round(final_score, 4)} steps={step_count}",
+            flush=True,
+        )
 
 
 if __name__ == "__main__":
