@@ -58,17 +58,6 @@ def grade_episode(actions: List[Action], task: TaskSpec) -> GraderResult:
 
     semantic_score = grade(predictions, finding_ground_truth)
 
-    score = (
-        0.5 * semantic_score +
-        0.2 * coverage +
-        0.15 * precision +
-        0.1 * line_accuracy +
-        0.05 * fix_quality
-    )
-
-    epsilon = 0.01
-    score = min(max(score, epsilon), 1.0 - epsilon)
-
     matched_findings: List[str] = []
     for idx, finding in enumerate(task.expected_findings):
         gt_text = finding_ground_truth[idx]
@@ -106,7 +95,16 @@ def grade_episode(actions: List[Action], task: TaskSpec) -> GraderResult:
     fix_quality = sum(1 for a in actions if a.suggested_fix and a.suggested_fix.strip()) / len(actions)
 
     epsilon = 0.01
-    score = min(max(semantic_score, epsilon), 1.0 - epsilon)
+
+    raw_score = (
+        0.5 * semantic_score +
+        0.2 * coverage +
+        0.15 * precision +
+        0.1 * line_accuracy +
+        0.05 * fix_quality
+    )
+
+    score = min(max(raw_score, epsilon), 1.0 - epsilon)
 
     return GraderResult(
         score=score,
