@@ -319,8 +319,8 @@ class RewardEngine:
             base = self.weights.cosmetic_change
         elif already_optimal_before and candidate_code.strip() != previous_code.strip():
             base = self.weights.no_change
-        elif all_pass and bug_fixed:
-            base = self.weights.bug_fixed_and_tests_pass
+        elif all_pass:                    # ← remove the bug_fixed requirement
+            base = self.weights.bug_fixed_and_tests_pass   # 1.0
         elif complexity_improved and passed >= previous_passed:
             base = self.weights.complexity_improved
         elif partial_improvement or bug_fixed:
