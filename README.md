@@ -1,3 +1,13 @@
+---
+title: OpenEnv Code Review
+emoji: 🤖
+colorFrom: blue
+colorTo: green
+sdk: docker
+app_file: backend/api/main.py
+pinned: false
+---
+
 # OpenEnv Code Review — RL Training Environment
 
 An OpenEnv-compatible environment for training LLMs to fix Python bugs 
