@@ -1,2 +1,20 @@
-echo ".venv311/" 
-echo ".env" 
+# Python
+__pycache__/
+*.pyc
+
+# Virtual env
+.venv/
+.venv311/
+env/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Model artifacts (optional)
+*.pt
+*.bin
+*.safetensors
