@@ -1,13 +1,13 @@
 name: openenv-code-review
 description: >
-  Real-world code review simulation environment for evaluating agent quality across
-  style, correctness, and security review tasks.
+  Multi-agent code refinement arena for long-horizon RL with objective,
+  verifiable rewards from compile/test/diff checks.
 version: 1.0.0
 tags:
   - openenv
   - code-review
   - evaluation
-entrypoint: api.main:app
+entrypoint: backend.api.main:app
 
 api:
   reset: /reset
@@ -18,55 +18,58 @@ api:
   baseline: /baseline
 
 actions:
-  model: Action
+  model: MultiAgentAction
   fields:
-    - name: comment
+    - name: reviewer_issues
+      type: list
+      required: false
+    - name: fixed_code
       type: string
       required: true
-    - name: line_number
-      type: integer
-      required: true
-    - name: suggested_fix
-      type: string
-      required: false
-    - name: label
-      type: string
-      required: false
-    - name: confidence
-      type: float
-      required: false
 
 observations:
-  model: Observation
+  model: MultiStepObservation
   fields:
     - name: task_id
       type: string
-    - name: task_type
-      type: string
     - name: title
       type: string
-    - name: objective
+    - name: instruction
       type: string
-    - name: code
+    - name: buggy_code
+      type: string
+    - name: current_code
       type: string
     - name: step_count
       type: integer
     - name: max_steps
       type: integer
-    - name: discovered_findings
-      type: list
-    - name: remaining_findings
+    - name: previous_step_output
+      type: object
+    - name: tests_passed
+      type: integer
+    - name: tests_total
       type: integer
 
 reward:
-  model: Reward
+  model: VerifiableReward
   type: float
-  range: [-1.0, 1.0]
+  range: [-2.0, 2.0]
 
 tasks:
-  - task_id: cr-001
+  - task_id: arena-001
     difficulty: easy
-  - task_id: cr-002
-    difficulty: medium
-  - task_id: cr-003
-    difficulty: hard
+  - task_id: arena-002
+    difficulty: easy
+  - task_id: arena-003
+    difficulty: easy
+  - task_id: arena-004
+    difficulty: easy
+  - task_id: arena-005
+    difficulty: easy
+  - task_id: arena-006
+    difficulty: easy
+  - task_id: arena-007
+    difficulty: easy
+  - task_id: arena-008
+    difficulty: easy

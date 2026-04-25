@@ -1,0 +1,1687 @@
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Obsidian Command | AI Code Review Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0b1326;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #2d3449;
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #424754;
+      }
+    </style>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#adc6ff",
+              "outline-variant": "#424754",
+              "tertiary-container": "#ca8100",
+              "inverse-on-surface": "#283044",
+              "on-primary-fixed-variant": "#004395",
+              "on-primary-fixed": "#001a42",
+              "surface-tint": "#adc6ff",
+              "on-primary": "#002e6a",
+              "on-tertiary": "#472a00",
+              "on-tertiary-fixed-variant": "#653e00",
+              outline: "#8c909f",
+              "secondary-container": "#00a572",
+              error: "#ffb4ab",
+              "primary-fixed-dim": "#adc6ff",
+              "primary-fixed": "#d8e2ff",
+              "surface-container-high": "#222a3d",
+              "on-secondary-fixed": "#002113",
+              "on-primary-container": "#00285d",
+              "on-secondary-fixed-variant": "#005236",
+              "on-tertiary-container": "#3e2400",
+              tertiary: "#ffb95f",
+              "on-tertiary-fixed": "#2a1700",
+              "tertiary-fixed-dim": "#ffb95f",
+              surface: "#0b1326",
+              "on-secondary": "#003824",
+              "surface-container-lowest": "#060e20",
+              "secondary-fixed": "#6ffbbe",
+              "on-background": "#dae2fd",
+              "inverse-primary": "#005ac2",
+              background: "#0b1326",
+              "surface-container": "#171f33",
+              "on-secondary-container": "#00311f",
+              "primary-container": "#4d8eff",
+              "surface-container-highest": "#2d3449",
+              "tertiary-fixed": "#ffddb8",
+              "surface-dim": "#0b1326",
+              secondary: "#4edea3",
+              "on-surface-variant": "#c2c6d6",
+              "on-error": "#690005",
+              "on-error-container": "#ffdad6",
+              "surface-bright": "#31394d",
+              "on-surface": "#dae2fd",
+              "inverse-surface": "#dae2fd",
+              "secondary-fixed-dim": "#4edea3",
+              "surface-variant": "#2d3449",
+              "surface-container-low": "#131b2e",
+              "error-container": "#93000a",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            fontFamily: {
+              headline: ["Space Grotesk"],
+              body: ["Inter"],
+              label: ["Inter"],
+              mono: ["JetBrains Mono"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-background text-on-surface font-body selection:bg-primary/30">
+    <header
+      class="fixed top-0 left-0 w-full z-50 bg-[#0b1326]/80 backdrop-blur-xl text-[#c2c6d6] font-['Space_Grotesk'] flex justify-between items-center px-8 h-20 shadow-[0px_10px_40px_rgba(0,0,0,0.4)]"
+    >
+      <div class="flex items-center gap-8">
+        <h1
+          class="text-2xl font-black tracking-widest text-[#adc6ff] uppercase"
+        >
+          Obsidian Command
+        </h1>
+        <nav class="hidden md:flex items-center gap-6">
+          <a
+            class="text-[#adc6ff] font-bold border-b-2 border-[#adc6ff] pb-1"
+            href="#"
+            >Simulator</a
+          >
+          <a class="text-[#c2c6d6] hover:text-white transition-opacity" href="#"
+            >Agent Logic</a
+          >
+          <a class="text-[#c2c6d6] hover:text-white transition-opacity" href="#"
+            >Code Vault</a
+          >
+        </nav>
+      </div>
+      <div class="flex items-center gap-4">
+        <div
+          class="bg-surface-container-low px-4 py-2 rounded-full flex items-center gap-3"
+        >
+          <span class="material-symbols-outlined text-sm" data-icon="search"
+            >search</span
+          >
+          <input
+            class="bg-transparent border-none focus:ring-0 text-sm w-48"
+            placeholder="Global Search..."
+            type="text"
+          />
+        </div>
+        <button
+          class="p-2 hover:bg-[#171f33] transition-all duration-300 rounded-lg"
+        >
+          <span class="material-symbols-outlined" data-icon="notifications"
+            >notifications</span
+          >
+        </button>
+        <button
+          class="p-2 hover:bg-[#171f33] transition-all duration-300 rounded-lg text-primary"
+        >
+          Deploy
+        </button>
+        <div
+          class="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center border border-primary/30"
+        >
+          <span
+            class="material-symbols-outlined text-primary"
+            data-icon="account_circle"
+            >account_circle</span
+          >
+        </div>
+      </div>
+    </header>
+    <aside
+      class="fixed left-0 top-0 hidden md:flex flex-col h-full w-64 bg-[#131b2e] py-6 px-0 gap-0 z-40 mt-20"
+    >
+      <div class="flex items-center gap-3 px-6 mb-8">
+        <div
+          class="h-10 w-10 bg-surface-container-highest rounded-xl flex items-center justify-center"
+        >
+          <span
+            class="material-symbols-outlined text-primary"
+            data-icon="precision_manufacturing"
+            >precision_manufacturing</span
+          >
+        </div>
+        <div>
+          <p
+            class="text-[#adc6ff] font-['Space_Grotesk'] font-bold text-lg leading-none"
+          >
+            Obsidian Arch
+          </p>
+          <p class="text-[#c2c6d6] text-xs mt-1 opacity-70">Lead Architect</p>
+        </div>
+      </div>
+      <nav class="flex flex-col gap-0 flex-1">
+        <a
+          class="flex items-center gap-3 px-6 py-4 text-[#adc6ff] font-semibold border-l-4 border-primary bg-[#2d3449]/40 transition-all"
+          href="#"
+        >
+          <span class="material-symbols-outlined" data-icon="dashboard"
+            >dashboard</span
+          >
+          <span class="font-medium">Dashboard</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-6 py-4 text-[#c2c6d6] hover:bg-[#171f33] transition-colors duration-200"
+          href="#"
+        >
+          <span class="material-symbols-outlined" data-icon="code_blocks"
+            >code_blocks</span
+          >
+          <span class="font-medium">Reviews</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-6 py-4 text-[#c2c6d6] hover:bg-[#171f33] transition-colors duration-200"
+          href="#"
+        >
+          <span class="material-symbols-outlined" data-icon="terminal"
+            >terminal</span
+          >
+          <span class="font-medium">Simulations</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-6 py-4 text-[#c2c6d6] hover:bg-[#171f33] transition-colors duration-200"
+          href="#"
+        >
+          <span class="material-symbols-outlined" data-icon="analytics"
+            >analytics</span
+          >
+          <span class="font-medium">Metrics</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-6 py-4 text-[#c2c6d6] hover:bg-[#171f33] transition-colors duration-200"
+          href="#"
+        >
+          <span class="material-symbols-outlined" data-icon="terminal"
+            >terminal</span
+          >
+          <span class="font-medium">Terminal</span>
+        </a>
+        <div class="mt-8 px-6">
+          <button
+            class="w-full bg-gradient-to-br from-[#adc6ff] to-[#4d8eff] text-[#002e6a] font-bold py-3 rounded-xl shadow-lg flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transition-all font-['Space_Grotesk']"
+          >
+            <span class="material-symbols-outlined" data-icon="add">add</span>
+            New Analysis
+          </button>
+        </div>
+      </nav>
+      <div class="mt-auto flex flex-col gap-0 pb-6">
+        <a
+          class="flex items-center gap-3 px-6 py-4 text-[#c2c6d6] hover:bg-[#171f33] transition-colors duration-200"
+          href="#"
+        >
+          <span class="material-symbols-outlined" data-icon="settings"
+            >settings</span
+          >
+          <span class="text-sm">Settings</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-6 py-4 text-[#c2c6d6] hover:bg-[#171f33] transition-colors duration-200"
+          href="#"
+        >
+          <span class="material-symbols-outlined" data-icon="help_outline"
+            >help_outline</span
+          >
+          <span class="text-sm">Support</span>
+        </a>
+      </div>
+    </aside>
+    <main class="pt-20 pl-0 md:pl-64 min-h-screen">
+      <div class="p-8 max-w-[1600px] mx-auto">
+        <section class="mb-8">
+          <div
+            class="bg-surface-container rounded-xl p-6 shadow-2xl border border-primary/10 flex flex-wrap items-center justify-between gap-6"
+          >
+            <div class="flex items-center gap-8">
+              <div>
+                <p
+                  class="text-on-surface-variant text-xs font-bold uppercase tracking-widest mb-1 font-headline"
+                >
+                  Baseline Performance
+                </p>
+                <p
+                  id="baseline-performance"
+                  class="text-4xl font-headline font-bold text-on-surface opacity-60"
+                >
+                  --
+                </p>
+              </div>
+              <div class="h-12 w-px bg-outline-variant/30"></div>
+              <div>
+                <p
+                  class="text-primary text-xs font-bold uppercase tracking-widest mb-1 font-headline"
+                >
+                  Improved Performance
+                </p>
+                <p
+                  id="improved-performance"
+                  class="text-4xl font-headline font-bold text-primary"
+                >
+                  --
+                </p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div
+                class="bg-secondary/20 text-secondary border border-secondary/30 px-6 py-3 rounded-2xl flex flex-col items-center"
+              >
+                <span id="net-improvement" class="text-2xl font-headline font-black"
+                  >--</span
+                >
+                <span
+                  id="net-improvement-label"
+                  class="text-[10px] font-bold uppercase tracking-widest"
+                  >Net Improvement</span
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+        <section
+          class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8 items-stretch"
+        >
+          <div
+            class="bg-surface-container rounded-xl p-6 shadow-2xl border border-primary/5 flex flex-col justify-between"
+          >
+            <div>
+              <p
+                class="text-on-surface-variant text-xs font-bold uppercase tracking-widest mb-4 font-headline"
+              >
+                Simulation Setup
+              </p>
+              <label class="block text-[10px] text-on-surface-variant mb-2"
+                >Number of Simulated Runs
+                <p></p>
+                <input
+                  id="simulation-runs-input"
+                  class="w-full bg-surface-container-low border border-outline-variant/30 rounded-lg px-3 py-2 text-primary font-mono text-sm focus:ring-1 focus:ring-primary focus:border-primary mb-4"
+                  type="number"
+                  value="10"
+                  min="1"
+                  max="50"
+                />
+              </label>
+            </div>
+            <button
+              id="simulate-load-button"
+              class="w-full bg-primary text-on-primary font-bold py-2 rounded-lg text-sm hover:opacity-90 transition-all font-headline"
+            >
+              Simulate Load
+            </button>
+          </div>
+          <div
+            class="bg-surface-container rounded-xl p-6 shadow-2xl relative overflow-hidden group"
+          >
+            <div
+              class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity"
+            >
+              <span class="material-symbols-outlined text-6xl" data-icon="bolt"
+                >bolt</span
+              >
+            </div>
+            <p
+              class="text-on-surface-variant text-xs font-bold uppercase tracking-widest font-headline"
+            >
+              Simulated Runs
+            </p>
+            <div class="flex items-baseline gap-2 mt-2">
+              <h3
+                id="simulated-runs"
+                class="text-4xl font-headline font-bold text-on-surface"
+              >
+                0
+              </h3>
+              <span id="simulation-status" class="text-secondary text-sm font-bold"
+                >Ready</span
+              >
+            </div>
+            <p
+              id="simulation-variance"
+              class="text-[10px] text-on-surface-variant/60 mt-2 font-mono"
+            >
+              Variance: --
+            </p>
+          </div>
+          <div
+            class="bg-surface-container rounded-xl p-6 shadow-2xl relative overflow-hidden group"
+          >
+            <div
+              class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity"
+            >
+              <span class="material-symbols-outlined text-6xl" data-icon="star"
+                >star</span
+              >
+            </div>
+            <p
+              class="text-on-surface-variant text-xs font-bold uppercase tracking-widest font-headline"
+            >
+              Average Score
+            </p>
+            <div class="flex items-baseline gap-2 mt-2">
+              <h3
+                id="average-score"
+                class="text-4xl font-headline font-bold text-on-surface"
+              >
+                --
+              </h3>
+              <span id="average-score-status" class="text-primary text-sm font-bold"
+                >Awaiting data</span
+              >
+            </div>
+            <p
+              id="average-score-detail"
+              class="text-[10px] text-on-surface-variant/60 mt-2 font-mono"
+            >
+              Last score: --
+            </p>
+          </div>
+          <div
+            class="bg-surface-container rounded-xl p-6 shadow-2xl relative overflow-hidden group"
+          >
+            <div
+              class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity"
+            >
+              <span
+                class="material-symbols-outlined text-6xl"
+                data-icon="check_circle"
+                >check_circle</span
+              >
+            </div>
+            <p
+              class="text-on-surface-variant text-xs font-bold uppercase tracking-widest font-headline"
+            >
+              Success Rate (%)
+            </p>
+            <div class="flex items-baseline gap-2 mt-2">
+              <h3
+                id="success-rate"
+                class="text-4xl font-headline font-bold text-on-surface"
+              >
+                --
+              </h3>
+              <span id="success-rate-status" class="text-secondary text-sm font-bold"
+                >Awaiting data</span
+              >
+            </div>
+            <p
+              id="success-rate-detail"
+              class="text-[10px] text-on-surface-variant/60 mt-2 font-mono"
+            >
+              Threshold: score &gt; 0.50
+            </p>
+          </div>
+        </section>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div class="lg:col-span-8 flex flex-col gap-8">
+            <div
+              class="bg-surface-container rounded-xl overflow-hidden shadow-2xl flex flex-col h-[450px]"
+            >
+              <div
+                class="bg-surface-container-high px-6 py-3 flex justify-between items-center"
+              >
+                <div class="flex gap-2">
+                  <div class="w-3 h-3 rounded-full bg-error/50"></div>
+                  <div class="w-3 h-3 rounded-full bg-tertiary/50"></div>
+                  <div class="w-3 h-3 rounded-full bg-secondary/50"></div>
+                </div>
+                <div class="flex gap-4">
+                  <button
+                    class="text-xs text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1 font-headline"
+                  >
+                    <span
+                      class="material-symbols-outlined text-sm"
+                      data-icon="settings"
+                      >settings</span
+                    >
+                    Editor Settings
+                  </button>
+                  <span class="text-xs text-on-surface-variant/40 font-mono"
+                    >main.py</span
+                  >
+                </div>
+              </div>
+              <div
+                class="flex-1 bg-surface-container-lowest p-6 relative group"
+              >
+                <textarea
+                  id="code-input"
+                  class="w-full h-full bg-transparent border-none focus:ring-0 font-mono text-on-surface resize-none leading-relaxed placeholder:text-on-surface-variant/20"
+                  placeholder="Paste your code here..."
+                  spellcheck="false"
+                >
+def optimize_resource_allocation(nodes, tasks):
+    # Potential bottleneck in linear search
+    allocation = {}
+    for task in tasks:
+        for node in nodes:
+            if node.can_handle(task):
+                allocation[task.id] = node.id
+                node.capacity -= task.load
+                break
+    return allocation
+
+# Agent hint: Use a priority queue or more efficient scheduling
+# algorithm to reduce complexity from O(N*M).</textarea
+                >
+                <div class="absolute bottom-6 right-6 flex gap-3">
+                  <button
+                    id="train-agent-button"
+                    class="px-6 py-2 rounded-xl bg-secondary text-on-secondary font-bold hover:opacity-90 active:scale-95 transition-all flex items-center gap-2 font-headline"
+                  >
+                    <span
+                      class="material-symbols-outlined text-sm"
+                      data-icon="school"
+                      >school</span
+                    >
+                    Train Agent
+                  </button>
+                  <button
+                    id="reset-button"
+                    class="px-6 py-2 rounded-xl bg-surface-container-highest text-on-surface font-medium hover:bg-surface-variant transition-all flex items-center gap-2 font-headline"
+                  >
+                    <span
+                      class="material-symbols-outlined text-sm"
+                      data-icon="refresh"
+                      >refresh</span
+                    >
+                    Reset
+                  </button>
+                  <button
+                    id="run-review-button"
+                    class="px-8 py-2 rounded-xl bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold shadow-lg hover:shadow-primary/20 active:scale-95 transition-all flex items-center gap-2 font-headline"
+                  >
+                    <span
+                      class="material-symbols-outlined text-sm"
+                      data-icon="smart_toy"
+                      >smart_toy</span
+                    >
+                    Run AI Review
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col gap-6">
+              <div class="bg-surface-container rounded-xl p-6 shadow-2xl">
+                <div class="flex justify-between items-center mb-6">
+                  <h4 class="font-headline font-bold text-xl text-on-surface">
+                    Agent Logs
+                  </h4>
+                  <span
+                    class="text-xs text-secondary font-mono bg-secondary/10 px-2 py-1 rounded"
+                    >LIVE STREAMING</span
+                  >
+                </div>
+                <div
+                  id="agent-logs"
+                  class="space-y-6 relative before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[2px] before:bg-outline-variant/30"
+                >
+                  <div class="relative pl-10">
+                    <div
+                      class="absolute left-0 top-1 w-6 h-6 rounded-full bg-surface-container-highest border-2 border-outline-variant/60 flex items-center justify-center"
+                    >
+                      <span
+                        class="material-symbols-outlined text-[10px] text-on-surface-variant"
+                        data-icon="schedule"
+                        >schedule</span
+                      >
+                    </div>
+                    <div class="flex justify-between items-start">
+                      <div>
+                        <p class="font-mono text-sm text-on-surface">
+                          Awaiting agent execution
+                        </p>
+                        <p class="text-xs text-on-surface-variant mt-1">
+                          Run AI Review to stream parsed step rewards here.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="bg-surface-container rounded-xl p-6 shadow-2xl relative"
+              >
+                <div class="flex justify-between items-start mb-4 gap-4">
+                  <div>
+                    <h4 class="font-headline font-bold text-xl text-on-surface uppercase tracking-wide">
+                      Line Chart
+                    </h4>
+                    <div class="flex items-center gap-4 mt-2">
+                      <span class="inline-flex items-center gap-2 text-[10px] text-on-surface-variant font-headline uppercase tracking-widest">
+                        <span class="h-2.5 w-2.5 rounded-full bg-[#4edea3]"></span>
+                        Live Score
+                      </span>
+                      <span class="inline-flex items-center gap-2 text-[10px] text-on-surface-variant font-headline uppercase tracking-widest">
+                        <span class="h-2.5 w-2.5 rounded-full bg-[#7dd3fc]"></span>
+                        Trend
+                      </span>
+                    </div>
+                  </div>
+                  <div class="shrink-0">
+                    <label class="sr-only" for="graph-range">Graph Range</label>
+                    <select
+                      id="graph-range"
+                      class="bg-surface-container-high text-on-surface-variant text-xs font-headline uppercase tracking-widest border border-outline-variant/40 rounded-lg px-3 py-2 pr-8"
+                    >
+                      <option selected>Iteration</option>
+                      <option>Recent</option>
+                      <option>All</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="relative px-3 pt-2 pb-3">
+                  <div
+                    class="absolute -left-1 top-[47%] -translate-y-1/2 -rotate-90 origin-center text-[10px] font-bold text-on-surface-variant uppercase tracking-widest font-headline"
+                  >
+                    Score
+                  </div>
+                  <div
+                    id="graph-scroll"
+                    class="overflow-x-auto overflow-y-hidden pb-2"
+                  >
+                    <div id="graph-canvas" class="min-w-full">
+                      <div
+                        class="h-72 w-full border-l border-b border-outline-variant/30 rounded-bl-xl relative bg-gradient-to-b from-primary/10 via-primary/5 to-transparent"
+                      >
+                        <div class="absolute left-2 top-1 bottom-2 text-[10px] text-on-surface-variant/70 font-mono pointer-events-none flex flex-col justify-between">
+                          <span>1.0</span>
+                          <span>0.5</span>
+                          <span>0.0</span>
+                          <span>-0.5</span>
+                        </div>
+                        <svg
+                          id="chart-svg"
+                          class="absolute inset-0 h-full w-full overflow-visible pointer-events-none"
+                          preserveAspectRatio="none"
+                          viewBox="0 0 100 100"
+                        >
+                          <g id="chart-grid"></g>
+                          <path
+                            id="chart-area"
+                            d="M 0 95 L 100 95"
+                            fill="#4edea3"
+                            fill-opacity="0.08"
+                            stroke="none"
+                          ></path>
+                          <path
+                            id="chart-trend"
+                            d="M 0 95 L 100 95"
+                            fill="none"
+                            stroke="#7dd3fc"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-opacity="0.85"
+                            stroke-width="1.05"
+                          ></path>
+                          <path
+                            id="chart-path"
+                            d="M 0 95 L 100 95"
+                            fill="none"
+                            stroke="#adc6ff"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="1.4"
+                          ></path>
+                          <g id="chart-points"></g>
+                        </svg>
+                        <div
+                          id="chart-tooltip"
+                          class="absolute right-4 top-3 bg-secondary text-on-secondary text-[10px] px-3 py-1.5 rounded-lg font-bold whitespace-nowrap opacity-100 shadow-lg border border-secondary/60"
+                        >
+                          No run data
+                        </div>
+                      </div>
+                      <div
+                        id="graph-labels"
+                        class="mt-4 text-[10px] text-on-surface-variant font-mono uppercase tracking-widest px-1 flex"
+                      >
+                        <span class="px-3">STEP 1</span>
+                        <span class="px-3">STEP 2</span>
+                        <span class="px-3">STEP 3</span>
+                        <span class="px-3">STEP 4</span>
+                        <span class="px-3">STEP 5</span>
+                        <span class="px-3 text-secondary font-bold">FINAL</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="text-center w-full mt-1 text-[10px] font-bold text-on-surface-variant uppercase tracking-widest font-headline"
+                  >
+                    Iteration (scroll horizontally to inspect all steps)
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-2 mt-4">
+                  <div class="bg-surface-container-low rounded-lg px-3 py-2">
+                    <p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-headline">Min</p>
+                    <p id="graph-min" class="text-sm font-mono text-on-surface">--</p>
+                  </div>
+                  <div class="bg-surface-container-low rounded-lg px-3 py-2">
+                    <p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-headline">Avg</p>
+                    <p id="graph-avg" class="text-sm font-mono text-on-surface">--</p>
+                  </div>
+                  <div class="bg-surface-container-low rounded-lg px-3 py-2">
+                    <p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-headline">Max</p>
+                    <p id="graph-max" class="text-sm font-mono text-on-surface">--</p>
+                  </div>
+                  <div class="bg-primary/10 border border-primary/20 rounded-lg px-3 py-2">
+                    <p class="text-[10px] text-primary uppercase tracking-widest font-headline">Final</p>
+                    <p id="graph-final" class="text-sm font-mono text-primary font-bold">--</p>
+                  </div>
+                </div>
+                <p
+                  class="text-center text-[10px] text-on-surface-variant/60 italic mt-4 font-headline"
+                >
+                  Agent Performance Over Iterations
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-4 flex flex-col gap-8">
+            <div
+              class="bg-surface-container rounded-xl p-6 shadow-2xl flex flex-col gap-6"
+            >
+              <div class="flex justify-between items-center">
+                <h4 class="font-headline font-bold text-xl text-on-surface">
+                  AI Review Output
+                </h4>
+                <span
+                  class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-1 rounded border border-primary/20 font-headline uppercase tracking-widest"
+                  >AGENT ALPHA</span
+                >
+              </div>
+              <div
+                class="flex items-center gap-6 bg-surface-container-low p-4 rounded-xl"
+              >
+                <div
+                  class="relative h-24 w-24 flex items-center justify-center"
+                >
+                  <svg class="w-full h-full transform -rotate-90">
+                    <circle
+                      class="text-surface-container-highest"
+                      cx="48"
+                      cy="48"
+                      fill="transparent"
+                      r="40"
+                      stroke="currentColor"
+                      stroke-width="8"
+                    ></circle>
+                    <circle
+                      id="score-ring"
+                      class="text-secondary"
+                      cx="48"
+                      cy="48"
+                      fill="transparent"
+                      r="40"
+                      stroke="currentColor"
+                      stroke-dasharray="251.2"
+                      stroke-dashoffset="251.2"
+                      stroke-width="8"
+                    ></circle>
+                  </svg>
+                  <div class="absolute flex flex-col items-center">
+                    <span id="score-value" class="text-2xl font-bold font-headline"
+                      >--</span
+                    >
+                    <span
+                      class="text-[10px] opacity-60 font-headline uppercase tracking-widest"
+                      >SCORE</span
+                    >
+                  </div>
+                </div>
+                <div class="flex-1">
+                  <p
+                    id="score-status"
+                    class="text-sm font-medium text-on-surface font-headline"
+                  >
+                    Waiting for run
+                  </p>
+                  <div
+                    class="w-full bg-surface-container-highest h-2 rounded-full mt-2 overflow-hidden"
+                  >
+                    <div
+                      id="reliability-bar"
+                      class="bg-primary h-full"
+                      style="width: 0%"
+                    ></div>
+                  </div>
+                  <div class="flex justify-between mt-1">
+                    <span
+                      class="text-[10px] text-on-surface-variant font-headline uppercase tracking-widest"
+                      >Reliability</span
+                    >
+                    <span
+                      id="reliability-value"
+                      class="text-[10px] text-primary font-mono font-bold"
+                      >0%</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="space-y-4 border-t border-outline-variant/20 pt-4">
+                <p
+                  class="text-xs font-bold text-on-surface-variant uppercase tracking-widest font-headline"
+                >
+                  Metric Scoring
+                </p>
+                <div class="space-y-3">
+                  <div>
+                    <div class="flex justify-between text-[10px] mb-1">
+                      <span
+                        class="text-on-surface-variant font-headline font-bold"
+                        >BUG DETECTION</span
+                      >
+                      <span id="metric-steps-value" class="text-secondary font-mono"
+                        >0</span
+                      >
+                    </div>
+                    <div
+                      class="h-1.5 bg-surface-container-low rounded-full overflow-hidden"
+                    >
+                      <div
+                        id="metric-steps-bar"
+                        class="h-full bg-secondary"
+                        style="width: 0%"
+                      ></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="flex justify-between text-[10px] mb-1">
+                      <span
+                        class="text-on-surface-variant font-headline font-bold"
+                        >FIX QUALITY</span
+                      >
+                      <span id="metric-reward-value" class="text-secondary font-mono"
+                        >0%</span
+                      >
+                    </div>
+                    <div
+                      class="h-1.5 bg-surface-container-low rounded-full overflow-hidden"
+                    >
+                      <div
+                        id="metric-reward-bar"
+                        class="h-full bg-secondary"
+                        style="width: 0%"
+                      ></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="flex justify-between text-[10px] mb-1">
+                      <span
+                        class="text-on-surface-variant font-headline font-bold"
+                        >LINE ACCURACY</span
+                      >
+                      <span
+                        id="metric-consistency-value"
+                        class="text-secondary font-mono"
+                        >0%</span
+                      >
+                    </div>
+                    <div
+                      class="h-1.5 bg-surface-container-low rounded-full overflow-hidden"
+                    >
+                      <div
+                        id="metric-consistency-bar"
+                        class="h-full bg-secondary"
+                        style="width: 0%"
+                      ></div>
+                    </div>
+                  </div>
+                  <div
+                    class="bg-primary/10 p-3 rounded-lg flex justify-between items-center"
+                  >
+                    <span
+                      class="text-[10px] font-bold text-primary font-headline uppercase tracking-widest"
+                      >FINAL COMBINED</span
+                    >
+                    <span
+                      id="final-combined-score"
+                      class="text-lg font-headline font-bold text-primary"
+                      >--</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="border-t border-outline-variant/20 pt-4">
+                <p
+                  class="text-xs font-bold text-on-surface-variant uppercase tracking-widest font-headline mb-3"
+                >
+                  Raw Execution Output
+                </p>
+                <pre
+                  id="raw-output"
+                  class="bg-surface-container-low text-on-surface-variant text-[11px] leading-relaxed font-mono rounded-xl p-4 whitespace-pre-wrap break-words min-h-[120px]"
+                >No backend run yet.</pre>
+              </div>
+            </div>
+            <div
+                class="bg-primary/5 border border-primary/20 rounded-xl p-5 flex gap-4 items-center"
+              >
+                <div
+                  class="h-10 w-10 bg-primary/20 rounded-full flex items-center justify-center shrink-0"
+                >
+                  <span
+                    class="material-symbols-outlined text-primary"
+                    data-icon="lightbulb"
+                    >lightbulb</span
+                  >
+                </div>
+                <div>
+                  <p class="text-primary font-headline font-bold text-sm">
+                    Learning Insight
+                  </p>
+                  <p
+                    id="learning-insight"
+                    class="text-on-surface-variant text-xs mt-1 leading-relaxed"
+                  >
+                    Waiting for backend output. Run a review to generate step
+                    insights and final scoring.
+                  </p>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <button
+      class="fixed bottom-8 right-8 h-16 w-16 bg-gradient-to-br from-primary to-primary-container text-on-primary rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50 group"
+    >
+      <span class="material-symbols-outlined text-3xl" data-icon="bolt"
+        >bolt</span
+      >
+      <span
+        class="absolute right-full mr-4 bg-surface-container-highest text-white px-4 py-2 rounded-xl text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none font-headline uppercase tracking-widest"
+        >QUICK OPTIMIZE</span
+      >
+    </button>
+    <script>
+      function resolveApiBaseCandidates() {
+        // Prefer same-origin when UI is served by FastAPI/uvicorn.
+        if (window.location.protocol === "http:" || window.location.protocol === "https:") {
+          return [window.location.origin];
+        }
+        // Fallbacks for file:// usage during local static preview.
+        return [
+          "http://localhost:8000",
+          "http://127.0.0.1:8000",
+          "http://localhost:7860",
+          "http://127.0.0.1:7860",
+        ];
+      }
+
+      const API_BASE_CANDIDATES = resolveApiBaseCandidates();
+      let API_BASE_URL = API_BASE_CANDIDATES[0];
+      const SCORE_RING_CIRCUMFERENCE = 251.2;
+
+      const elements = {
+        codeInput: document.getElementById("code-input"),
+        trainAgentButton: document.getElementById("train-agent-button"),
+        runReviewButton: document.getElementById("run-review-button"),
+        resetButton: document.getElementById("reset-button"),
+        simulateLoadButton: document.getElementById("simulate-load-button"),
+        simulationRunsInput: document.getElementById("simulation-runs-input"),
+        baselinePerformance: document.getElementById("baseline-performance"),
+        improvedPerformance: document.getElementById("improved-performance"),
+        netImprovement: document.getElementById("net-improvement"),
+        netImprovementLabel: document.getElementById("net-improvement-label"),
+        simulatedRuns: document.getElementById("simulated-runs"),
+        simulationStatus: document.getElementById("simulation-status"),
+        simulationVariance: document.getElementById("simulation-variance"),
+        averageScore: document.getElementById("average-score"),
+        averageScoreStatus: document.getElementById("average-score-status"),
+        averageScoreDetail: document.getElementById("average-score-detail"),
+        successRate: document.getElementById("success-rate"),
+        successRateStatus: document.getElementById("success-rate-status"),
+        successRateDetail: document.getElementById("success-rate-detail"),
+        agentLogs: document.getElementById("agent-logs"),
+        learningInsight: document.getElementById("learning-insight"),
+        scoreRing: document.getElementById("score-ring"),
+        scoreValue: document.getElementById("score-value"),
+        scoreStatus: document.getElementById("score-status"),
+        reliabilityBar: document.getElementById("reliability-bar"),
+        reliabilityValue: document.getElementById("reliability-value"),
+        metricStepsValue: document.getElementById("metric-steps-value"),
+        metricStepsBar: document.getElementById("metric-steps-bar"),
+        metricRewardValue: document.getElementById("metric-reward-value"),
+        metricRewardBar: document.getElementById("metric-reward-bar"),
+        metricConsistencyValue: document.getElementById("metric-consistency-value"),
+        metricConsistencyBar: document.getElementById("metric-consistency-bar"),
+        finalCombinedScore: document.getElementById("final-combined-score"),
+        rawOutput: document.getElementById("raw-output"),
+        chartPath: document.getElementById("chart-path"),
+        chartArea: document.getElementById("chart-area"),
+        chartTrend: document.getElementById("chart-trend"),
+        chartGrid: document.getElementById("chart-grid"),
+        chartPoints: document.getElementById("chart-points"),
+        chartSvg: document.getElementById("chart-svg"),
+        chartTooltip: document.getElementById("chart-tooltip"),
+        graphScroll: document.getElementById("graph-scroll"),
+        graphCanvas: document.getElementById("graph-canvas"),
+        graphLabels: document.getElementById("graph-labels"),
+        graphMin: document.getElementById("graph-min"),
+        graphAvg: document.getElementById("graph-avg"),
+        graphMax: document.getElementById("graph-max"),
+        graphFinal: document.getElementById("graph-final"),
+      };
+
+      function clamp(value, min, max) {
+        return Math.min(Math.max(value, min), max);
+      }
+
+      function formatScore(score) {
+        return Number.isFinite(score) ? score.toFixed(2) : "--";
+      }
+
+      function formatPercent(value) {
+        return `${Math.round(clamp(value, 0, 100))}%`;
+      }
+
+      function escapeHtml(value) {
+        return String(value)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      function average(values) {
+        if (!values.length) {
+          return 0;
+        }
+        return values.reduce((sum, value) => sum + value, 0) / values.length;
+      }
+
+      function variance(values) {
+        if (values.length < 2) {
+          return 0;
+        }
+        const mean = average(values);
+        return average(values.map((value) => (value - mean) ** 2));
+      }
+
+      function getStatusLabel(score) {
+        if (!Number.isFinite(score)) {
+          return "Waiting for run";
+        }
+        if (score >= 0.85) {
+          return "High Confidence";
+        }
+        if (score >= 0.6) {
+          return "Promising";
+        }
+        if (score > 0.3) {
+          return "Needs Improvement";
+        }
+        return "Low Confidence";
+      }
+
+      function generateInsight(rewards) {
+        if (!rewards.length) {
+          return "Waiting for backend output. Run a review to generate step insights and final scoring.";
+        }
+
+        const start = rewards[0];
+        const end = rewards[rewards.length - 1];
+        const improvement = ((end - start) * 100).toFixed(0);
+
+        return `Agent improved performance by ${improvement}% across iterations by refining logic and reducing inefficiencies.`;
+      }
+
+      function rewardBreakdown(score) {
+        const boundedScore = clamp(score, 0, 1);
+        return {
+          bug: (boundedScore * 0.4).toFixed(2),
+          fix: (boundedScore * 0.3).toFixed(2),
+          line: (boundedScore * 0.3).toFixed(2),
+        };
+      }
+
+      function parseBaselinePayload(payload) {
+        const rawOutput = JSON.stringify(payload, null, 2);
+        const baselineScore = Number(payload?.average_score ?? 0);
+        const breakdown = rewardBreakdown(baselineScore);
+
+        return {
+          rawOutput,
+          steps: [],
+          trendSteps: [{ step: 0, reward: baselineScore }],
+          originalRewards: [baselineScore],
+          adjustedRewards: [baselineScore],
+          finalScore: baselineScore,
+          baselineScore,
+          improvedScore: baselineScore,
+          breakdown,
+          totalSteps: 0,
+          taskName: "baseline no AI",
+        };
+      }
+
+      function parseReviewPayload(payload) {
+        const steps = Array.isArray(payload?.steps)
+          ? payload.steps.map((step, index) => ({
+              step: Number(step.step ?? index + 1),
+              reward: Number(step.reward ?? 0),
+              code: String(step.code ?? ""),
+              syntaxOk: Boolean(step.syntax_ok),
+              testsPassed: Number(step.tests_passed ?? 0),
+              testsTotal: Number(step.tests_total ?? 0),
+            }))
+          : [];
+
+        const rewards = steps.map((step) => step.reward);
+        const score = Number(payload?.score ?? (rewards.length ? rewards[rewards.length - 1] : 0));
+        const baselineScore = Number(payload?.baseline_score ?? 0);
+        const baselineReward = baselineScore * 2.2 - 0.5;
+        const finalCode = String(payload?.final_code ?? "");
+        const breakdown = rewardBreakdown(score);
+        const logs = Array.isArray(payload?.logs) ? payload.logs : [];
+        const taskName = payload?.model
+          ? `${payload.provider ?? "model"} ${payload.model}`
+          : "live review";
+        const improvementPercent = Number(payload?.improvement ?? payload?.improvement_percent ?? NaN);
+        const trendSteps = Number.isFinite(baselineReward)
+          ? [{ step: 0, reward: baselineReward, code: "", syntaxOk: true }, ...steps]
+          : steps;
+
+        return {
+          rawOutput: JSON.stringify(payload, null, 2),
+          steps,
+          trendSteps,
+          originalRewards: rewards,
+          adjustedRewards: trendSteps.map((step) => step.reward),
+          finalScore: score,
+          baselineScore,
+          improvedScore: score,
+          breakdown,
+          totalSteps: steps.length,
+          taskName,
+          finalCode,
+          logs,
+          message: String(payload?.message ?? generateInsight(rewards)),
+          confidence: String(payload?.confidence ?? getStatusLabel(score)),
+          improvementPercent,
+        };
+      }
+
+      async function trainAgent() {
+        const requestedRuns = clamp(
+          Number.parseInt(elements.simulationRunsInput.value, 10) || 20,
+          1,
+          200,
+        );
+
+        elements.trainAgentButton.disabled = true;
+        elements.trainAgentButton.classList.add("opacity-70", "cursor-not-allowed");
+        const originalButtonHtml = elements.trainAgentButton.innerHTML;
+        elements.trainAgentButton.innerHTML = `
+          <span class="material-symbols-outlined text-sm animate-spin" data-icon="progress_activity">progress_activity</span>
+          Training...
+        `;
+        elements.scoreStatus.textContent = "Training policy...";
+        elements.learningInsight.textContent = `Running ${requestedRuns} training episodes. Epsilon-greedy exploration enabled with decay.`;
+        elements.rawOutput.textContent = "Running backend /train-agent...";
+
+        try {
+          const payload = await requestJson("/train-agent", {
+            method: "POST",
+            body: JSON.stringify({ episodes: requestedRuns }),
+          });
+
+          const curve = Array.isArray(payload?.training_curve) ? payload.training_curve : [];
+          const avg = Number(payload?.average_reward ?? average(curve));
+          const improved = Boolean(payload?.policy_improved ?? false);
+          const logMsg = String(payload?.log_summary ?? "Training completed");
+
+          // Clean raw output - show only training summary
+          const cleanOutput = {
+            episodes: payload?.episodes,
+            average_reward: avg,
+            policy_improved: improved,
+            training_curve_length: curve.length,
+            summary: logMsg,
+          };
+          elements.rawOutput.textContent = JSON.stringify(cleanOutput, null, 2);
+          
+          const insight = improved 
+            ? `Policy updated successfully! Avg reward: ${avg.toFixed(3)}. Agent now learns from experience.`
+            : `Training completed (${requestedRuns} episodes). Avg reward: ${avg.toFixed(3)}.`;
+          elements.learningInsight.textContent = insight;
+          
+          elements.simulatedRuns.textContent = String(payload?.episodes ?? requestedRuns);
+          elements.simulationStatus.textContent = improved ? "Policy Updated" : "Trained";
+          elements.simulationVariance.textContent = `Variance: ${variance(curve).toFixed(4)}`;
+          elements.averageScore.textContent = Number.isFinite(avg) ? avg.toFixed(2) : "--";
+          elements.averageScoreStatus.textContent = improved ? "Improved" : "Trained";
+          elements.averageScoreDetail.textContent = logMsg;
+
+          // Render training curve
+          const trainSteps = curve.map((reward, idx) => ({ step: idx + 1, reward: Number(reward) }));
+          renderGraph(trainSteps);
+        } catch (error) {
+          elements.scoreStatus.textContent = "Training failed";
+          elements.rawOutput.textContent = `Training request failed: ${error.message}`;
+          elements.learningInsight.textContent = `Training failed. Confirm the API is running at ${API_BASE_URL}.`;
+        } finally {
+          elements.trainAgentButton.disabled = false;
+          elements.trainAgentButton.classList.remove("opacity-70", "cursor-not-allowed");
+          elements.trainAgentButton.innerHTML = originalButtonHtml;
+        }
+      }
+
+      function buildLogItem(step, index, total) {
+        const borderClass =
+          step.reward >= 0.5
+            ? "border-secondary"
+            : step.reward >= 0
+              ? "border-primary"
+              : "border-tertiary";
+        const iconClass =
+          step.reward >= 0.5
+            ? "text-secondary"
+            : step.reward >= 0
+              ? "text-primary"
+              : "text-tertiary";
+        const rewardClass = step.reward >= 0 ? "text-secondary" : "text-tertiary";
+        const icon =
+          step.reward >= 0.5 ? "check" : step.reward >= 0 ? "psychology" : "warning";
+
+        return `
+          <div class="relative pl-10">
+            <div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-surface-container-highest border-2 ${borderClass} flex items-center justify-center">
+              <span class="material-symbols-outlined text-[10px] ${iconClass}" data-icon="${icon}">${icon}</span>
+            </div>
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="font-mono text-sm text-on-surface">${step.step === 0 ? "Baseline" : `Step ${step.step}`} -> Reward: ${step.reward.toFixed(2)}</p>
+                <p class="text-xs text-on-surface-variant mt-1">${step.step === 0 ? "No-AI baseline before model review." : `Parsed backend step ${index} of ${Math.max(total - 1, 1)}.`}</p>
+              </div>
+              <div class="text-right">
+                <p class="text-xs font-mono ${rewardClass}">Reward: ${step.reward.toFixed(2)}</p>
+                <p class="text-[10px] text-on-surface-variant opacity-50">${step.step === 0 ? "baseline" : `step=${step.step}`}</p>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      function renderLogs(steps) {
+        if (!steps.length) {
+          elements.agentLogs.innerHTML = `
+            <div class="relative pl-10">
+              <div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-surface-container-highest border-2 border-outline-variant/60 flex items-center justify-center">
+                <span class="material-symbols-outlined text-[10px] text-on-surface-variant" data-icon="schedule">schedule</span>
+              </div>
+              <div class="flex justify-between items-start">
+                <div>
+                  <p class="font-mono text-sm text-on-surface">No steps recorded</p>
+                  <p class="text-xs text-on-surface-variant mt-1">Run AI Review to populate the execution timeline.</p>
+                </div>
+              </div>
+            </div>
+          `;
+          return;
+        }
+
+        elements.agentLogs.innerHTML = steps
+          .map((step, index) => buildLogItem(step, index, steps.length))
+          .join("");
+      }
+
+      function renderBackendLogs(logs) {
+        if (!logs?.length) {
+          return;
+        }
+
+        elements.agentLogs.innerHTML = logs
+          .map((line, index) => `
+            <div class="relative pl-10">
+              <div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-surface-container-highest border-2 border-primary flex items-center justify-center">
+                <span class="material-symbols-outlined text-[10px] text-primary" data-icon="terminal">terminal</span>
+              </div>
+              <div class="flex justify-between items-start">
+                <div>
+                  <p class="font-mono text-sm text-on-surface">${escapeHtml(line)}</p>
+                  <p class="text-xs text-on-surface-variant mt-1">Backend execution log ${index + 1}</p>
+                </div>
+              </div>
+            </div>
+          `)
+          .join("");
+      }
+
+      function renderGraph(steps) {
+        const leftPadding = 36;
+        const rightPadding = 16;
+        const axisTop = 10;
+        const axisBottom = 94;
+        const stepWidthPx = 56;
+        const containerWidth = Math.max(elements.graphScroll?.clientWidth || 320, 320);
+
+        if (!steps.length) {
+          elements.graphCanvas.style.width = `${containerWidth}px`;
+          elements.chartSvg.setAttribute("viewBox", `0 0 ${containerWidth} 100`);
+          elements.chartPath.setAttribute("d", "M 0 95 L 100 95");
+          elements.chartArea.setAttribute("d", "M 0 95 L 100 95 Z");
+          elements.chartTrend.setAttribute("d", "M 0 95 L 100 95");
+          elements.chartGrid.innerHTML = "";
+          elements.chartPoints.innerHTML = "";
+          elements.chartTooltip.textContent = "No run data";
+          elements.graphMin.textContent = "--";
+          elements.graphAvg.textContent = "--";
+          elements.graphMax.textContent = "--";
+          elements.graphFinal.textContent = "--";
+          elements.graphLabels.innerHTML = `
+            <span class="px-3">STEP 1</span>
+            <span class="px-3">STEP 2</span>
+            <span class="px-3">STEP 3</span>
+            <span class="px-3">STEP 4</span>
+            <span class="px-3">STEP 5</span>
+            <span class="px-3 text-secondary font-bold">FINAL</span>
+          `;
+          return;
+        }
+
+        const requiredWidth = Math.max(
+          containerWidth,
+          leftPadding + rightPadding + Math.max(steps.length - 1, 1) * stepWidthPx,
+        );
+
+        elements.graphCanvas.style.width = `${requiredWidth}px`;
+        elements.chartSvg.setAttribute("viewBox", `0 0 ${requiredWidth} 100`);
+
+        const points = steps.map((step, index) => {
+          const x =
+            steps.length === 1
+              ? requiredWidth / 2
+              : leftPadding +
+                (index / (steps.length - 1)) * (requiredWidth - leftPadding - rightPadding);
+          const normalizedReward = clamp((step.reward + 1) / 2, 0, 1);
+          const y = axisBottom - normalizedReward * (axisBottom - axisTop);
+          return { x, y, step: step.step, reward: step.reward };
+        });
+
+        const gridY = [axisBottom, 71, 50, 29, axisTop];
+        elements.chartGrid.innerHTML = gridY
+          .map(
+            (y) =>
+              `<line x1="${leftPadding}" y1="${y}" x2="${requiredWidth - rightPadding}" y2="${y}" stroke="#424754" stroke-opacity="0.35" stroke-width="0.7" />`,
+          )
+          .join("");
+
+        const pathData = points
+          .map((point, index) => `${index === 0 ? "M" : "L"} ${point.x} ${point.y}`)
+          .join(" ");
+        const areaPath = `${pathData} L ${points[points.length - 1].x} ${axisBottom} L ${points[0].x} ${axisBottom} Z`;
+
+        const trendPoints = points.map((point, index) => {
+          const start = Math.max(0, index - 2);
+          const slice = points.slice(start, index + 1);
+          const avgY = slice.reduce((sum, item) => sum + item.y, 0) / slice.length;
+          return { x: point.x, y: avgY };
+        });
+
+        const trendPath = trendPoints
+          .map((point, index) => `${index === 0 ? "M" : "L"} ${point.x} ${point.y}`)
+          .join(" ");
+
+        elements.chartPath.setAttribute("d", pathData);
+        elements.chartArea.setAttribute("d", areaPath);
+        elements.chartTrend.setAttribute("d", trendPath);
+        elements.chartPoints.innerHTML = points
+          .map((point, index) => {
+            const isFinal = index === points.length - 1;
+            return `<circle cx="${point.x}" cy="${point.y}" fill="${isFinal ? "#4edea3" : "#adc6ff"}" r="${isFinal ? 4 : 2.2}" ${isFinal ? 'class="animate-pulse"' : ""}></circle>`;
+          })
+          .join("");
+
+        const finalPoint = points[points.length - 1];
+        const firstReward = points[0]?.reward ?? 0;
+        const delta = finalPoint.reward - firstReward;
+        elements.chartTooltip.textContent = `Step ${finalPoint.step}: ${finalPoint.reward.toFixed(2)} (${delta >= 0 ? "+" : ""}${delta.toFixed(2)})`;
+        const rewards = points.map((point) => point.reward);
+        const minReward = Math.min(...rewards);
+        const maxReward = Math.max(...rewards);
+        const avgReward = rewards.reduce((sum, value) => sum + value, 0) / rewards.length;
+        elements.graphMin.textContent = minReward.toFixed(2);
+        elements.graphAvg.textContent = avgReward.toFixed(2);
+        elements.graphMax.textContent = maxReward.toFixed(2);
+        elements.graphFinal.textContent = finalPoint.reward.toFixed(2);
+        elements.graphLabels.innerHTML = steps
+          .map((step, index, arr) => {
+            const finalClass = index === steps.length - 1 ? "text-secondary font-bold" : "";
+            const width = Math.max(
+              stepWidthPx,
+              Math.round((requiredWidth - leftPadding - rightPadding) / Math.max(arr.length - 1, 1)),
+            );
+            const stepLabel = step.step === 0 ? "BASE" : `S${step.step}`;
+            return `<span class="${finalClass}" style="width:${width}px;text-align:center;display:inline-flex;justify-content:center;">${stepLabel}</span>`;
+          })
+          .join("");
+
+        if (elements.graphScroll) {
+          elements.graphScroll.scrollLeft = elements.graphScroll.scrollWidth;
+        }
+      }
+
+      function renderScoreCard(parsed) {
+        const score = parsed.improvedScore;
+        const scorePercent = Number.isFinite(score) ? clamp(score * 100, 0, 100) : 0;
+        const averageReward = parsed.trendSteps.length
+          ? average(parsed.trendSteps.map((step) => step.reward))
+          : 0;
+        const rewardPercent = clamp(averageReward * 100, 0, 100);
+        const breakdown = parsed.breakdown;
+
+        elements.scoreValue.textContent = formatScore(score);
+        elements.finalCombinedScore.textContent = formatScore(score);
+        elements.scoreStatus.textContent = getStatusLabel(score);
+        elements.reliabilityBar.style.width = `${scorePercent}%`;
+        elements.reliabilityValue.textContent = formatPercent(scorePercent);
+        elements.scoreRing.setAttribute(
+          "stroke-dashoffset",
+          String(SCORE_RING_CIRCUMFERENCE * (1 - scorePercent / 100)),
+        );
+
+        elements.metricStepsValue.textContent = breakdown.bug;
+        elements.metricStepsBar.style.width = `${Number(breakdown.bug) * 100}%`;
+        elements.metricRewardValue.textContent = breakdown.fix;
+        elements.metricRewardBar.style.width = `${Number(breakdown.fix) * 100}%`;
+        elements.metricConsistencyValue.textContent = breakdown.line;
+        elements.metricConsistencyBar.style.width = `${Number(breakdown.line) * 100}%`;
+      }
+
+      function renderSummary(parsed) {
+        const score = parsed.improvedScore;
+        const improvementPercent = Number.isFinite(parsed.improvementPercent)
+          ? parsed.improvementPercent
+          : Number.isFinite(parsed.baselineScore) &&
+              parsed.baselineScore !== 0 &&
+              Number.isFinite(score)
+            ? ((score - parsed.baselineScore) / Math.abs(parsed.baselineScore)) * 100
+            : Number.isFinite(score)
+              ? score * 100
+              : 0;
+
+        elements.baselinePerformance.textContent = Number.isFinite(parsed.baselineScore)
+          ? parsed.baselineScore.toFixed(2)
+          : "--";
+        elements.improvedPerformance.textContent = formatScore(score);
+        elements.netImprovement.textContent = `${improvementPercent >= 0 ? "+" : ""}${Math.round(improvementPercent)}%`;
+        elements.netImprovementLabel.textContent = `Task ${parsed.taskName}`;
+        elements.learningInsight.textContent = parsed.message || generateInsight(parsed.adjustedRewards);
+        elements.rawOutput.textContent = parsed.rawOutput || "No backend output returned.";
+      }
+
+      function updateRunPanels(parsed) {
+        renderSummary(parsed);
+        renderScoreCard(parsed);
+        renderLogs(parsed.trendSteps);
+        renderBackendLogs(parsed.logs);
+        renderGraph(parsed.trendSteps);
+      }
+
+      function resetDashboardState() {
+        elements.baselinePerformance.textContent = "--";
+        elements.improvedPerformance.textContent = "--";
+        elements.netImprovement.textContent = "--";
+        elements.netImprovementLabel.textContent = "Net Improvement";
+        elements.learningInsight.textContent =
+          "Waiting for backend output. Run a review to generate step insights and final scoring.";
+        elements.rawOutput.textContent = "No backend run yet.";
+        elements.scoreValue.textContent = "--";
+        elements.finalCombinedScore.textContent = "--";
+        elements.scoreStatus.textContent = "Waiting for run";
+        elements.reliabilityBar.style.width = "0%";
+        elements.reliabilityValue.textContent = "0%";
+        elements.scoreRing.setAttribute("stroke-dashoffset", String(SCORE_RING_CIRCUMFERENCE));
+        elements.metricStepsValue.textContent = "0";
+        elements.metricStepsBar.style.width = "0%";
+        elements.metricRewardValue.textContent = "0%";
+        elements.metricRewardBar.style.width = "0%";
+        elements.metricConsistencyValue.textContent = "0%";
+        elements.metricConsistencyBar.style.width = "0%";
+        renderLogs([]);
+        renderGraph([]);
+      }
+
+      function updateSimulationMetrics(scores) {
+        const averageScore = average(scores);
+        const successfulRuns = scores.filter((score) => score > 0.5).length;
+        const successRate = scores.length ? (successfulRuns / scores.length) * 100 : 0;
+
+        elements.simulatedRuns.textContent = String(scores.length);
+        elements.simulationStatus.textContent = scores.length ? "Completed" : "Ready";
+        elements.simulationVariance.textContent = `Variance: ${variance(scores).toFixed(4)}`;
+        elements.averageScore.textContent = scores.length ? averageScore.toFixed(2) : "--";
+        elements.averageScoreStatus.textContent = scores.length
+          ? averageScore > 0.5
+            ? "Healthy"
+            : "Volatile"
+          : "Awaiting data";
+        elements.averageScoreDetail.textContent = scores.length
+          ? `Last score: ${scores[scores.length - 1].toFixed(2)}`
+          : "Last score: --";
+        elements.successRate.textContent = scores.length
+          ? `${successRate.toFixed(1)}%`
+          : "--";
+        elements.successRateStatus.textContent = scores.length
+          ? `${successfulRuns}/${scores.length} successful`
+          : "Awaiting data";
+        elements.successRateDetail.textContent = "Threshold: score > 0.50";
+      }
+
+      async function requestJson(path, options = {}) {
+        const headers = { ...(options.headers || {}) };
+
+        if (options.body && !(options.body instanceof FormData) && !headers["Content-Type"]) {
+          headers["Content-Type"] = "application/json";
+        }
+
+        const failures = [];
+
+        for (const baseUrl of API_BASE_CANDIDATES) {
+          const requestUrl = `${baseUrl}${path}`;
+          let response;
+
+          try {
+            response = await fetch(requestUrl, {
+              ...options,
+              headers,
+            });
+          } catch (error) {
+            const message = error instanceof Error ? error.message : String(error);
+            failures.push(`${requestUrl}: ${message}`);
+            continue;
+          }
+
+          if (!response.ok) {
+            let details = `${response.status} ${response.statusText}`;
+            try {
+              const errorPayload = await response.json();
+              if (errorPayload?.detail) {
+                details = `${details}: ${errorPayload.detail}`;
+              }
+            } catch {
+              const text = await response.text();
+              if (text) {
+                details = `${details}: ${text}`;
+              }
+            }
+            throw new Error(`${details} (${requestUrl})`);
+          }
+
+          API_BASE_URL = baseUrl;
+          return response.json();
+        }
+
+        throw new Error(`Unable to reach API endpoint. Tried: ${failures.join(" | ")}`);
+      }
+
+      async function runAIReview() {
+        const code = elements.codeInput.value.trim();
+        if (!code) {
+          elements.scoreStatus.textContent = "Code required";
+          elements.rawOutput.textContent = "Paste Python code into the editor before running review.";
+          return;
+        }
+
+        elements.runReviewButton.disabled = true;
+        elements.runReviewButton.classList.add("opacity-70", "cursor-not-allowed");
+        const originalButtonHtml = elements.runReviewButton.innerHTML;
+        elements.runReviewButton.innerHTML = `
+          <span class="material-symbols-outlined text-sm animate-spin" data-icon="progress_activity">progress_activity</span>
+          Running...
+        `;
+        elements.scoreStatus.textContent = "Running review...";
+        elements.rawOutput.textContent = "Applying learned policy through backend /run-review...";
+        elements.learningInsight.textContent = "Agent is iterating through refinement steps using trained policy.";
+        renderLogs([]);
+        renderGraph([]);
+
+        try {
+          const payload = await requestJson("/run-review", {
+            method: "POST",
+            body: JSON.stringify({ code }),
+          });
+          const parsed = parseReviewPayload(payload);
+          updateRunPanels(parsed);
+          
+          // Show clean output focused on results
+          const cleanOutput = {
+            score: payload?.score,
+            improvement: payload?.improvement,
+            steps_count: payload?.steps?.length ?? 0,
+            final_code_preview: payload?.final_code?.substring(0, 100) + "...",
+          };
+          elements.rawOutput.textContent = JSON.stringify(cleanOutput, null, 2);
+          
+          if (parsed.finalCode) {
+            elements.codeInput.value = parsed.finalCode;
+            elements.codeInput.classList.add("ring-1", "ring-secondary/60");
+            window.setTimeout(() => {
+              elements.codeInput.classList.remove("ring-1", "ring-secondary/60");
+            }, 1200);
+          }
+        } catch (error) {
+          elements.scoreStatus.textContent = "Run failed";
+          elements.rawOutput.textContent = `Request failed: ${error.message}`;
+          elements.learningInsight.textContent =
+            `Backend request failed. Confirm the API is running at ${API_BASE_URL}.`;
+          renderLogs([]);
+          renderGraph([]);
+        } finally {
+          elements.runReviewButton.disabled = false;
+          elements.runReviewButton.classList.remove("opacity-70", "cursor-not-allowed");
+          elements.runReviewButton.innerHTML = originalButtonHtml;
+        }
+      }
+
+      async function resetEnvironment() {
+        elements.resetButton.disabled = true;
+        elements.resetButton.classList.add("opacity-70", "cursor-not-allowed");
+
+        try {
+          await requestJson("/reset", {
+            method: "POST",
+            body: JSON.stringify({ task: "easy" }),
+          });
+        } catch (error) {
+          elements.rawOutput.textContent = `Reset request failed: ${error.message}`;
+        } finally {
+          resetDashboardState();
+          elements.resetButton.disabled = false;
+          elements.resetButton.classList.remove("opacity-70", "cursor-not-allowed");
+        }
+      }
+
+      async function simulateLoad() {
+        const requestedRuns = clamp(
+          Number.parseInt(elements.simulationRunsInput.value, 10) || 10,
+          1,
+          50,
+        );
+
+        elements.simulateLoadButton.disabled = true;
+        elements.simulateLoadButton.classList.add("opacity-70", "cursor-not-allowed");
+        elements.simulationStatus.textContent = "Running...";
+        elements.simulatedRuns.textContent = "0";
+
+        const scores = [];
+
+        try {
+          for (let index = 0; index < requestedRuns; index += 1) {
+            const payload = await requestJson("/baseline");
+            const parsed = parseBaselinePayload(payload);
+
+            if (Number.isFinite(parsed.improvedScore)) {
+              scores.push(parsed.improvedScore);
+            }
+
+            elements.simulatedRuns.textContent = String(index + 1);
+            elements.simulationStatus.textContent = `${index + 1}/${requestedRuns}`;
+
+            if (index === requestedRuns - 1) {
+              updateRunPanels(parsed);
+            }
+          }
+
+          updateSimulationMetrics(scores);
+        } catch (error) {
+          elements.simulationStatus.textContent = "Failed";
+          elements.simulationVariance.textContent = `Error: ${error.message}`;
+        } finally {
+          elements.simulateLoadButton.disabled = false;
+          elements.simulateLoadButton.classList.remove("opacity-70", "cursor-not-allowed");
+        }
+      }
+
+      elements.runReviewButton.addEventListener("click", runAIReview);
+      elements.trainAgentButton.addEventListener("click", trainAgent);
+      elements.resetButton.addEventListener("click", resetEnvironment);
+      elements.simulateLoadButton.addEventListener("click", simulateLoad);
+
+      resetDashboardState();
+      updateSimulationMetrics([]);
+    </script>
+  </body>
+</html>

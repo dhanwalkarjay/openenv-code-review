@@ -1,0 +1,82 @@
+{
+  "metadata": {
+    "trained": true,
+    "algorithm": "epsilon_greedy_reward_policy",
+    "train_steps": 5,
+    "dataset_size": 8
+  },
+  "tasks": {
+    "easy": {
+      "q_values": {
+        "noop": 0.19999999999999998,
+        "target_fix": 1.5,
+        "syntax_only": 0.19999999999999998
+      },
+      "best_action": "target_fix",
+      "fixed_code": "def get_third_item(items):\n    return items[2]\n"
+    },
+    "medium": {
+      "q_values": {
+        "noop": -0.5,
+        "target_fix": 1.5,
+        "syntax_only": 1.5
+      },
+      "best_action": "target_fix",
+      "fixed_code": "def greet(name):\n    return 'hi ' + name\n"
+    },
+    "hard": {
+      "q_values": {
+        "noop": 0.5000000000000001,
+        "target_fix": 1.5,
+        "syntax_only": 0.5000000000000001
+      },
+      "best_action": "target_fix",
+      "fixed_code": "def safe_div(a, b):\n    if b == 0:\n        return 0\n    return a / b\n"
+    },
+    "bonus": {
+      "q_values": {
+        "noop": 0.5000000000000001,
+        "target_fix": 1.5,
+        "syntax_only": 0.5000000000000001
+      },
+      "best_action": "target_fix",
+      "fixed_code": "def sum_to_n(n):\n    total = 0\n    for i in range(n + 1):\n        total += i\n    return total\n"
+    },
+    "list_len": {
+      "q_values": {
+        "noop": 0.5000000000000001,
+        "target_fix": 1.5,
+        "syntax_only": 0.5000000000000001
+      },
+      "best_action": "target_fix",
+      "fixed_code": "def has_three(items):\n    return len(items) >= 3\n"
+    },
+    "none_lower": {
+      "q_values": {
+        "noop": 0.5000000000000001,
+        "target_fix": 1.5,
+        "syntax_only": 0.5000000000000001
+      },
+      "best_action": "target_fix",
+      "fixed_code": "def normalize_name(name):\n    if name is None:\n        return ''\n    return name.lower()\n"
+    },
+    "max_init": {
+      "q_values": {
+        "noop": 0.5000000000000001,
+        "target_fix": 1.5,
+        "syntax_only": 0.5000000000000001
+      },
+      "best_action": "target_fix",
+      "fixed_code": "def max_value(nums):\n    best = nums[0]\n    for n in nums:\n        if n > best:\n            best = n\n    return best\n"
+    },
+    "first_item": {
+      "q_values": {
+        "noop": 0.19999999999999998,
+        "target_fix": 1.5,
+        "syntax_only": 0.19999999999999998
+      },
+      "best_action": "target_fix",
+      "fixed_code": "def first_item(items):\n    return items[0]\n"
+    }
+  }
+}

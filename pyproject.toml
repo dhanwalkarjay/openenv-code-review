@@ -10,13 +10,13 @@ dependencies = [
   "fastapi",
   "uvicorn",
   "pydantic",
-  "openai",
+  "python-dotenv",
   "openenv>=0.2.0"
 ]
 
 [project.scripts]
-server = "server.app:main"
+server = "backend.server.app:main"
 
 [tool.openenv]
-entrypoint = "server.app:main"
+entrypoint = "backend.server.app:main"
 requires = ["openenv>=0.2.0"]

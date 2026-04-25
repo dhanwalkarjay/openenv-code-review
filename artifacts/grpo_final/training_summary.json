@@ -1,0 +1,1142 @@
+{
+  "config": {
+    "model": "sshleifer/tiny-gpt2",
+    "train_steps": 50,
+    "samples_per_task": 10,
+    "learning_rate": 2e-06,
+    "eval_max_steps": 3,
+    "rollout_steps_for_reward": 2
+  },
+  "baseline_before_training": {
+    "average_reward": -1.5,
+    "episodes": [
+      {
+        "task_type": "easy",
+        "total_reward": -1.5,
+        "steps": [
+          {
+            "step": 1,
+            "completion": "clearer skillet deflect representations workshops deflectMini Tre equate soy\ufffd Boone praying boils Pocketshows lined ReduxMini Boone Medicobl TreOutside bravery factors Pocket clearerProsozyg representations\ufffd Tre praying SingaporePros653 predators boils representations TreMini lined Boone workshopsived membership Wheels lined Pocket Late lined mutual 236 perhaps Television448 courtyard rubbing workshopsSexual Dreams mutual clearer soy bravery TelevisionProsozygMini TelevisionMini grandchildren clearer lined LateMini deflect rubbingOutside lined mutual clearerozyg workshops soy Pocket Tre mutual membership clearer predatorsobl soypublic Tre grandchildren653 Televisionpublic boilsPros skillet Boone mutual\ufffd bravery deflectMostshows Television soy predators Medicpublic mutual bravery perhaps deflectpublicOutsideOutside soy membership Lateozyg soy soy",
+            "action": {
+              "reviewer_issues": [],
+              "fixed_code": "clearer skillet deflect representations workshops deflectMini Tre equate soy\ufffd Boone praying boils Pocketshows lined ReduxMini Boone Medicobl TreOutside bravery factors Pocket clearerProsozyg representations\ufffd Tre praying SingaporePros653 predators boils representations TreMini lined Boone workshopsived membership Wheels lined Pocket Late lined mutual 236 perhaps Television448 courtyard rubbing workshopsSexual Dreams mutual clearer soy bravery TelevisionProsozygMini TelevisionMini grandchildren clearer lined LateMini deflect rubbingOutside lined mutual clearerozyg workshops soy Pocket Tre mutual membership clearer predatorsobl soypublic Tre grandchildren653 Televisionpublic boilsPros skillet Boone mutual\ufffd bravery deflectMostshows Television soy predators Medicpublic mutual bravery perhaps deflectpublicOutsideOutside soy membership Lateozyg soy soy"
+            },
+            "reward": -0.5,
+            "tests_passed": 0,
+            "tests_total": 3,
+            "code": "def get_third_item(items):\n    return items[3]\n"
+          },
+          {
+            "step": 2,
+            "completion": "Participationpress heirmediatelyJD Motorola Observ autonomyiken credibility Hancockoother Hancock directly Hancock heir Rh autonomy autonomymediately trilogy subst Participation Hancock circumcisedmediately Motorola Hancockting dispatch hauledScene Brewting TApress autonomymediately trilogy ONE reviewing trilogy intermittentScene Participation hauled Participation Habit Motorola autonomy ESV conservationting Observiken dispatch Rh Observ intermittentScene trilogy heir confir ESVhibit Rh directly pawn confirtingting conservation heir vendors Participationditting conservation Brew directly antibiotic conservationreement Motorola confir dispatch Observ reviewing confir pawn Rh Jr reviewingpress Probpresshibit Participation reviewinghibit reviewing Hancock intermittent trilogy dispatch Participation stairs Motorola Daniel circumcised trilogy confir autonomy conservationmediatelyreement subst Brewiken Hancock directly Motorola reviewingiken reviewing Motorola circumcised dispatch",
+            "action": {
+              "reviewer_issues": [],
+              "fixed_code": "Participationpress heirmediatelyJD Motorola Observ autonomyiken credibility Hancockoother Hancock directly Hancock heir Rh autonomy autonomymediately trilogy subst Participation Hancock circumcisedmediately Motorola Hancockting dispatch hauledScene Brewting TApress autonomymediately trilogy ONE reviewing trilogy intermittentScene Participation hauled Participation Habit Motorola autonomy ESV conservationting Observiken dispatch Rh Observ intermittentScene trilogy heir confir ESVhibit Rh directly pawn confirtingting conservation heir vendors Participationditting conservation Brew directly antibiotic conservationreement Motorola confir dispatch Observ reviewing confir pawn Rh Jr reviewingpress Probpresshibit Participation reviewinghibit reviewing Hancock intermittent trilogy dispatch Participation stairs Motorola Daniel circumcised trilogy confir autonomy conservationmediatelyreement subst Brewiken Hancock directly Motorola reviewingiken reviewing Motorola circumcised dispatch"
+            },
+            "reward": -0.5,
+            "tests_passed": 0,
+            "tests_total": 3,
+            "code": "def get_third_item(items):\n    return items[3]\n"
+          },
+          {
+            "step": 3,
+            "completion": "Redux Reduxived\ufffdMost Bendozyg Bend predatorsSexual membership Television448 factors courtyardOutside Pocket mutual653 Bend deflect Pocketacious rubbing mutualMost DreamsMostived predators Dreams equateived praying skillet Singapore deflect\ufffd equateobl mutual predators rubbing SingaporeMost membershipPros deflect Singapore praying clearer boils rubbing Dreams Dreams rubbing equateacious representations lined lined factors boils Boone equate653 Television factors grandchildren Bend membership Bend perhaps factorsived representationspublic\ufffdOutside boils workshopsobl deflect448MostMostacious Singapore Pocket mutual deflectivedMini predators rubbing workshops grandchildren grandchildren representations equateMini linedshows bravery Medic lined Singapore Medic soyobl Late grandchildren Singapore perhaps 236public praying clearer factorsProsMost soy skillet representations predatorsived grandchildren Late",
+            "action": {
+              "reviewer_issues": [],
+              "fixed_code": "Redux Reduxived\ufffdMost Bendozyg Bend predatorsSexual membership Television448 factors courtyardOutside Pocket mutual653 Bend deflect Pocketacious rubbing mutualMost DreamsMostived predators Dreams equateived praying skillet Singapore deflect\ufffd equateobl mutual predators rubbing SingaporeMost membershipPros deflect Singapore praying clearer boils rubbing Dreams Dreams rubbing equateacious representations lined lined factors boils Boone equate653 Television factors grandchildren Bend membership Bend perhaps factorsived representationspublic\ufffdOutside boils workshopsobl deflect448MostMostacious Singapore Pocket mutual deflectivedMini predators rubbing workshops grandchildren grandchildren representations equateMini linedshows bravery Medic lined Singapore Medic soyobl Late grandchildren Singapore perhaps 236public praying clearer factorsProsMost soy skillet representations predatorsived grandchildren Late"
+            },
+            "reward": -0.5,
+            "tests_passed": 0,
+            "tests_total": 3,
+            "code": "def get_third_item(items):\n    return items[3]\n"
+          }
+        ],
+        "final_state": {
+          "task_id": "arena-001",
+          "title": "Fix index error",
+          "instruction": "Fix the index error so the function returns the third item safely.",
+          "buggy_code": "def get_third_item(items):\n    return items[3]\n",
+          "current_code": "def get_third_item(items):\n    return items[3]\n",
+          "previous_step_output": {
+            "step": 3,
+            "reviewer_output": [
+              "No obvious syntax errors; run tests to verify behavior."
+            ],
+            "fixer_output": "Redux Reduxived\ufffdMost Bendozyg Bend predatorsSexual membership Television448 factors courtyardOutside Pocket mutual653 Bend deflect Pocketacious rubbing mutualMost DreamsMostived predators Dreams equateived praying skillet Singapore deflect\ufffd equateobl mutual predators rubbing SingaporeMost membershipPros deflect Singapore praying clearer boils rubbing Dreams Dreams rubbing equateacious representations lined lined factors boils Boone equate653 Television factors grandchildren Bend membership Bend perhaps factorsived representationspublic\ufffdOutside boils workshopsobl deflect448MostMostacious Singapore Pocket mutual deflectivedMini predators rubbing workshops grandchildren grandchildren representations equateMini linedshows bravery Medic lined Singapore Medic soyobl Late grandchildren Singapore perhaps 236public praying clearer factorsProsMost soy skillet representations predatorsived grandchildren Late",
+            "reward": -0.5,
+            "reward_components": {
+              "syntax": -0.5,
+              "correctness": 0.0,
+              "improvement": 0.0,
+              "penalty_empty_or_invalid": 0.0,
+              "penalty_no_meaningful_change": 0.0,
+              "bug_retained_penalty": 0.0
+            },
+            "tests_passed": 0,
+            "tests_total": 3,
+            "syntax_ok": false
+          },
+          "step_count": 3,
+          "max_steps": 3,
+          "tests_passed": 0,
+          "tests_total": 3,
+          "total_reward": -1.5,
+          "history": [
+            {
+              "step": 1,
+              "reviewer_output": [
+                "No obvious syntax errors; run tests to verify behavior."
+              ],
+              "fixer_output": "clearer skillet deflect representations workshops deflectMini Tre equate soy\ufffd Boone praying boils Pocketshows lined ReduxMini Boone Medicobl TreOutside bravery factors Pocket clearerProsozyg representations\ufffd Tre praying SingaporePros653 predators boils representations TreMini lined Boone workshopsived membership Wheels lined Pocket Late lined mutual 236 perhaps Television448 courtyard rubbing workshopsSexual Dreams mutual clearer soy bravery TelevisionProsozygMini TelevisionMini grandchildren clearer lined LateMini deflect rubbingOutside lined mutual clearerozyg workshops soy Pocket Tre mutual membership clearer predatorsobl soypublic Tre grandchildren653 Televisionpublic boilsPros skillet Boone mutual\ufffd bravery deflectMostshows Television soy predators Medicpublic mutual bravery perhaps deflectpublicOutsideOutside soy membership Lateozyg soy soy",
+              "reward": -0.5,
+              "reward_components": {
+                "syntax": -0.5,
+                "correctness": 0.0,
+                "improvement": 0.0,
+                "penalty_empty_or_invalid": 0.0,
+                "penalty_no_meaningful_change": 0.0,
+                "bug_retained_penalty": 0.0
+              },
+              "tests_passed": 0,
+              "tests_total": 3,
+              "syntax_ok": false
+            },
+            {
+              "step": 2,
+              "reviewer_output": [
+                "No obvious syntax errors; run tests to verify behavior."
+              ],
+              "fixer_output": "Participationpress heirmediatelyJD Motorola Observ autonomyiken credibility Hancockoother Hancock directly Hancock heir Rh autonomy autonomymediately trilogy subst Participation Hancock circumcisedmediately Motorola Hancockting dispatch hauledScene Brewting TApress autonomymediately trilogy ONE reviewing trilogy intermittentScene Participation hauled Participation Habit Motorola autonomy ESV conservationting Observiken dispatch Rh Observ intermittentScene trilogy heir confir ESVhibit Rh directly pawn confirtingting conservation heir vendors Participationditting conservation Brew directly antibiotic conservationreement Motorola confir dispatch Observ reviewing confir pawn Rh Jr reviewingpress Probpresshibit Participation reviewinghibit reviewing Hancock intermittent trilogy dispatch Participation stairs Motorola Daniel circumcised trilogy confir autonomy conservationmediatelyreement subst Brewiken Hancock directly Motorola reviewingiken reviewing Motorola circumcised dispatch",
+              "reward": -0.5,
+              "reward_components": {
+                "syntax": -0.5,
+                "correctness": 0.0,
+                "improvement": 0.0,
+                "penalty_empty_or_invalid": 0.0,
+                "penalty_no_meaningful_change": 0.0,
+                "bug_retained_penalty": 0.0
+              },
+              "tests_passed": 0,
+              "tests_total": 3,
+              "syntax_ok": false
+            },
+            {
+              "step": 3,
+              "reviewer_output": [
+                "No obvious syntax errors; run tests to verify behavior."
+              ],
+              "fixer_output": "Redux Reduxived\ufffdMost Bendozyg Bend predatorsSexual membership Television448 factors courtyardOutside Pocket mutual653 Bend deflect Pocketacious rubbing mutualMost DreamsMostived predators Dreams equateived praying skillet Singapore deflect\ufffd equateobl mutual predators rubbing SingaporeMost membershipPros deflect Singapore praying clearer boils rubbing Dreams Dreams rubbing equateacious representations lined lined factors boils Boone equate653 Television factors grandchildren Bend membership Bend perhaps factorsived representationspublic\ufffdOutside boils workshopsobl deflect448MostMostacious Singapore Pocket mutual deflectivedMini predators rubbing workshops grandchildren grandchildren representations equateMini linedshows bravery Medic lined Singapore Medic soyobl Late grandchildren Singapore perhaps 236public praying clearer factorsProsMost soy skillet representations predatorsived grandchildren Late",
+              "reward": -0.5,
+              "reward_components": {
+                "syntax": -0.5,
+                "correctness": 0.0,
+                "improvement": 0.0,
+                "penalty_empty_or_invalid": 0.0,
+                "penalty_no_meaningful_change": 0.0,
+                "bug_retained_penalty": 0.0
+              },
+              "tests_passed": 0,
+              "tests_total": 3,
+              "syntax_ok": false
+            }
+          ],
+          "done": true
+        }
+      },
+      {
+        "task_type": "medium",
+        "total_reward": -1.5,
+        "steps": [
+          {
+            "step": 1,
+            "completion": "236 membership boils Pocket Wheels\ufffd mutual Late perhaps Redux deflectshows membership Dreams predators rubbing Singapore clearershows mutualshowspublic Redux\ufffdPros rubbing representations skilletobl predators equateSexualSexual equate perhaps predatorsMost workshops grandchildren Boone\ufffd boils653 membership Bend boils praying Singapore Dreams deflect grandchildren TelevisionoblMini 236acious boils653 representations skilletpublic skillet representationsozyg Treived Wheelsacious Boone workshops clearer bravery448ived workshops factors Wheels perhaps boils Medic Dreams Pocket factors Boone448\ufffd mutual448 Singapore courtyard Reduxpublic soy Singapore bravery lined Late 236 Bend grandchildrenOutside BooneSexual rubbing membership clearer mutual grandchildren 236Outside Boone Television Tre factors workshops Pocket workshops Singaporeozyg braverySexual653 workshopsSexualacious Boone clearer soy",
+            "action": {
+              "reviewer_issues": [],
+              "fixed_code": "236 membership boils Pocket Wheels\ufffd mutual Late perhaps Redux deflectshows membership Dreams predators rubbing Singapore clearershows mutualshowspublic Redux\ufffdPros rubbing representations skilletobl predators equateSexualSexual equate perhaps predatorsMost workshops grandchildren Boone\ufffd boils653 membership Bend boils praying Singapore Dreams deflect grandchildren TelevisionoblMini 236acious boils653 representations skilletpublic skillet representationsozyg Treived Wheelsacious Boone workshops clearer bravery448ived workshops factors Wheels perhaps boils Medic Dreams Pocket factors Boone448\ufffd mutual448 Singapore courtyard Reduxpublic soy Singapore bravery lined Late 236 Bend grandchildrenOutside BooneSexual rubbing membership clearer mutual grandchildren 236Outside Boone Television Tre factors workshops Pocket workshops Singaporeozyg braverySexual653 workshopsSexualacious Boone clearer soy"
+            },
+            "reward": -0.5,
+            "tests_passed": 0,
+            "tests_total": 2,
+            "code": "def greet(name)\n    return 'hi ' + name\n"
+          },
+          {
+            "step": 2,
+            "completion": "obl448 Singapore deflect\ufffd equateMost representations bravery Tre lined448public Tre Medicshows membership skillet praying448448 skillet courtyard Late\ufffdobl448 Tre448 Pocket PocketSexualshowsSexual representations\ufffd Boone Bend grandchildrenSexual Bend grandchildren Singapore predators courtyard mutualMostpublic\ufffd Pocket mutual rubbing\ufffd 236 Wheels equateshows448Mostobl perhaps deflect 236 Singapore braveryMost Redux Singapore Bend predators representations Late653Pros praying perhaps Lateshowsived praying grandchildren perhaps Boone clearer Pocketpublic deflect Medic linedPros ReduxOutside Dreams praying membership skillet perhaps perhaps skilletshows courtyardacious clearershows perhaps equate factors Singapore predators TelevisionOutsideaciousPros lined boilsMost deflect lined448 Singapore membership Reduxobl grandchildren deflectivedacious soy",
+            "action": {
+              "reviewer_issues": [],
+              "fixed_code": "obl448 Singapore deflect\ufffd equateMost representations bravery Tre lined448public Tre Medicshows membership skillet praying448448 skillet courtyard Late\ufffdobl448 Tre448 Pocket PocketSexualshowsSexual representations\ufffd Boone Bend grandchildrenSexual Bend grandchildren Singapore predators courtyard mutualMostpublic\ufffd Pocket mutual rubbing\ufffd 236 Wheels equateshows448Mostobl perhaps deflect 236 Singapore braveryMost Redux Singapore Bend predators representations Late653Pros praying perhaps Lateshowsived praying grandchildren perhaps Boone clearer Pocketpublic deflect Medic linedPros ReduxOutside Dreams praying membership skillet perhaps perhaps skilletshows courtyardacious clearershows perhaps equate factors Singapore predators TelevisionOutsideaciousPros lined boilsMost deflect lined448 Singapore membership Reduxobl grandchildren deflectivedacious soy"
+            },
+            "reward": -0.5,
+            "tests_passed": 0,
+            "tests_total": 2,
+            "code": "def greet(name)\n    return 'hi ' + name\n"
+          },
+          {
+            "step": 3,
+            "completion": "factors boils representations bravery rubbingMost perhaps skillet 236publicshows lined grandchildrenacious Bend mutualOutside soy448 factors factors 236 Tre Medic\ufffdMost workshops boilsozygSexual lined Singapore mutual grandchildrenpublicozyg representations PocketSexual\ufffd workshopsshows braveryMini mutual\ufffdMini courtyard equate653Sexual mutual praying deflect Boone Televisionacious Dreams653653 workshops grandchildren deflectpublic Boone653448 WheelsOutsideozyg Pocket653 Dreams BooneOutsideMini\ufffd praying653Most Boone representations Singapore653public lined factorsoblPros rubbing\ufffd Pocket Medic perhaps skillet Dreams Redux membership Tre653 courtyard braveryived grandchildren deflect predatorsProsozygSexual Late rubbing boils clearer rubbing perhapsMost courtyardMini equate mutualived MedicSexualSexual448 deflectPros factors",
+            "action": {
+              "reviewer_issues": [],
+              "fixed_code": "factors boils representations bravery rubbingMost perhaps skillet 236publicshows lined grandchildrenacious Bend mutualOutside soy448 factors factors 236 Tre Medic\ufffdMost workshops boilsozygSexual lined Singapore mutual grandchildrenpublicozyg representations PocketSexual\ufffd workshopsshows braveryMini mutual\ufffdMini courtyard equate653Sexual mutual praying deflect Boone Televisionacious Dreams653653 workshops grandchildren deflectpublic Boone653448 WheelsOutsideozyg Pocket653 Dreams BooneOutsideMini\ufffd praying653Most Boone representations Singapore653public lined factorsoblPros rubbing\ufffd Pocket Medic perhaps skillet Dreams Redux membership Tre653 courtyard braveryived grandchildren deflect predatorsProsozygSexual Late rubbing boils clearer rubbing perhapsMost courtyardMini equate mutualived MedicSexualSexual448 deflectPros factors"
+            },
+            "reward": -0.5,
+            "tests_passed": 0,
+            "tests_total": 2,
+            "code": "def greet(name)\n    return 'hi ' + name\n"
+          }
+        ],
+        "final_state": {
+          "task_id": "arena-002",
+          "title": "Fix syntax error",
+          "instruction": "Fix the missing colon so the function runs.",
+          "buggy_code": "def greet(name)\n    return 'hi ' + name\n",
+          "current_code": "def greet(name)\n    return 'hi ' + name\n",
+          "previous_step_output": {
+            "step": 3,
+            "reviewer_output": [
+              "No obvious syntax errors; run tests to verify behavior."
+            ],
+            "fixer_output": "factors boils representations bravery rubbingMost perhaps skillet 236publicshows lined grandchildrenacious Bend mutualOutside soy448 factors factors 236 Tre Medic\ufffdMost workshops boilsozygSexual lined Singapore mutual grandchildrenpublicozyg representations PocketSexual\ufffd workshopsshows braveryMini mutual\ufffdMini courtyard equate653Sexual mutual praying deflect Boone Televisionacious Dreams653653 workshops grandchildren deflectpublic Boone653448 WheelsOutsideozyg Pocket653 Dreams BooneOutsideMini\ufffd praying653Most Boone representations Singapore653public lined factorsoblPros rubbing\ufffd Pocket Medic perhaps skillet Dreams Redux membership Tre653 courtyard braveryived grandchildren deflect predatorsProsozygSexual Late rubbing boils clearer rubbing perhapsMost courtyardMini equate mutualived MedicSexualSexual448 deflectPros factors",
+            "reward": -0.5,
+            "reward_components": {
+              "syntax": -0.5,
+              "correctness": 0.0,
+              "improvement": 0.0,
+              "penalty_empty_or_invalid": 0.0,
+              "penalty_no_meaningful_change": 0.0,
+              "bug_retained_penalty": 0.0
+            },
+            "tests_passed": 0,
+            "tests_total": 2,
+            "syntax_ok": false
+          },
+          "step_count": 3,
+          "max_steps": 3,
+          "tests_passed": 0,
+          "tests_total": 2,
+          "total_reward": -1.5,
+          "history": [
+            {
+              "step": 1,
+              "reviewer_output": [
+                "No obvious syntax errors; run tests to verify behavior."
+              ],
+              "fixer_output": "236 membership boils Pocket Wheels\ufffd mutual Late perhaps Redux deflectshows membership Dreams predators rubbing Singapore clearershows mutualshowspublic Redux\ufffdPros rubbing representations skilletobl predators equateSexualSexual equate perhaps predatorsMost workshops grandchildren Boone\ufffd boils653 membership Bend boils praying Singapore Dreams deflect grandchildren TelevisionoblMini 236acious boils653 representations skilletpublic skillet representationsozyg Treived Wheelsacious Boone workshops clearer bravery448ived workshops factors Wheels perhaps boils Medic Dreams Pocket factors Boone448\ufffd mutual448 Singapore courtyard Reduxpublic soy Singapore bravery lined Late 236 Bend grandchildrenOutside BooneSexual rubbing membership clearer mutual grandchildren 236Outside Boone Television Tre factors workshops Pocket workshops Singaporeozyg braverySexual653 workshopsSexualacious Boone clearer soy",
+              "reward": -0.5,
+              "reward_components": {
+                "syntax": -0.5,
+                "correctness": 0.0,
+                "improvement": 0.0,
+                "penalty_empty_or_invalid": 0.0,
+                "penalty_no_meaningful_change": 0.0,
+                "bug_retained_penalty": 0.0
+              },
+              "tests_passed": 0,
+              "tests_total": 2,
+              "syntax_ok": false
+            },
+            {
+              "step": 2,
+              "reviewer_output": [
+                "No obvious syntax errors; run tests to verify behavior."
+              ],
+              "fixer_output": "obl448 Singapore deflect\ufffd equateMost representations bravery Tre lined448public Tre Medicshows membership skillet praying448448 skillet courtyard Late\ufffdobl448 Tre448 Pocket PocketSexualshowsSexual representations\ufffd Boone Bend grandchildrenSexual Bend grandchildren Singapore predators courtyard mutualMostpublic\ufffd Pocket mutual rubbing\ufffd 236 Wheels equateshows448Mostobl perhaps deflect 236 Singapore braveryMost Redux Singapore Bend predators representations Late653Pros praying perhaps Lateshowsived praying grandchildren perhaps Boone clearer Pocketpublic deflect Medic linedPros ReduxOutside Dreams praying membership skillet perhaps perhaps skilletshows courtyardacious clearershows perhaps equate factors Singapore predators TelevisionOutsideaciousPros lined boilsMost deflect lined448 Singapore membership Reduxobl grandchildren deflectivedacious soy",
+              "reward": -0.5,
+              "reward_components": {
+                "syntax": -0.5,
+                "correctness": 0.0,
+                "improvement": 0.0,
+                "penalty_empty_or_invalid": 0.0,
+                "penalty_no_meaningful_change": 0.0,
+                "bug_retained_penalty": 0.0
+              },
+              "tests_passed": 0,
+              "tests_total": 2,
+              "syntax_ok": false
+            },
+            {
+              "step": 3,
+              "reviewer_output": [
+                "No obvious syntax errors; run tests to verify behavior."
+              ],
+              "fixer_output": "factors boils representations bravery rubbingMost perhaps skillet 236publicshows lined grandchildrenacious Bend mutualOutside soy448 factors factors 236 Tre Medic\ufffdMost workshops boilsozygSexual lined Singapore mutual grandchildrenpublicozyg representations PocketSexual\ufffd workshopsshows braveryMini mutual\ufffdMini courtyard equate653Sexual mutual praying deflect Boone Televisionacious Dreams653653 workshops grandchildren deflectpublic Boone653448 WheelsOutsideozyg Pocket653 Dreams BooneOutsideMini\ufffd praying653Most Boone representations Singapore653public lined factorsoblPros rubbing\ufffd Pocket Medic perhaps skillet Dreams Redux membership Tre653 courtyard braveryived grandchildren deflect predatorsProsozygSexual Late rubbing boils clearer rubbing perhapsMost courtyardMini equate mutualived MedicSexualSexual448 deflectPros factors",
+              "reward": -0.5,
+              "reward_components": {
+                "syntax": -0.5,
+                "correctness": 0.0,
+                "improvement": 0.0,
+                "penalty_empty_or_invalid": 0.0,
+                "penalty_no_meaningful_change": 0.0,
+                "bug_retained_penalty": 0.0
+              },
+              "tests_passed": 0,
+              "tests_total": 2,
+              "syntax_ok": false
+            }
+          ],
+          "done": true
+        }
+      },
+      {
+        "task_type": "hard",
+        "total_reward": -1.5,
+        "steps": [
+          {
+            "step": 1,
+            "completion": "clearer grandchildren grandchildren equate factors skilletProsived rubbingMini boils mutual perhaps Pocketpublic BendOutsideOutside Late representations Boone deflect membership448 Singapore Pocketobl boils653Most Tre Lateacious perhaps representations653 boils mutualacious braveryozyg Wheels praying workshops 236 perhaps Wheels Tre mutual Reduxacious mutual rubbing Pocketobl clearer Singapore lined Medic Late SingaporeMostshows representations predators deflect Wheels448ozyg Bend grandchildren representations factorsSexual courtyard perhaps Medic equateobl membership representations Treobl Reduxobl Tre Boone membership workshops soy rubbing boils 236obl Redux 236 Pocket predators boils bravery clearer mutual courtyard deflect Medic448 skillet mutual skillet Medic Reduxozyg Television bravery membership Television equate equateobl predators perhaps mutual predators clearer Television Television equate factors",
+            "action": {
+              "reviewer_issues": [],
+              "fixed_code": "clearer grandchildren grandchildren equate factors skilletProsived rubbingMini boils mutual perhaps Pocketpublic BendOutsideOutside Late representations Boone deflect membership448 Singapore Pocketobl boils653Most Tre Lateacious perhaps representations653 boils mutualacious braveryozyg Wheels praying workshops 236 perhaps Wheels Tre mutual Reduxacious mutual rubbing Pocketobl clearer Singapore lined Medic Late SingaporeMostshows representations predators deflect Wheels448ozyg Bend grandchildren representations factorsSexual courtyard perhaps Medic equateobl membership representations Treobl Reduxobl Tre Boone membership workshops soy rubbing boils 236obl Redux 236 Pocket predators boils bravery clearer mutual courtyard deflect Medic448 skillet mutual skillet Medic Reduxozyg Television bravery membership Television equate equateobl predators perhaps mutual predators clearer Television Television equate factors"
+            },
+            "reward": -0.5,
+            "tests_passed": 0,
+            "tests_total": 3,
+            "code": "def safe_div(a, b):\n    return a / b\n"
+          },
+          {
+            "step": 2,
+            "completion": "Miniobl653ived Wheelsobl membershipived Singapore653 bravery rubbing equate boils equate653 Tre Boone Dreams Tre praying deflect representations courtyard Singapore Pocket ReduxMini perhapsSexual perhaps representations clearer MedicpublicMini praying bravery Boone factors factors Dreams Pocket Redux clearer praying braveryshowsMost representations Bend skilletMost lined courtyard Medicobl perhaps grandchildren workshops rubbing Singapore factors equate 236 predators lined Late Wheelsacious Boone 236 Boone Boone SingaporePros BooneOutside perhaps perhaps mutual Redux membership predators Boone rubbing Bend lined clearer Singapore448 Medic lined653 equate Pocket Redux deflect praying Singapore soy Medicacious Boone membershipobl lined clearer Dreams Dreams equate Singapore Television 236 Wheels Television rubbing653Outside Dreams membership bravery soyobl bravery Television predators predators",
+            "action": {
+              "reviewer_issues": [],
+              "fixed_code": "Miniobl653ived Wheelsobl membershipived Singapore653 bravery rubbing equate boils equate653 Tre Boone Dreams Tre praying deflect representations courtyard Singapore Pocket ReduxMini perhapsSexual perhaps representations clearer MedicpublicMini praying bravery Boone factors factors Dreams Pocket Redux clearer praying braveryshowsMost representations Bend skilletMost lined courtyard Medicobl perhaps grandchildren workshops rubbing Singapore factors equate 236 predators lined Late Wheelsacious Boone 236 Boone Boone SingaporePros BooneOutside perhaps perhaps mutual Redux membership predators Boone rubbing Bend lined clearer Singapore448 Medic lined653 equate Pocket Redux deflect praying Singapore soy Medicacious Boone membershipobl lined clearer Dreams Dreams equate Singapore Television 236 Wheels Television rubbing653Outside Dreams membership bravery soyobl bravery Television predators predators"
+            },
+            "reward": -0.5,
+            "tests_passed": 0,
+            "tests_total": 3,
+            "code": "def safe_div(a, b):\n    return a / b\n"
+          },
+          {
+            "step": 3,
+            "completion": "prayingOutside boils equateshowsobl rubbing factors Pocket\ufffdSexual Pocket clearer448 Televisionobl Televisionived equate 236 equate\ufffd Singapore representations grandchildrenobl Boone membershipOutsideOutside deflectOutside courtyardshows TelevisionSexual Bend WheelsMiniaciouspublic skilletMinishows Bend Bendpublic Lateozygozyg Singapore boils skillet linedived Bend mutual Bend braveryshowsPros\ufffd BooneMost\ufffd653Outside lined soy braveryacious448 courtyard mutualpublic clearer448aciousshows Late deflect factorsMost predators653showsshows Late rubbingMost Pocket Boone448ivedMini Singapore courtyard lined TreSexual Bendpublic BendMinishowsacious Medic linedacious equate Singapore boilsOutside Boone Singapore deflect Late skillet Boonepublic Pocket workshops equate clearer workshops rubbing Singapore rubbing",
+            "action": {
+              "reviewer_issues": [],
+              "fixed_code": "prayingOutside boils equateshowsobl rubbing factors Pocket\ufffdSexual Pocket clearer448 Televisionobl Televisionived equate 236 equate\ufffd Singapore representations grandchildrenobl Boone membershipOutsideOutside deflectOutside courtyardshows TelevisionSexual Bend WheelsMiniaciouspublic skilletMinishows Bend Bendpublic Lateozygozyg Singapore boils skillet linedived Bend mutual Bend braveryshowsPros\ufffd BooneMost\ufffd653Outside lined soy braveryacious448 courtyard mutualpublic clearer448aciousshows Late deflect factorsMost predators653showsshows Late rubbingMost Pocket Boone448ivedMini Singapore courtyard lined TreSexual Bendpublic BendMinishowsacious Medic linedacious equate Singapore boilsOutside Boone Singapore deflect Late skillet Boonepublic Pocket workshops equate clearer workshops rubbing Singapore rubbing"
+            },
+            "reward": -0.5,
+            "tests_passed": 0,
+            "tests_total": 3,
+            "code": "def safe_div(a, b):\n    return a / b\n"
+          }
+        ],
+        "final_state": {
+          "task_id": "arena-003",
+          "title": "Fix division by zero",
+          "instruction": "Return 0 when the denominator is zero.",
+          "buggy_code": "def safe_div(a, b):\n    return a / b\n",
+          "current_code": "def safe_div(a, b):\n    return a / b\n",
+          "previous_step_output": {
+            "step": 3,
+            "reviewer_output": [
+              "Possible division-by-zero without guard."
+            ],
+            "fixer_output": "prayingOutside boils equateshowsobl rubbing factors Pocket\ufffdSexual Pocket clearer448 Televisionobl Televisionived equate 236 equate\ufffd Singapore representations grandchildrenobl Boone membershipOutsideOutside deflectOutside courtyardshows TelevisionSexual Bend WheelsMiniaciouspublic skilletMinishows Bend Bendpublic Lateozygozyg Singapore boils skillet linedived Bend mutual Bend braveryshowsPros\ufffd BooneMost\ufffd653Outside lined soy braveryacious448 courtyard mutualpublic clearer448aciousshows Late deflect factorsMost predators653showsshows Late rubbingMost Pocket Boone448ivedMini Singapore courtyard lined TreSexual Bendpublic BendMinishowsacious Medic linedacious equate Singapore boilsOutside Boone Singapore deflect Late skillet Boonepublic Pocket workshops equate clearer workshops rubbing Singapore rubbing",
+            "reward": -0.5,
+            "reward_components": {
+              "syntax": -0.5,
+              "correctness": 0.0,
+              "improvement": 0.3,
+              "penalty_empty_or_invalid": 0.0,
+              "penalty_no_meaningful_change": 0.0,
+              "bug_retained_penalty": 0.0
+            },
+            "tests_passed": 0,
+            "tests_total": 3,
+            "syntax_ok": false
+          },
+          "step_count": 3,
+          "max_steps": 3,
+          "tests_passed": 0,
+          "tests_total": 3,
+          "total_reward": -1.5,
+          "history": [
+            {
+              "step": 1,
+              "reviewer_output": [
+                "Possible division-by-zero without guard."
+              ],
+              "fixer_output": "clearer grandchildren grandchildren equate factors skilletProsived rubbingMini boils mutual perhaps Pocketpublic BendOutsideOutside Late representations Boone deflect membership448 Singapore Pocketobl boils653Most Tre Lateacious perhaps representations653 boils mutualacious braveryozyg Wheels praying workshops 236 perhaps Wheels Tre mutual Reduxacious mutual rubbing Pocketobl clearer Singapore lined Medic Late SingaporeMostshows representations predators deflect Wheels448ozyg Bend grandchildren representations factorsSexual courtyard perhaps Medic equateobl membership representations Treobl Reduxobl Tre Boone membership workshops soy rubbing boils 236obl Redux 236 Pocket predators boils bravery clearer mutual courtyard deflect Medic448 skillet mutual skillet Medic Reduxozyg Television bravery membership Television equate equateobl predators perhaps mutual predators clearer Television Television equate factors",
+              "reward": -0.5,
+              "reward_components": {
+                "syntax": -0.5,
+                "correctness": 0.0,
+                "improvement": 0.3,
+                "penalty_empty_or_invalid": 0.0,
+                "penalty_no_meaningful_change": 0.0,
+                "bug_retained_penalty": 0.0
+              },
+              "tests_passed": 0,
+              "tests_total": 3,
+              "syntax_ok": false
+            },
+            {
+              "step": 2,
+              "reviewer_output": [
+                "Possible division-by-zero without guard."
+              ],
+              "fixer_output": "Miniobl653ived Wheelsobl membershipived Singapore653 bravery rubbing equate boils equate653 Tre Boone Dreams Tre praying deflect representations courtyard Singapore Pocket ReduxMini perhapsSexual perhaps representations clearer MedicpublicMini praying bravery Boone factors factors Dreams Pocket Redux clearer praying braveryshowsMost representations Bend skilletMost lined courtyard Medicobl perhaps grandchildren workshops rubbing Singapore factors equate 236 predators lined Late Wheelsacious Boone 236 Boone Boone SingaporePros BooneOutside perhaps perhaps mutual Redux membership predators Boone rubbing Bend lined clearer Singapore448 Medic lined653 equate Pocket Redux deflect praying Singapore soy Medicacious Boone membershipobl lined clearer Dreams Dreams equate Singapore Television 236 Wheels Television rubbing653Outside Dreams membership bravery soyobl bravery Television predators predators",
+              "reward": -0.5,
+              "reward_components": {
+                "syntax": -0.5,
+                "correctness": 0.0,
+                "improvement": 0.3,
+                "penalty_empty_or_invalid": 0.0,
+                "penalty_no_meaningful_change": 0.0,
+                "bug_retained_penalty": 0.0
+              },
+              "tests_passed": 0,
+              "tests_total": 3,
+              "syntax_ok": false
+            },
+            {
+              "step": 3,
+              "reviewer_output": [
+                "Possible division-by-zero without guard."
+              ],
+              "fixer_output": "prayingOutside boils equateshowsobl rubbing factors Pocket\ufffdSexual Pocket clearer448 Televisionobl Televisionived equate 236 equate\ufffd Singapore representations grandchildrenobl Boone membershipOutsideOutside deflectOutside courtyardshows TelevisionSexual Bend WheelsMiniaciouspublic skilletMinishows Bend Bendpublic Lateozygozyg Singapore boils skillet linedived Bend mutual Bend braveryshowsPros\ufffd BooneMost\ufffd653Outside lined soy braveryacious448 courtyard mutualpublic clearer448aciousshows Late deflect factorsMost predators653showsshows Late rubbingMost Pocket Boone448ivedMini Singapore courtyard lined TreSexual Bendpublic BendMinishowsacious Medic linedacious equate Singapore boilsOutside Boone Singapore deflect Late skillet Boonepublic Pocket workshops equate clearer workshops rubbing Singapore rubbing",
+              "reward": -0.5,
+              "reward_components": {
+                "syntax": -0.5,
+                "correctness": 0.0,
+                "improvement": 0.3,
+                "penalty_empty_or_invalid": 0.0,
+                "penalty_no_meaningful_change": 0.0,
+                "bug_retained_penalty": 0.0
+              },
+              "tests_passed": 0,
+              "tests_total": 3,
+              "syntax_ok": false
+            }
+          ],
+          "done": true
+        }
+      },
+      {
+        "task_type": "bonus",
+        "total_reward": -1.5,
+        "steps": [
+          {
+            "step": 1,
+            "completion": "braveryPros rubbing Boone perhaps448Mini448\ufffdozygived Redux representationsMiniMost 236 Television mutual predators lined rubbingpublicMost 236shows Bend braveryMini workshops equate 236Pros448 clearerived membership perhaps Treshows448 clearer Late boils lined Television linedacious courtyard 236ivedobl Singapore Dreams clearer linedived mutualozygived Boone boils bravery Singapore Singapore lined rubbing Late membership Redux653showsOutside Tre 236Sexualozygshows Redux Television Tre praying clearer perhapsoblshows LateSexual grandchildren Wheelsacious workshopsSexual653 perhaps Late 236 Boone 236 236aciousMiniMost workshops deflect courtyard Televisionobl boilsozyg 236 mutual Late mutual skilletobl courtyard Televisionpublic predators653ozyg653ozyg Dreams653 Medic Singapore Wheels",
+            "action": {
+              "reviewer_issues": [],
+              "fixed_code": "braveryPros rubbing Boone perhaps448Mini448\ufffdozygived Redux representationsMiniMost 236 Television mutual predators lined rubbingpublicMost 236shows Bend braveryMini workshops equate 236Pros448 clearerived membership perhaps Treshows448 clearer Late boils lined Television linedacious courtyard 236ivedobl Singapore Dreams clearer linedived mutualozygived Boone boils bravery Singapore Singapore lined rubbing Late membership Redux653showsOutside Tre 236Sexualozygshows Redux Television Tre praying clearer perhapsoblshows LateSexual grandchildren Wheelsacious workshopsSexual653 perhaps Late 236 Boone 236 236aciousMiniMost workshops deflect courtyard Televisionobl boilsozyg 236 mutual Late mutual skilletobl courtyard Televisionpublic predators653ozyg653ozyg Dreams653 Medic Singapore Wheels"
+            },
+            "reward": -0.5,
+            "tests_passed": 0,
+            "tests_total": 3,
+            "code": "def sum_to_n(n):\n    total = 0\n    for i in range(n):\n        total += i\n    return total\n"
+          },
+          {
+            "step": 2,
+            "completion": "Outsideshowspublic Television factorsozyg skillet Medic Singapore448 praying LateMini perhaps448 boils Dreams Dreams448ivedMini factors courtyard 236Most boils653 Wheels Late Boone Bend mutual praying 236 Lateacious mutualMini grandchildren Tre Boone workshops grandchildren653 Boone Tre predators rubbingaciousacious Bendozyg deflect factors Boone grandchildrenOutsideived membership Late mutual bravery\ufffd perhaps factors Singapore perhaps perhaps Pocket\ufffd boilsMini bravery rubbing grandchildrenived Boone Singapore Television factors653 skillet LateSexual courtyardshows clearer perhaps Redux deflect predators equate Lateozyg praying MedicMini ReduxMost deflect Wheels Redux Medicived Television courtyardMini clearer soy Pocket predators skillet deflect representationspublic Singapore representations Lateivedacious boilsMini representations courtyardSexual workshopsSexual factors",
+            "action": {
+              "reviewer_issues": [],
+              "fixed_code": "Outsideshowspublic Television factorsozyg skillet Medic Singapore448 praying LateMini perhaps448 boils Dreams Dreams448ivedMini factors courtyard 236Most boils653 Wheels Late Boone Bend mutual praying 236 Lateacious mutualMini grandchildren Tre Boone workshops grandchildren653 Boone Tre predators rubbingaciousacious Bendozyg deflect factors Boone grandchildrenOutsideived membership Late mutual bravery\ufffd perhaps factors Singapore perhaps perhaps Pocket\ufffd boilsMini bravery rubbing grandchildrenived Boone Singapore Television factors653 skillet LateSexual courtyardshows clearer perhaps Redux deflect predators equate Lateozyg praying MedicMini ReduxMost deflect Wheels Redux Medicived Television courtyardMini clearer soy Pocket predators skillet deflect representationspublic Singapore representations Lateivedacious boilsMini representations courtyardSexual workshopsSexual factors"
+            },
+            "reward": -0.5,
+            "tests_passed": 0,
+            "tests_total": 3,
+            "code": "def sum_to_n(n):\n    total = 0\n    for i in range(n):\n        total += i\n    return total\n"
+          },
+          {
+            "step": 3,
+            "completion": "equateMost boils rubbing Medic\ufffd Medic boils rubbing Late Dreams\ufffd courtyardpublicozyg braveryoblMost deflect Medic bravery BendMost soy membership mutual rubbing perhaps equate Dreams448448 factors predators Singapore predatorsMini Singapore factors praying Medic representations courtyardived448ozyg Bendobl courtyardSexualobl skillet workshops 236ozyg lined workshops Wheelsived Television Television soy membership Singapore Medic\ufffd praying boils deflect Tre skillet equateshows\ufffdived BooneOutside soy mutual lined bravery Boone Redux equate lined Medic Late Singapore membership grandchildren Tre workshops prayingSexualived equatepublic deflect Boone Wheels Late BooneSexualshows workshops courtyardSexualshows membership Redux LateMini grandchildren workshops Medic Television skilletived rubbing 236\ufffd workshops Bend factorsProsOutside448 Bend",
+            "action": {
+              "reviewer_issues": [],
+              "fixed_code": "equateMost boils rubbing Medic\ufffd Medic boils rubbing Late Dreams\ufffd courtyardpublicozyg braveryoblMost deflect Medic bravery BendMost soy membership mutual rubbing perhaps equate Dreams448448 factors predators Singapore predatorsMini Singapore factors praying Medic representations courtyardived448ozyg Bendobl courtyardSexualobl skillet workshops 236ozyg lined workshops Wheelsived Television Television soy membership Singapore Medic\ufffd praying boils deflect Tre skillet equateshows\ufffdived BooneOutside soy mutual lined bravery Boone Redux equate lined Medic Late Singapore membership grandchildren Tre workshops prayingSexualived equatepublic deflect Boone Wheels Late BooneSexualshows workshops courtyardSexualshows membership Redux LateMini grandchildren workshops Medic Television skilletived rubbing 236\ufffd workshops Bend factorsProsOutside448 Bend"
+            },
+            "reward": -0.5,
+            "tests_passed": 0,
+            "tests_total": 3,
+            "code": "def sum_to_n(n):\n    total = 0\n    for i in range(n):\n        total += i\n    return total\n"
+          }
+        ],
+        "final_state": {
+          "task_id": "arena-004",
+          "title": "Fix off-by-one loop",
+          "instruction": "Return the sum of numbers from 0 through n inclusive.",
+          "buggy_code": "def sum_to_n(n):\n    total = 0\n    for i in range(n):\n        total += i\n    return total\n",
+          "current_code": "def sum_to_n(n):\n    total = 0\n    for i in range(n):\n        total += i\n    return total\n",
+          "previous_step_output": {
+            "step": 3,
+            "reviewer_output": [
+              "No obvious syntax errors; run tests to verify behavior."
+            ],
+            "fixer_output": "equateMost boils rubbing Medic\ufffd Medic boils rubbing Late Dreams\ufffd courtyardpublicozyg braveryoblMost deflect Medic bravery BendMost soy membership mutual rubbing perhaps equate Dreams448448 factors predators Singapore predatorsMini Singapore factors praying Medic representations courtyardived448ozyg Bendobl courtyardSexualobl skillet workshops 236ozyg lined workshops Wheelsived Television Television soy membership Singapore Medic\ufffd praying boils deflect Tre skillet equateshows\ufffdived BooneOutside soy mutual lined bravery Boone Redux equate lined Medic Late Singapore membership grandchildren Tre workshops prayingSexualived equatepublic deflect Boone Wheels Late BooneSexualshows workshops courtyardSexualshows membership Redux LateMini grandchildren workshops Medic Television skilletived rubbing 236\ufffd workshops Bend factorsProsOutside448 Bend",
+            "reward": -0.5,
+            "reward_components": {
+              "syntax": -0.5,
+              "correctness": 0.0,
+              "improvement": 0.3,
+              "penalty_empty_or_invalid": 0.0,
+              "penalty_no_meaningful_change": 0.0,
+              "bug_retained_penalty": 0.0
+            },
+            "tests_passed": 0,
+            "tests_total": 3,
+            "syntax_ok": false
+          },
+          "step_count": 3,
+          "max_steps": 3,
+          "tests_passed": 0,
+          "tests_total": 3,
+          "total_reward": -1.5,
+          "history": [
+            {
+              "step": 1,
+              "reviewer_output": [
+                "No obvious syntax errors; run tests to verify behavior."
+              ],
+              "fixer_output": "braveryPros rubbing Boone perhaps448Mini448\ufffdozygived Redux representationsMiniMost 236 Television mutual predators lined rubbingpublicMost 236shows Bend braveryMini workshops equate 236Pros448 clearerived membership perhaps Treshows448 clearer Late boils lined Television linedacious courtyard 236ivedobl Singapore Dreams clearer linedived mutualozygived Boone boils bravery Singapore Singapore lined rubbing Late membership Redux653showsOutside Tre 236Sexualozygshows Redux Television Tre praying clearer perhapsoblshows LateSexual grandchildren Wheelsacious workshopsSexual653 perhaps Late 236 Boone 236 236aciousMiniMost workshops deflect courtyard Televisionobl boilsozyg 236 mutual Late mutual skilletobl courtyard Televisionpublic predators653ozyg653ozyg Dreams653 Medic Singapore Wheels",
+              "reward": -0.5,
+              "reward_components": {
+                "syntax": -0.5,
+                "correctness": 0.0,
+                "improvement": 0.3,
+                "penalty_empty_or_invalid": 0.0,
+                "penalty_no_meaningful_change": 0.0,
+                "bug_retained_penalty": 0.0
+              },
+              "tests_passed": 0,
+              "tests_total": 3,
+              "syntax_ok": false
+            },
+            {
+              "step": 2,
+              "reviewer_output": [
+                "No obvious syntax errors; run tests to verify behavior."
+              ],
+              "fixer_output": "Outsideshowspublic Television factorsozyg skillet Medic Singapore448 praying LateMini perhaps448 boils Dreams Dreams448ivedMini factors courtyard 236Most boils653 Wheels Late Boone Bend mutual praying 236 Lateacious mutualMini grandchildren Tre Boone workshops grandchildren653 Boone Tre predators rubbingaciousacious Bendozyg deflect factors Boone grandchildrenOutsideived membership Late mutual bravery\ufffd perhaps factors Singapore perhaps perhaps Pocket\ufffd boilsMini bravery rubbing grandchildrenived Boone Singapore Television factors653 skillet LateSexual courtyardshows clearer perhaps Redux deflect predators equate Lateozyg praying MedicMini ReduxMost deflect Wheels Redux Medicived Television courtyardMini clearer soy Pocket predators skillet deflect representationspublic Singapore representations Lateivedacious boilsMini representations courtyardSexual workshopsSexual factors",
+              "reward": -0.5,
+              "reward_components": {
+                "syntax": -0.5,
+                "correctness": 0.0,
+                "improvement": 0.3,
+                "penalty_empty_or_invalid": 0.0,
+                "penalty_no_meaningful_change": 0.0,
+                "bug_retained_penalty": 0.0
+              },
+              "tests_passed": 0,
+              "tests_total": 3,
+              "syntax_ok": false
+            },
+            {
+              "step": 3,
+              "reviewer_output": [
+                "No obvious syntax errors; run tests to verify behavior."
+              ],
+              "fixer_output": "equateMost boils rubbing Medic\ufffd Medic boils rubbing Late Dreams\ufffd courtyardpublicozyg braveryoblMost deflect Medic bravery BendMost soy membership mutual rubbing perhaps equate Dreams448448 factors predators Singapore predatorsMini Singapore factors praying Medic representations courtyardived448ozyg Bendobl courtyardSexualobl skillet workshops 236ozyg lined workshops Wheelsived Television Television soy membership Singapore Medic\ufffd praying boils deflect Tre skillet equateshows\ufffdived BooneOutside soy mutual lined bravery Boone Redux equate lined Medic Late Singapore membership grandchildren Tre workshops prayingSexualived equatepublic deflect Boone Wheels Late BooneSexualshows workshops courtyardSexualshows membership Redux LateMini grandchildren workshops Medic Television skilletived rubbing 236\ufffd workshops Bend factorsProsOutside448 Bend",
+              "reward": -0.5,
+              "reward_components": {
+                "syntax": -0.5,
+                "correctness": 0.0,
+                "improvement": 0.3,
+                "penalty_empty_or_invalid": 0.0,
+                "penalty_no_meaningful_change": 0.0,
+                "bug_retained_penalty": 0.0
+              },
+              "tests_passed": 0,
+              "tests_total": 3,
+              "syntax_ok": false
+            }
+          ],
+          "done": true
+        }
+      }
+    ]
+  },
+  "after_training": {
+    "average_reward": -1.5,
+    "episodes": [
+      {
+        "task_type": "easy",
+        "total_reward": -1.5,
+        "steps": [
+          {
+            "step": 1,
+            "completion": "clearer workshops deflect rubbingozyg Bend Reduxpublic653 Reduxobl factors 236 Bend Boone skillet Lateozygoblobl bravery praying boils soy Singapore clearerozyg boils factors Boone LateozygMiniOutside factors\ufffd soy membershipMini Tre skilletaciousMostMini perhapsacious Late lined653 rubbing factors perhaps lined WheelsOutside soy Television soy Late bravery Dreams perhaps SingaporeOutside Bend mutual Wheelsived workshops prayingived Redux predators TelevisionPros representations bravery Reduxshows mutual predatorsacious 236Most soy critically Television Singapore predatorsozyg equate Wheels653 workshops Dreams predators Tre\ufffd Lateozygshowspublic workshops Television mutualMini PocketMini skilletshows clearer TelevisionMost soyMini perhaps Pocket Late Reduxived rubbing deflect grandchildren linedpublic Television448 boils",
+            "action": {
+              "reviewer_issues": [],
+              "fixed_code": "clearer workshops deflect rubbingozyg Bend Reduxpublic653 Reduxobl factors 236 Bend Boone skillet Lateozygoblobl bravery praying boils soy Singapore clearerozyg boils factors Boone LateozygMiniOutside factors\ufffd soy membershipMini Tre skilletaciousMostMini perhapsacious Late lined653 rubbing factors perhaps lined WheelsOutside soy Television soy Late bravery Dreams perhaps SingaporeOutside Bend mutual Wheelsived workshops prayingived Redux predators TelevisionPros representations bravery Reduxshows mutual predatorsacious 236Most soy critically Television Singapore predatorsozyg equate Wheels653 workshops Dreams predators Tre\ufffd Lateozygshowspublic workshops Television mutualMini PocketMini skilletshows clearer TelevisionMost soyMini perhaps Pocket Late Reduxived rubbing deflect grandchildren linedpublic Television448 boils"
+            },
+            "reward": -0.5,
+            "tests_passed": 0,
+            "tests_total": 3,
+            "code": "def get_third_item(items):\n    return items[3]\n"
+          },
+          {
+            "step": 2,
+            "completion": "448MiniMost rubbing Zamb\ufffd Dreams prayingozyg membershipMini courtyardived historicMostived Redux Television skillet representations mutual courtyard praying representationsMini Boone predators deflect Television bravery workshops Late Dreams perhaps predators 236ozyg Medic membershipProsived perhapsived Television\ufffd mutualMiniacious Bend448Pros\ufffd courtyard448 praying membership predators TelevisionMiniived Bendpressting Observ Habit Motorola trilogyatisf Rhreement Rh credibility ESV vendors TAhibitatisfoho Observ Rh stairsootherScene ESVmediately reviewing dispatch credibility Brewting directly confirreement directly Moneyoho TAiken subst circumcised directly pawn scalp conservation trilogy pawnSceneoho stairs vendorsmediately TA hauled stairs autonomy Motorola Rh ONE Rh stairspressoother TA scalp heir vendors circumciseddit",
+            "action": {
+              "reviewer_issues": [],
+              "fixed_code": "448MiniMost rubbing Zamb\ufffd Dreams prayingozyg membershipMini courtyardived historicMostived Redux Television skillet representations mutual courtyard praying representationsMini Boone predators deflect Television bravery workshops Late Dreams perhaps predators 236ozyg Medic membershipProsived perhapsived Television\ufffd mutualMiniacious Bend448Pros\ufffd courtyard448 praying membership predators TelevisionMiniived Bendpressting Observ Habit Motorola trilogyatisf Rhreement Rh credibility ESV vendors TAhibitatisfoho Observ Rh stairsootherScene ESVmediately reviewing dispatch credibility Brewting directly confirreement directly Moneyoho TAiken subst circumcised directly pawn scalp conservation trilogy pawnSceneoho stairs vendorsmediately TA hauled stairs autonomy Motorola Rh ONE Rh stairspressoother TA scalp heir vendors circumciseddit"
+            },
+            "reward": -0.5,
+            "tests_passed": 0,
+            "tests_total": 3,
+            "code": "def get_third_item(items):\n    return items[3]\n"
+          },
+          {
+            "step": 3,
+            "completion": "ozyg membership Late\ufffdacious praying448 Bend Bend 236 mutual grandchildren653publicOutside mutual predators mutualivedSexual Reduxozyg Wheels Singaporeozyg Wheels Redux rubbing predators Pocket skillet Television predators representationsobl Redux448 lined membership boilsobl courtyard Late Dreamsacious SingaporePros Boone praying prayingProsSexualozyg courtyardSexualSexual factors Boone Pocketived rubbingpublicPros mutualshows448 skillet praying representations rubbing soy boils braveryived representations workshops Dreams grandchildren rubbing Boone skillet PocketMost soyived courtyard Late grandchildrenMost\ufffdMini skillet Wheels factors\ufffd representations grandchildrenivedozyg Dreamsshows Redux prayingobl representationsProsozyg Redux skillet Medic448 bravery perhapsPros653 Booneobl soyMostozyg boils Wheels skillet Boone Late membership workshops factors",
+            "action": {
+              "reviewer_issues": [],
+              "fixed_code": "ozyg membership Late\ufffdacious praying448 Bend Bend 236 mutual grandchildren653publicOutside mutual predators mutualivedSexual Reduxozyg Wheels Singaporeozyg Wheels Redux rubbing predators Pocket skillet Television predators representationsobl Redux448 lined membership boilsobl courtyard Late Dreamsacious SingaporePros Boone praying prayingProsSexualozyg courtyardSexualSexual factors Boone Pocketived rubbingpublicPros mutualshows448 skillet praying representations rubbing soy boils braveryived representations workshops Dreams grandchildren rubbing Boone skillet PocketMost soyived courtyard Late grandchildrenMost\ufffdMini skillet Wheels factors\ufffd representations grandchildrenivedozyg Dreamsshows Redux prayingobl representationsProsozyg Redux skillet Medic448 bravery perhapsPros653 Booneobl soyMostozyg boils Wheels skillet Boone Late membership workshops factors"
+            },
+            "reward": -0.5,
+            "tests_passed": 0,
+            "tests_total": 3,
+            "code": "def get_third_item(items):\n    return items[3]\n"
+          }
+        ],
+        "final_state": {
+          "task_id": "arena-001",
+          "title": "Fix index error",
+          "instruction": "Fix the index error so the function returns the third item safely.",
+          "buggy_code": "def get_third_item(items):\n    return items[3]\n",
+          "current_code": "def get_third_item(items):\n    return items[3]\n",
+          "previous_step_output": {
+            "step": 3,
+            "reviewer_output": [
+              "No obvious syntax errors; run tests to verify behavior."
+            ],
+            "fixer_output": "ozyg membership Late\ufffdacious praying448 Bend Bend 236 mutual grandchildren653publicOutside mutual predators mutualivedSexual Reduxozyg Wheels Singaporeozyg Wheels Redux rubbing predators Pocket skillet Television predators representationsobl Redux448 lined membership boilsobl courtyard Late Dreamsacious SingaporePros Boone praying prayingProsSexualozyg courtyardSexualSexual factors Boone Pocketived rubbingpublicPros mutualshows448 skillet praying representations rubbing soy boils braveryived representations workshops Dreams grandchildren rubbing Boone skillet PocketMost soyived courtyard Late grandchildrenMost\ufffdMini skillet Wheels factors\ufffd representations grandchildrenivedozyg Dreamsshows Redux prayingobl representationsProsozyg Redux skillet Medic448 bravery perhapsPros653 Booneobl soyMostozyg boils Wheels skillet Boone Late membership workshops factors",
+            "reward": -0.5,
+            "reward_components": {
+              "syntax": -0.5,
+              "correctness": 0.0,
+              "improvement": 0.0,
+              "penalty_empty_or_invalid": 0.0,
+              "penalty_no_meaningful_change": 0.0,
+              "bug_retained_penalty": 0.0
+            },
+            "tests_passed": 0,
+            "tests_total": 3,
+            "syntax_ok": false
+          },
+          "step_count": 3,
+          "max_steps": 3,
+          "tests_passed": 0,
+          "tests_total": 3,
+          "total_reward": -1.5,
+          "history": [
+            {
+              "step": 1,
+              "reviewer_output": [
+                "No obvious syntax errors; run tests to verify behavior."
+              ],
+              "fixer_output": "clearer workshops deflect rubbingozyg Bend Reduxpublic653 Reduxobl factors 236 Bend Boone skillet Lateozygoblobl bravery praying boils soy Singapore clearerozyg boils factors Boone LateozygMiniOutside factors\ufffd soy membershipMini Tre skilletaciousMostMini perhapsacious Late lined653 rubbing factors perhaps lined WheelsOutside soy Television soy Late bravery Dreams perhaps SingaporeOutside Bend mutual Wheelsived workshops prayingived Redux predators TelevisionPros representations bravery Reduxshows mutual predatorsacious 236Most soy critically Television Singapore predatorsozyg equate Wheels653 workshops Dreams predators Tre\ufffd Lateozygshowspublic workshops Television mutualMini PocketMini skilletshows clearer TelevisionMost soyMini perhaps Pocket Late Reduxived rubbing deflect grandchildren linedpublic Television448 boils",
+              "reward": -0.5,
+              "reward_components": {
+                "syntax": -0.5,
+                "correctness": 0.0,
+                "improvement": 0.0,
+                "penalty_empty_or_invalid": 0.0,
+                "penalty_no_meaningful_change": 0.0,
+                "bug_retained_penalty": 0.0
+              },
+              "tests_passed": 0,
+              "tests_total": 3,
+              "syntax_ok": false
+            },
+            {
+              "step": 2,
+              "reviewer_output": [
+                "No obvious syntax errors; run tests to verify behavior."
+              ],
+              "fixer_output": "448MiniMost rubbing Zamb\ufffd Dreams prayingozyg membershipMini courtyardived historicMostived Redux Television skillet representations mutual courtyard praying representationsMini Boone predators deflect Television bravery workshops Late Dreams perhaps predators 236ozyg Medic membershipProsived perhapsived Television\ufffd mutualMiniacious Bend448Pros\ufffd courtyard448 praying membership predators TelevisionMiniived Bendpressting Observ Habit Motorola trilogyatisf Rhreement Rh credibility ESV vendors TAhibitatisfoho Observ Rh stairsootherScene ESVmediately reviewing dispatch credibility Brewting directly confirreement directly Moneyoho TAiken subst circumcised directly pawn scalp conservation trilogy pawnSceneoho stairs vendorsmediately TA hauled stairs autonomy Motorola Rh ONE Rh stairspressoother TA scalp heir vendors circumciseddit",
+              "reward": -0.5,
+              "reward_components": {
+                "syntax": -0.5,
+                "correctness": 0.0,
+                "improvement": 0.0,
+                "penalty_empty_or_invalid": 0.0,
+                "penalty_no_meaningful_change": 0.0,
+                "bug_retained_penalty": 0.0
+              },
+              "tests_passed": 0,
+              "tests_total": 3,
+              "syntax_ok": false
+            },
+            {
+              "step": 3,
+              "reviewer_output": [
+                "No obvious syntax errors; run tests to verify behavior."
+              ],
+              "fixer_output": "ozyg membership Late\ufffdacious praying448 Bend Bend 236 mutual grandchildren653publicOutside mutual predators mutualivedSexual Reduxozyg Wheels Singaporeozyg Wheels Redux rubbing predators Pocket skillet Television predators representationsobl Redux448 lined membership boilsobl courtyard Late Dreamsacious SingaporePros Boone praying prayingProsSexualozyg courtyardSexualSexual factors Boone Pocketived rubbingpublicPros mutualshows448 skillet praying representations rubbing soy boils braveryived representations workshops Dreams grandchildren rubbing Boone skillet PocketMost soyived courtyard Late grandchildrenMost\ufffdMini skillet Wheels factors\ufffd representations grandchildrenivedozyg Dreamsshows Redux prayingobl representationsProsozyg Redux skillet Medic448 bravery perhapsPros653 Booneobl soyMostozyg boils Wheels skillet Boone Late membership workshops factors",
+              "reward": -0.5,
+              "reward_components": {
+                "syntax": -0.5,
+                "correctness": 0.0,
+                "improvement": 0.0,
+                "penalty_empty_or_invalid": 0.0,
+                "penalty_no_meaningful_change": 0.0,
+                "bug_retained_penalty": 0.0
+              },
+              "tests_passed": 0,
+              "tests_total": 3,
+              "syntax_ok": false
+            }
+          ],
+          "done": true
+        }
+      },
+      {
+        "task_type": "medium",
+        "total_reward": -1.5,
+        "steps": [
+          {
+            "step": 1,
+            "completion": "deflectMost mutual workshopspublicMini predators\ufffd skilletaciousobl Singapore membership Wheels Dreams Pocket predators Singapore membership courtyard deflect grandchildren653Outside predatorspublic praying membership boils Television Boone Lateobl448obl soy BooneMostPros rubbing grandchildrenOutside workshops predatorsozyg perhapsshows workshops clearer448 factors boils\ufffd mutualozygived448 Medic boils workshops LateSexual equate TreMini workshops Dreams448 soy praying equate workshops rubbingozyg653 linedived lined 236 Dreams lined factors boilsPros mutual rubbing membership Tre membership lined448obl grandchildren Redux equate lined Late Television representations PocketOutside representationsMost TreSexual\ufffd workshops courtyard BooneMiniMinioblived Redux 236448 rubbing Bend factors courtyardacious skillet boils Bend Singapore lined Medic Redux",
+            "action": {
+              "reviewer_issues": [],
+              "fixed_code": "deflectMost mutual workshopspublicMini predators\ufffd skilletaciousobl Singapore membership Wheels Dreams Pocket predators Singapore membership courtyard deflect grandchildren653Outside predatorspublic praying membership boils Television Boone Lateobl448obl soy BooneMostPros rubbing grandchildrenOutside workshops predatorsozyg perhapsshows workshops clearer448 factors boils\ufffd mutualozygived448 Medic boils workshops LateSexual equate TreMini workshops Dreams448 soy praying equate workshops rubbingozyg653 linedived lined 236 Dreams lined factors boilsPros mutual rubbing membership Tre membership lined448obl grandchildren Redux equate lined Late Television representations PocketOutside representationsMost TreSexual\ufffd workshops courtyard BooneMiniMinioblived Redux 236448 rubbing Bend factors courtyardacious skillet boils Bend Singapore lined Medic Redux"
+            },
+            "reward": -0.5,
+            "tests_passed": 0,
+            "tests_total": 2,
+            "code": "def greet(name)\n    return 'hi ' + name\n"
+          },
+          {
+            "step": 2,
+            "completion": "praying 236 clearer clearerMostpublic mutualpublicProsMiniived trilogy subst ONEhibit reviewing TApress hauledRocket Money Motorolaoother trilogyRocket Rh vendors ESV confirRocket Motoroladitiken dispatch confir Brew reviewingoother heir pawn conservationScene MoneyRocket Prob trilogyoho TA vendors intermittent Rh circumcisedreementmediately autonomy credibility circumcisedpress heir reviewing dispatch directlydit heir pawn dispatch vendors Motorola Probting directly Prob reviewingmediatelyditScenereementpressJDoother Brew trilogy autonomyhibit heirreement credibility trilogyoother credibilitydit Daniel antibioticmediately vendors Observ subst Prob confir antibioticreement stairsScene scalp scalp confir Observ reviewing reviewing TA Brewdit confirScene confirreementRockethibit hauled Participation heir ESV Jrreement heirhibit stairs subst",
+            "action": {
+              "reviewer_issues": [],
+              "fixed_code": "praying 236 clearer clearerMostpublic mutualpublicProsMiniived trilogy subst ONEhibit reviewing TApress hauledRocket Money Motorolaoother trilogyRocket Rh vendors ESV confirRocket Motoroladitiken dispatch confir Brew reviewingoother heir pawn conservationScene MoneyRocket Prob trilogyoho TA vendors intermittent Rh circumcisedreementmediately autonomy credibility circumcisedpress heir reviewing dispatch directlydit heir pawn dispatch vendors Motorola Probting directly Prob reviewingmediatelyditScenereementpressJDoother Brew trilogy autonomyhibit heirreement credibility trilogyoother credibilitydit Daniel antibioticmediately vendors Observ subst Prob confir antibioticreement stairsScene scalp scalp confir Observ reviewing reviewing TA Brewdit confirScene confirreementRockethibit hauled Participation heir ESV Jrreement heirhibit stairs subst"
+            },
+            "reward": -0.5,
+            "tests_passed": 0,
+            "tests_total": 2,
+            "code": "def greet(name)\n    return 'hi ' + name\n"
+          },
+          {
+            "step": 3,
+            "completion": "ived representations\ufffd deflect praying Boone Televisionobl Television Bend Dreams praying braveryshows factors448public448shows Pocketuscript Daniel groceries Habit ONE autonomy antibiotic circumcisedmediately antibiotichibitatisfendale dispatchdit antibioticRocket pawn Jr trilogyJDpress resortedSexual448 Redux Pocket Television448 Redux 236Mini membershipaciousobl workshops Tre Dreams courtyard Dreams predators prayingaciousMost factors Bend Medic Television rubbing448 boils praying Wheels448SexualSexualSexual 236Sexualshows Tre Late mutual predatorsMini equate Redux Medic\ufffd Television Dreams Dreams Singapore praying Bend bravery BooneMost prayingobl membershippublic equate Boone Singapore Television membershipOutside grandchildren Boone representations clearer praying mutual predatorspublic workshopsOutside rubbing skillet courtyard membership WheelsPros Late workshops Television Boone",
+            "action": {
+              "reviewer_issues": [],
+              "fixed_code": "ived representations\ufffd deflect praying Boone Televisionobl Television Bend Dreams praying braveryshows factors448public448shows Pocketuscript Daniel groceries Habit ONE autonomy antibiotic circumcisedmediately antibiotichibitatisfendale dispatchdit antibioticRocket pawn Jr trilogyJDpress resortedSexual448 Redux Pocket Television448 Redux 236Mini membershipaciousobl workshops Tre Dreams courtyard Dreams predators prayingaciousMost factors Bend Medic Television rubbing448 boils praying Wheels448SexualSexualSexual 236Sexualshows Tre Late mutual predatorsMini equate Redux Medic\ufffd Television Dreams Dreams Singapore praying Bend bravery BooneMost prayingobl membershippublic equate Boone Singapore Television membershipOutside grandchildren Boone representations clearer praying mutual predatorspublic workshopsOutside rubbing skillet courtyard membership WheelsPros Late workshops Television Boone"
+            },
+            "reward": -0.5,
+            "tests_passed": 0,
+            "tests_total": 2,
+            "code": "def greet(name)\n    return 'hi ' + name\n"
+          }
+        ],
+        "final_state": {
+          "task_id": "arena-002",
+          "title": "Fix syntax error",
+          "instruction": "Fix the missing colon so the function runs.",
+          "buggy_code": "def greet(name)\n    return 'hi ' + name\n",
+          "current_code": "def greet(name)\n    return 'hi ' + name\n",
+          "previous_step_output": {
+            "step": 3,
+            "reviewer_output": [
+              "No obvious syntax errors; run tests to verify behavior."
+            ],
+            "fixer_output": "ived representations\ufffd deflect praying Boone Televisionobl Television Bend Dreams praying braveryshows factors448public448shows Pocketuscript Daniel groceries Habit ONE autonomy antibiotic circumcisedmediately antibiotichibitatisfendale dispatchdit antibioticRocket pawn Jr trilogyJDpress resortedSexual448 Redux Pocket Television448 Redux 236Mini membershipaciousobl workshops Tre Dreams courtyard Dreams predators prayingaciousMost factors Bend Medic Television rubbing448 boils praying Wheels448SexualSexualSexual 236Sexualshows Tre Late mutual predatorsMini equate Redux Medic\ufffd Television Dreams Dreams Singapore praying Bend bravery BooneMost prayingobl membershippublic equate Boone Singapore Television membershipOutside grandchildren Boone representations clearer praying mutual predatorspublic workshopsOutside rubbing skillet courtyard membership WheelsPros Late workshops Television Boone",
+            "reward": -0.5,
+            "reward_components": {
+              "syntax": -0.5,
+              "correctness": 0.0,
+              "improvement": 0.0,
+              "penalty_empty_or_invalid": 0.0,
+              "penalty_no_meaningful_change": 0.0,
+              "bug_retained_penalty": 0.0
+            },
+            "tests_passed": 0,
+            "tests_total": 2,
+            "syntax_ok": false
+          },
+          "step_count": 3,
+          "max_steps": 3,
+          "tests_passed": 0,
+          "tests_total": 2,
+          "total_reward": -1.5,
+          "history": [
+            {
+              "step": 1,
+              "reviewer_output": [
+                "No obvious syntax errors; run tests to verify behavior."
+              ],
+              "fixer_output": "deflectMost mutual workshopspublicMini predators\ufffd skilletaciousobl Singapore membership Wheels Dreams Pocket predators Singapore membership courtyard deflect grandchildren653Outside predatorspublic praying membership boils Television Boone Lateobl448obl soy BooneMostPros rubbing grandchildrenOutside workshops predatorsozyg perhapsshows workshops clearer448 factors boils\ufffd mutualozygived448 Medic boils workshops LateSexual equate TreMini workshops Dreams448 soy praying equate workshops rubbingozyg653 linedived lined 236 Dreams lined factors boilsPros mutual rubbing membership Tre membership lined448obl grandchildren Redux equate lined Late Television representations PocketOutside representationsMost TreSexual\ufffd workshops courtyard BooneMiniMinioblived Redux 236448 rubbing Bend factors courtyardacious skillet boils Bend Singapore lined Medic Redux",
+              "reward": -0.5,
+              "reward_components": {
+                "syntax": -0.5,
+                "correctness": 0.0,
+                "improvement": 0.0,
+                "penalty_empty_or_invalid": 0.0,
+                "penalty_no_meaningful_change": 0.0,
+                "bug_retained_penalty": 0.0
+              },
+              "tests_passed": 0,
+              "tests_total": 2,
+              "syntax_ok": false
+            },
+            {
+              "step": 2,
+              "reviewer_output": [
+                "No obvious syntax errors; run tests to verify behavior."
+              ],
+              "fixer_output": "praying 236 clearer clearerMostpublic mutualpublicProsMiniived trilogy subst ONEhibit reviewing TApress hauledRocket Money Motorolaoother trilogyRocket Rh vendors ESV confirRocket Motoroladitiken dispatch confir Brew reviewingoother heir pawn conservationScene MoneyRocket Prob trilogyoho TA vendors intermittent Rh circumcisedreementmediately autonomy credibility circumcisedpress heir reviewing dispatch directlydit heir pawn dispatch vendors Motorola Probting directly Prob reviewingmediatelyditScenereementpressJDoother Brew trilogy autonomyhibit heirreement credibility trilogyoother credibilitydit Daniel antibioticmediately vendors Observ subst Prob confir antibioticreement stairsScene scalp scalp confir Observ reviewing reviewing TA Brewdit confirScene confirreementRockethibit hauled Participation heir ESV Jrreement heirhibit stairs subst",
+              "reward": -0.5,
+              "reward_components": {
+                "syntax": -0.5,
+                "correctness": 0.0,
+                "improvement": 0.0,
+                "penalty_empty_or_invalid": 0.0,
+                "penalty_no_meaningful_change": 0.0,
+                "bug_retained_penalty": 0.0
+              },
+              "tests_passed": 0,
+              "tests_total": 2,
+              "syntax_ok": false
+            },
+            {
+              "step": 3,
+              "reviewer_output": [
+                "No obvious syntax errors; run tests to verify behavior."
+              ],
+              "fixer_output": "ived representations\ufffd deflect praying Boone Televisionobl Television Bend Dreams praying braveryshows factors448public448shows Pocketuscript Daniel groceries Habit ONE autonomy antibiotic circumcisedmediately antibiotichibitatisfendale dispatchdit antibioticRocket pawn Jr trilogyJDpress resortedSexual448 Redux Pocket Television448 Redux 236Mini membershipaciousobl workshops Tre Dreams courtyard Dreams predators prayingaciousMost factors Bend Medic Television rubbing448 boils praying Wheels448SexualSexualSexual 236Sexualshows Tre Late mutual predatorsMini equate Redux Medic\ufffd Television Dreams Dreams Singapore praying Bend bravery BooneMost prayingobl membershippublic equate Boone Singapore Television membershipOutside grandchildren Boone representations clearer praying mutual predatorspublic workshopsOutside rubbing skillet courtyard membership WheelsPros Late workshops Television Boone",
+              "reward": -0.5,
+              "reward_components": {
+                "syntax": -0.5,
+                "correctness": 0.0,
+                "improvement": 0.0,
+                "penalty_empty_or_invalid": 0.0,
+                "penalty_no_meaningful_change": 0.0,
+                "bug_retained_penalty": 0.0
+              },
+              "tests_passed": 0,
+              "tests_total": 2,
+              "syntax_ok": false
+            }
+          ],
+          "done": true
+        }
+      },
+      {
+        "task_type": "hard",
+        "total_reward": -1.5,
+        "steps": [
+          {
+            "step": 1,
+            "completion": "courtyard perhaps membershipMost workshopsOutside Medic membership Televisionacious448showsobl Late grandchildren 236 Tre soy Late Tre Singaporeoblobl soyaciousOutsideobl 236 deflectMost equate WheelsPros prayingSexual Pocket representationspublic Wheels Tre Singapore LateSexualMini Medic mutual Dreamsived membership clearer Wheels lined Late clearer courtyard448 predators lined Singapore courtyard Television Medicivedacious448448 skillet448 Boone representations Tre clearer equate courtyardozyg448 representationsMini Pocket Dreams Bend perhaps Bend boilsived Bend Singapore grandchildren\ufffdozyg653 mutual 236Miniozyg praying Medic Television Boone PocketOutside grandchildrenacious courtyard Medic clearer Bend448 clerk448 lined deflect soy\ufffd praying skillet courtyard rubbing equate LateOutside mutualobl boils Late clearershowsobl",
+            "action": {
+              "reviewer_issues": [],
+              "fixed_code": "courtyard perhaps membershipMost workshopsOutside Medic membership Televisionacious448showsobl Late grandchildren 236 Tre soy Late Tre Singaporeoblobl soyaciousOutsideobl 236 deflectMost equate WheelsPros prayingSexual Pocket representationspublic Wheels Tre Singapore LateSexualMini Medic mutual Dreamsived membership clearer Wheels lined Late clearer courtyard448 predators lined Singapore courtyard Television Medicivedacious448448 skillet448 Boone representations Tre clearer equate courtyardozyg448 representationsMini Pocket Dreams Bend perhaps Bend boilsived Bend Singapore grandchildren\ufffdozyg653 mutual 236Miniozyg praying Medic Television Boone PocketOutside grandchildrenacious courtyard Medic clearer Bend448 clerk448 lined deflect soy\ufffd praying skillet courtyard rubbing equate LateOutside mutualobl boils Late clearershowsobl"
+            },
+            "reward": -0.5,
+            "tests_passed": 0,
+            "tests_total": 3,
+            "code": "def safe_div(a, b):\n    return a / b\n"
+          },
+          {
+            "step": 2,
+            "completion": "Medic boils representations representations TreMost\ufffdshows praying factorspublic soy Television finishing hauled directlyScene stairs Observacious linedOutside Medic courtyardshows Singapore skillet 236 praying mutualpublic perhaps representationsMini Boone mutual Lateaciousived grandchildren clearer Wheels workshops braveryOutside Lateobl Pocket Televisionpublic Pocket workshopsived Wheels\ufffd 236 Bend448publicshows Wheelspublic448 deflect clearer Tre factors Wheelsacious workshopsMost skillet clearer equateMini workshops BendMini 236Sexual rubbing Medic skilletMini BooneMini448Sexualpublic 236 Dreams skillet Singapore representations mutualavorable Late653448 Singapore workshops predators Medic bravery Medic bravery Pocket deflect Pocket Medic soy Medic 236ived Singapore rubbing Medic workshops predators perhaps Bend clearer Wheels clearer Tre Late skilletobl",
+            "action": {
+              "reviewer_issues": [],
+              "fixed_code": "Medic boils representations representations TreMost\ufffdshows praying factorspublic soy Television finishing hauled directlyScene stairs Observacious linedOutside Medic courtyardshows Singapore skillet 236 praying mutualpublic perhaps representationsMini Boone mutual Lateaciousived grandchildren clearer Wheels workshops braveryOutside Lateobl Pocket Televisionpublic Pocket workshopsived Wheels\ufffd 236 Bend448publicshows Wheelspublic448 deflect clearer Tre factors Wheelsacious workshopsMost skillet clearer equateMini workshops BendMini 236Sexual rubbing Medic skilletMini BooneMini448Sexualpublic 236 Dreams skillet Singapore representations mutualavorable Late653448 Singapore workshops predators Medic bravery Medic bravery Pocket deflect Pocket Medic soy Medic 236ived Singapore rubbing Medic workshops predators perhaps Bend clearer Wheels clearer Tre Late skilletobl"
+            },
+            "reward": -0.5,
+            "tests_passed": 0,
+            "tests_total": 3,
+            "code": "def safe_div(a, b):\n    return a / b\n"
+          },
+          {
+            "step": 3,
+            "completion": "clearer rubbing PocketMini Singapore soyived predatorsMini prayingived boils boils653Sexual653653acious grandchildren equate membership mutual prayingacious Medic IMF 236shows Television predators Pocket ReduxMost Late Tre lined skilletpublicMost boilsSexualMost perhapsacious Tre boils Boone\ufffdived courtyardozyg soy Tre boils ReduxMini Latepublic Singapore mutual representationsMini skillet Ak conservation Jr TA vendorsScene stairs stairsdit Daniel reviewing Jr subst Netflix perhaps representations Bend Boone Boone 236 Late Late Lateshows prayingSexualivedshows Bend448 lined grandchildren Treshows equate representations rubbingPros rubbing mutual 236 Bend representations Tre Television deflectDI heir ONE credibilityoho pawn credibility Rh hauled reviewing Motorola Participationiken TA Jr Complete Tre Wheels Dreams",
+            "action": {
+              "reviewer_issues": [],
+              "fixed_code": "clearer rubbing PocketMini Singapore soyived predatorsMini prayingived boils boils653Sexual653653acious grandchildren equate membership mutual prayingacious Medic IMF 236shows Television predators Pocket ReduxMost Late Tre lined skilletpublicMost boilsSexualMost perhapsacious Tre boils Boone\ufffdived courtyardozyg soy Tre boils ReduxMini Latepublic Singapore mutual representationsMini skillet Ak conservation Jr TA vendorsScene stairs stairsdit Daniel reviewing Jr subst Netflix perhaps representations Bend Boone Boone 236 Late Late Lateshows prayingSexualivedshows Bend448 lined grandchildren Treshows equate representations rubbingPros rubbing mutual 236 Bend representations Tre Television deflectDI heir ONE credibilityoho pawn credibility Rh hauled reviewing Motorola Participationiken TA Jr Complete Tre Wheels Dreams"
+            },
+            "reward": -0.5,
+            "tests_passed": 0,
+            "tests_total": 3,
+            "code": "def safe_div(a, b):\n    return a / b\n"
+          }
+        ],
+        "final_state": {
+          "task_id": "arena-003",
+          "title": "Fix division by zero",
+          "instruction": "Return 0 when the denominator is zero.",
+          "buggy_code": "def safe_div(a, b):\n    return a / b\n",
+          "current_code": "def safe_div(a, b):\n    return a / b\n",
+          "previous_step_output": {
+            "step": 3,
+            "reviewer_output": [
+              "Possible division-by-zero without guard."
+            ],
+            "fixer_output": "clearer rubbing PocketMini Singapore soyived predatorsMini prayingived boils boils653Sexual653653acious grandchildren equate membership mutual prayingacious Medic IMF 236shows Television predators Pocket ReduxMost Late Tre lined skilletpublicMost boilsSexualMost perhapsacious Tre boils Boone\ufffdived courtyardozyg soy Tre boils ReduxMini Latepublic Singapore mutual representationsMini skillet Ak conservation Jr TA vendorsScene stairs stairsdit Daniel reviewing Jr subst Netflix perhaps representations Bend Boone Boone 236 Late Late Lateshows prayingSexualivedshows Bend448 lined grandchildren Treshows equate representations rubbingPros rubbing mutual 236 Bend representations Tre Television deflectDI heir ONE credibilityoho pawn credibility Rh hauled reviewing Motorola Participationiken TA Jr Complete Tre Wheels Dreams",
+            "reward": -0.5,
+            "reward_components": {
+              "syntax": -0.5,
+              "correctness": 0.0,
+              "improvement": 0.3,
+              "penalty_empty_or_invalid": 0.0,
+              "penalty_no_meaningful_change": 0.0,
+              "bug_retained_penalty": 0.0
+            },
+            "tests_passed": 0,
+            "tests_total": 3,
+            "syntax_ok": false
+          },
+          "step_count": 3,
+          "max_steps": 3,
+          "tests_passed": 0,
+          "tests_total": 3,
+          "total_reward": -1.5,
+          "history": [
+            {
+              "step": 1,
+              "reviewer_output": [
+                "Possible division-by-zero without guard."
+              ],
+              "fixer_output": "courtyard perhaps membershipMost workshopsOutside Medic membership Televisionacious448showsobl Late grandchildren 236 Tre soy Late Tre Singaporeoblobl soyaciousOutsideobl 236 deflectMost equate WheelsPros prayingSexual Pocket representationspublic Wheels Tre Singapore LateSexualMini Medic mutual Dreamsived membership clearer Wheels lined Late clearer courtyard448 predators lined Singapore courtyard Television Medicivedacious448448 skillet448 Boone representations Tre clearer equate courtyardozyg448 representationsMini Pocket Dreams Bend perhaps Bend boilsived Bend Singapore grandchildren\ufffdozyg653 mutual 236Miniozyg praying Medic Television Boone PocketOutside grandchildrenacious courtyard Medic clearer Bend448 clerk448 lined deflect soy\ufffd praying skillet courtyard rubbing equate LateOutside mutualobl boils Late clearershowsobl",
+              "reward": -0.5,
+              "reward_components": {
+                "syntax": -0.5,
+                "correctness": 0.0,
+                "improvement": 0.3,
+                "penalty_empty_or_invalid": 0.0,
+                "penalty_no_meaningful_change": 0.0,
+                "bug_retained_penalty": 0.0
+              },
+              "tests_passed": 0,
+              "tests_total": 3,
+              "syntax_ok": false
+            },
+            {
+              "step": 2,
+              "reviewer_output": [
+                "Possible division-by-zero without guard."
+              ],
+              "fixer_output": "Medic boils representations representations TreMost\ufffdshows praying factorspublic soy Television finishing hauled directlyScene stairs Observacious linedOutside Medic courtyardshows Singapore skillet 236 praying mutualpublic perhaps representationsMini Boone mutual Lateaciousived grandchildren clearer Wheels workshops braveryOutside Lateobl Pocket Televisionpublic Pocket workshopsived Wheels\ufffd 236 Bend448publicshows Wheelspublic448 deflect clearer Tre factors Wheelsacious workshopsMost skillet clearer equateMini workshops BendMini 236Sexual rubbing Medic skilletMini BooneMini448Sexualpublic 236 Dreams skillet Singapore representations mutualavorable Late653448 Singapore workshops predators Medic bravery Medic bravery Pocket deflect Pocket Medic soy Medic 236ived Singapore rubbing Medic workshops predators perhaps Bend clearer Wheels clearer Tre Late skilletobl",
+              "reward": -0.5,
+              "reward_components": {
+                "syntax": -0.5,
+                "correctness": 0.0,
+                "improvement": 0.3,
+                "penalty_empty_or_invalid": 0.0,
+                "penalty_no_meaningful_change": 0.0,
+                "bug_retained_penalty": 0.0
+              },
+              "tests_passed": 0,
+              "tests_total": 3,
+              "syntax_ok": false
+            },
+            {
+              "step": 3,
+              "reviewer_output": [
+                "Possible division-by-zero without guard."
+              ],
+              "fixer_output": "clearer rubbing PocketMini Singapore soyived predatorsMini prayingived boils boils653Sexual653653acious grandchildren equate membership mutual prayingacious Medic IMF 236shows Television predators Pocket ReduxMost Late Tre lined skilletpublicMost boilsSexualMost perhapsacious Tre boils Boone\ufffdived courtyardozyg soy Tre boils ReduxMini Latepublic Singapore mutual representationsMini skillet Ak conservation Jr TA vendorsScene stairs stairsdit Daniel reviewing Jr subst Netflix perhaps representations Bend Boone Boone 236 Late Late Lateshows prayingSexualivedshows Bend448 lined grandchildren Treshows equate representations rubbingPros rubbing mutual 236 Bend representations Tre Television deflectDI heir ONE credibilityoho pawn credibility Rh hauled reviewing Motorola Participationiken TA Jr Complete Tre Wheels Dreams",
+              "reward": -0.5,
+              "reward_components": {
+                "syntax": -0.5,
+                "correctness": 0.0,
+                "improvement": 0.3,
+                "penalty_empty_or_invalid": 0.0,
+                "penalty_no_meaningful_change": 0.0,
+                "bug_retained_penalty": 0.0
+              },
+              "tests_passed": 0,
+              "tests_total": 3,
+              "syntax_ok": false
+            }
+          ],
+          "done": true
+        }
+      },
+      {
+        "task_type": "bonus",
+        "total_reward": -1.5,
+        "steps": [
+          {
+            "step": 1,
+            "completion": "workshops653 Wheelsshows deflectobl Bend WheelsMini DreamsOutsideshowsMiniMost equate WheelsMostobl\ufffdivedMini Boone Pocket Dreams courtyardMini bravery lined Latepublic lined membershipOutside653ozyg bravery deflect Singapore lined Television courtyard predatorsshowsacious mutual Boone skillet Medic Pocket factors Late Television predators predatorsMini448Sexual workshops Dreams Bend skillet representations linedOutsideSexual Medic courtyard Treshows rubbing 236 Boone Television factors clearer courtyard grandchildren rubbingozygobl Pocket equate Boone Lateivedshows linedPros equate clearer Singapore lined representations Singapore Latepublic soy Boone soy equate courtyard skillet448 WheelsSexual Bend DreamsOutsideived Bend membership mutual Pocket representations skillet Singapore factors rubbing courtyard factorsOutsideived Television braverypublic448Mini Bend",
+            "action": {
+              "reviewer_issues": [],
+              "fixed_code": "workshops653 Wheelsshows deflectobl Bend WheelsMini DreamsOutsideshowsMiniMost equate WheelsMostobl\ufffdivedMini Boone Pocket Dreams courtyardMini bravery lined Latepublic lined membershipOutside653ozyg bravery deflect Singapore lined Television courtyard predatorsshowsacious mutual Boone skillet Medic Pocket factors Late Television predators predatorsMini448Sexual workshops Dreams Bend skillet representations linedOutsideSexual Medic courtyard Treshows rubbing 236 Boone Television factors clearer courtyard grandchildren rubbingozygobl Pocket equate Boone Lateivedshows linedPros equate clearer Singapore lined representations Singapore Latepublic soy Boone soy equate courtyard skillet448 WheelsSexual Bend DreamsOutsideived Bend membership mutual Pocket representations skillet Singapore factors rubbing courtyard factorsOutsideived Television braverypublic448Mini Bend"
+            },
+            "reward": -0.5,
+            "tests_passed": 0,
+            "tests_total": 3,
+            "code": "def sum_to_n(n):\n    total = 0\n    for i in range(n):\n        total += i\n    return total\n"
+          },
+          {
+            "step": 2,
+            "completion": "\ufffd courtyardOutsideOutside workshops Medicacious predatorspublic Dreams Pocket Treobl653 clearer braverypublic Singapore skillet SingaporeMini perhaps deflect Dreams rubbingivedshows Dreams predators\ufffdshows representations deflect Dreams Boone praying Wheels 236 Late membership Reduxpublic653public clearerMini rubbing653Sexual Boone 236448 mutual workshops\ufffd 236 Boone\ufffdMost mutual\ufffd448Outsideshows Television Boone factors rubbingpublic\ufffd representationsOutside 236 skillet Wheels Singapore Dreams clearer\ufffd factors Boone Television Boone Wheels deflect clearer workshops representations LateMostSexual653 Boone Late stores lined lined lined 236 bravery predators Dreamsozyg prayingozyg perhapsobl448 WheelsshowsSexual Medic membership Tre workshops workshops448 Television Redux membership boilsSexual Boone Pocket Singapore boils 236 Dreams",
+            "action": {
+              "reviewer_issues": [],
+              "fixed_code": "\ufffd courtyardOutsideOutside workshops Medicacious predatorspublic Dreams Pocket Treobl653 clearer braverypublic Singapore skillet SingaporeMini perhaps deflect Dreams rubbingivedshows Dreams predators\ufffdshows representations deflect Dreams Boone praying Wheels 236 Late membership Reduxpublic653public clearerMini rubbing653Sexual Boone 236448 mutual workshops\ufffd 236 Boone\ufffdMost mutual\ufffd448Outsideshows Television Boone factors rubbingpublic\ufffd representationsOutside 236 skillet Wheels Singapore Dreams clearer\ufffd factors Boone Television Boone Wheels deflect clearer workshops representations LateMostSexual653 Boone Late stores lined lined lined 236 bravery predators Dreamsozyg prayingozyg perhapsobl448 WheelsshowsSexual Medic membership Tre workshops workshops448 Television Redux membership boilsSexual Boone Pocket Singapore boils 236 Dreams"
+            },
+            "reward": -0.5,
+            "tests_passed": 0,
+            "tests_total": 3,
+            "code": "def sum_to_n(n):\n    total = 0\n    for i in range(n):\n        total += i\n    return total\n"
+          },
+          {
+            "step": 3,
+            "completion": "boils deflect Pocket grandchildrenived Lateozyg Late rubbingMini perhapspublicProsacious skillet skillet Wildlife dispatchhibitRocket vendors ESV vendors MotorolaRocket Rh Motorola Money ESV subst scalp Rh pawn ONE vendorsdit confir ONE TA scalpmediately stairs Observ Brew scalpScene Participation stairs Brew autonomy TA Probtingditoother heir stairsoho trilogy vendors Money Observ scalpJDScene scalp Participation Observikenatisf ONE Motorola intermittent pawndit directly directly circumcised directly Motorola Danielreement vendors substmediately Motorola directly stairsoother hauledRocketpress directlyatisf caucusesreementJD scalp stairs Habit Participation Prob TA ESV Observ Prob dispatch Hancock reviewingScenedit reviewing ONE reviewing confir hauled TA directly TA Habit Habit Participation autonomy Habit subst circumcisedSceneting",
+            "action": {
+              "reviewer_issues": [],
+              "fixed_code": "boils deflect Pocket grandchildrenived Lateozyg Late rubbingMini perhapspublicProsacious skillet skillet Wildlife dispatchhibitRocket vendors ESV vendors MotorolaRocket Rh Motorola Money ESV subst scalp Rh pawn ONE vendorsdit confir ONE TA scalpmediately stairs Observ Brew scalpScene Participation stairs Brew autonomy TA Probtingditoother heir stairsoho trilogy vendors Money Observ scalpJDScene scalp Participation Observikenatisf ONE Motorola intermittent pawndit directly directly circumcised directly Motorola Danielreement vendors substmediately Motorola directly stairsoother hauledRocketpress directlyatisf caucusesreementJD scalp stairs Habit Participation Prob TA ESV Observ Prob dispatch Hancock reviewingScenedit reviewing ONE reviewing confir hauled TA directly TA Habit Habit Participation autonomy Habit subst circumcisedSceneting"
+            },
+            "reward": -0.5,
+            "tests_passed": 0,
+            "tests_total": 3,
+            "code": "def sum_to_n(n):\n    total = 0\n    for i in range(n):\n        total += i\n    return total\n"
+          }
+        ],
+        "final_state": {
+          "task_id": "arena-004",
+          "title": "Fix off-by-one loop",
+          "instruction": "Return the sum of numbers from 0 through n inclusive.",
+          "buggy_code": "def sum_to_n(n):\n    total = 0\n    for i in range(n):\n        total += i\n    return total\n",
+          "current_code": "def sum_to_n(n):\n    total = 0\n    for i in range(n):\n        total += i\n    return total\n",
+          "previous_step_output": {
+            "step": 3,
+            "reviewer_output": [
+              "No obvious syntax errors; run tests to verify behavior."
+            ],
+            "fixer_output": "boils deflect Pocket grandchildrenived Lateozyg Late rubbingMini perhapspublicProsacious skillet skillet Wildlife dispatchhibitRocket vendors ESV vendors MotorolaRocket Rh Motorola Money ESV subst scalp Rh pawn ONE vendorsdit confir ONE TA scalpmediately stairs Observ Brew scalpScene Participation stairs Brew autonomy TA Probtingditoother heir stairsoho trilogy vendors Money Observ scalpJDScene scalp Participation Observikenatisf ONE Motorola intermittent pawndit directly directly circumcised directly Motorola Danielreement vendors substmediately Motorola directly stairsoother hauledRocketpress directlyatisf caucusesreementJD scalp stairs Habit Participation Prob TA ESV Observ Prob dispatch Hancock reviewingScenedit reviewing ONE reviewing confir hauled TA directly TA Habit Habit Participation autonomy Habit subst circumcisedSceneting",
+            "reward": -0.5,
+            "reward_components": {
+              "syntax": -0.5,
+              "correctness": 0.0,
+              "improvement": 0.3,
+              "penalty_empty_or_invalid": 0.0,
+              "penalty_no_meaningful_change": 0.0,
+              "bug_retained_penalty": 0.0
+            },
+            "tests_passed": 0,
+            "tests_total": 3,
+            "syntax_ok": false
+          },
+          "step_count": 3,
+          "max_steps": 3,
+          "tests_passed": 0,
+          "tests_total": 3,
+          "total_reward": -1.5,
+          "history": [
+            {
+              "step": 1,
+              "reviewer_output": [
+                "No obvious syntax errors; run tests to verify behavior."
+              ],
+              "fixer_output": "workshops653 Wheelsshows deflectobl Bend WheelsMini DreamsOutsideshowsMiniMost equate WheelsMostobl\ufffdivedMini Boone Pocket Dreams courtyardMini bravery lined Latepublic lined membershipOutside653ozyg bravery deflect Singapore lined Television courtyard predatorsshowsacious mutual Boone skillet Medic Pocket factors Late Television predators predatorsMini448Sexual workshops Dreams Bend skillet representations linedOutsideSexual Medic courtyard Treshows rubbing 236 Boone Television factors clearer courtyard grandchildren rubbingozygobl Pocket equate Boone Lateivedshows linedPros equate clearer Singapore lined representations Singapore Latepublic soy Boone soy equate courtyard skillet448 WheelsSexual Bend DreamsOutsideived Bend membership mutual Pocket representations skillet Singapore factors rubbing courtyard factorsOutsideived Television braverypublic448Mini Bend",
+              "reward": -0.5,
+              "reward_components": {
+                "syntax": -0.5,
+                "correctness": 0.0,
+                "improvement": 0.3,
+                "penalty_empty_or_invalid": 0.0,
+                "penalty_no_meaningful_change": 0.0,
+                "bug_retained_penalty": 0.0
+              },
+              "tests_passed": 0,
+              "tests_total": 3,
+              "syntax_ok": false
+            },
+            {
+              "step": 2,
+              "reviewer_output": [
+                "No obvious syntax errors; run tests to verify behavior."
+              ],
+              "fixer_output": "\ufffd courtyardOutsideOutside workshops Medicacious predatorspublic Dreams Pocket Treobl653 clearer braverypublic Singapore skillet SingaporeMini perhaps deflect Dreams rubbingivedshows Dreams predators\ufffdshows representations deflect Dreams Boone praying Wheels 236 Late membership Reduxpublic653public clearerMini rubbing653Sexual Boone 236448 mutual workshops\ufffd 236 Boone\ufffdMost mutual\ufffd448Outsideshows Television Boone factors rubbingpublic\ufffd representationsOutside 236 skillet Wheels Singapore Dreams clearer\ufffd factors Boone Television Boone Wheels deflect clearer workshops representations LateMostSexual653 Boone Late stores lined lined lined 236 bravery predators Dreamsozyg prayingozyg perhapsobl448 WheelsshowsSexual Medic membership Tre workshops workshops448 Television Redux membership boilsSexual Boone Pocket Singapore boils 236 Dreams",
+              "reward": -0.5,
+              "reward_components": {
+                "syntax": -0.5,
+                "correctness": 0.0,
+                "improvement": 0.3,
+                "penalty_empty_or_invalid": 0.0,
+                "penalty_no_meaningful_change": 0.0,
+                "bug_retained_penalty": 0.0
+              },
+              "tests_passed": 0,
+              "tests_total": 3,
+              "syntax_ok": false
+            },
+            {
+              "step": 3,
+              "reviewer_output": [
+                "No obvious syntax errors; run tests to verify behavior."
+              ],
+              "fixer_output": "boils deflect Pocket grandchildrenived Lateozyg Late rubbingMini perhapspublicProsacious skillet skillet Wildlife dispatchhibitRocket vendors ESV vendors MotorolaRocket Rh Motorola Money ESV subst scalp Rh pawn ONE vendorsdit confir ONE TA scalpmediately stairs Observ Brew scalpScene Participation stairs Brew autonomy TA Probtingditoother heir stairsoho trilogy vendors Money Observ scalpJDScene scalp Participation Observikenatisf ONE Motorola intermittent pawndit directly directly circumcised directly Motorola Danielreement vendors substmediately Motorola directly stairsoother hauledRocketpress directlyatisf caucusesreementJD scalp stairs Habit Participation Prob TA ESV Observ Prob dispatch Hancock reviewingScenedit reviewing ONE reviewing confir hauled TA directly TA Habit Habit Participation autonomy Habit subst circumcisedSceneting",
+              "reward": -0.5,
+              "reward_components": {
+                "syntax": -0.5,
+                "correctness": 0.0,
+                "improvement": 0.3,
+                "penalty_empty_or_invalid": 0.0,
+                "penalty_no_meaningful_change": 0.0,
+                "bug_retained_penalty": 0.0
+              },
+              "tests_passed": 0,
+              "tests_total": 3,
+              "syntax_ok": false
+            }
+          ],
+          "done": true
+        }
+      }
+    ]
+  },
+  "average_reward_delta": 0.0,
+  "reward_curve": [
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5
+  ],
+  "artifacts": {
+    "trained_model_dir": "artifacts\\grpo_final\\final_model",
+    "reward_curve_png": "artifacts\\grpo_final\\reward_curve.png",
+    "training_progress_jsonl": "artifacts\\grpo_final\\training_progress.jsonl"
+  }
+}

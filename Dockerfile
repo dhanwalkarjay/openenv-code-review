@@ -1,14 +1,18 @@
-FROM python:3.9-slim
+FROM python:3.11-slim
 
 WORKDIR /app
 
-# Avoid interactive prompts
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
+ENV PIP_NO_CACHE_DIR=1
 
-COPY . .
+COPY requirements-runtime.txt ./requirements-runtime.txt
 
-RUN pip install --upgrade pip
-RUN pip install --no-cache-dir -r requirements.txt
+RUN python -m pip install --upgrade pip \
+    && python -m pip install -r requirements-runtime.txt
 
-CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "7860"]
+COPY backend ./backend
+COPY env ./env
+COPY frontend ./frontend
+
+CMD ["uvicorn", "backend.api.main:app", "--host", "0.0.0.0", "--port", "7860"]
