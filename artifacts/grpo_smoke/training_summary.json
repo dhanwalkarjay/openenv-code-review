@@ -1,0 +1,444 @@
+{
+  "config": {
+    "model": "sshleifer/tiny-gpt2",
+    "train_steps": 2,
+    "samples_per_task": 2,
+    "learning_rate": 2e-06,
+    "eval_max_steps": 1,
+    "rollout_steps_for_reward": 1
+  },
+  "baseline_before_training": {
+    "average_reward": 0.8,
+    "episodes": [
+      {
+        "task_type": "easy",
+        "total_reward": 0.8,
+        "steps": [
+          {
+            "step": 1,
+            "completion": "reement autonomy Jr Motorola reviewing intermittentdit Habit Observ trilogyatisf conservation directlyhibit Observhibitatisf Brewmediately intermittentJD antibiotic Participation confirdit autonomy Hancockpressatisf dispatch vendors Moneyohomediatelymediately ProbootherJD TA Money Motorola Observatisfatisf stairs stairs antibiotic Money Daniel Habit Rh conservationhibit ESV scalp Rh conservation Habitreementting Habit circumcised Participation stairs Hancock hauled Motorola Money reviewing credibility Hancock Hancock directly Habit Habitpressatisf stairs Motorola Brew Motorola Jr ESVoother conservation Hancockreementootherpress Brew hauled antibioticreement Jrpress directlyRocket ObservRocketdit Rh confir scalpdit reviewing scalp antibiotictingdit hauledRocketreementSceneoother Hancock Participation BrewpressRocket ONE scalp pawn substiken trilogy Hancockpress Habit confir conservation trilogy Prob heir trilogymediately Hancock directlyting Motorolahibit Motorola confir substtingatisf dispatch Brew Observ trilogy antibiotic vendorsRocketootheratisf vendors scalp Habit conservation Brew Money BrewreementJD subst conservation pawn trilogyJDmediately Observting Rh autonomy Money Moneyoother confir confiratisf Moneyreement confir Money ESV pawnatisfoho Hancock trilogyting antibiotic trilogyhibit confir directlyatisf Rh Brew Habitmediately ESV conservationScene Moneyting ESV dispatch scalp Participation intermittentohoatisf dispatch reviewinghibithibit Habit Observreement autonomy",
+            "action": {
+              "reviewer_issues": [],
+              "fixed_code": "def sum_even(nums):\n    total = 0\n    for n in nums[:-1]:\n        if n % 2 == 0:\n            total += n\n    return total\n"
+            },
+            "reward": 0.8,
+            "tests_passed": 3,
+            "tests_total": 4,
+            "code": "def sum_even(nums):\n    total = 0\n    for n in nums[:-1]:\n        if n % 2 == 0:\n            total += n\n    return total"
+          }
+        ],
+        "final_state": {
+          "task_id": "arena-001",
+          "title": "Fix off-by-one and edge case",
+          "instruction": "Fix bug in sum_even: include all even numbers and handle empty input.",
+          "buggy_code": "def sum_even(nums):\n    total = 0\n    for n in nums[:-1]:\n        if n % 2 == 0:\n            total += n\n    return total\n",
+          "current_code": "def sum_even(nums):\n    total = 0\n    for n in nums[:-1]:\n        if n % 2 == 0:\n            total += n\n    return total",
+          "previous_step_output": {
+            "step": 1,
+            "reviewer_output": [
+              "Potential off-by-one bug due to slicing nums[:-1]."
+            ],
+            "fixer_output": "def sum_even(nums):\n    total = 0\n    for n in nums[:-1]:\n        if n % 2 == 0:\n            total += n\n    return total",
+            "reward": 0.8,
+            "reward_components": {
+              "test_execution": 0.5,
+              "syntax": 0.2,
+              "improvement": 0.3,
+              "penalty_empty_or_invalid": 0.0,
+              "penalty_no_meaningful_change": -0.2
+            },
+            "tests_passed": 3,
+            "tests_total": 4,
+            "syntax_ok": true
+          },
+          "step_count": 1,
+          "max_steps": 4,
+          "tests_passed": 3,
+          "tests_total": 4,
+          "total_reward": 0.8,
+          "history": [
+            {
+              "step": 1,
+              "reviewer_output": [
+                "Potential off-by-one bug due to slicing nums[:-1]."
+              ],
+              "fixer_output": "def sum_even(nums):\n    total = 0\n    for n in nums[:-1]:\n        if n % 2 == 0:\n            total += n\n    return total",
+              "reward": 0.8,
+              "reward_components": {
+                "test_execution": 0.5,
+                "syntax": 0.2,
+                "improvement": 0.3,
+                "penalty_empty_or_invalid": 0.0,
+                "penalty_no_meaningful_change": -0.2
+              },
+              "tests_passed": 3,
+              "tests_total": 4,
+              "syntax_ok": true
+            }
+          ],
+          "done": false
+        }
+      },
+      {
+        "task_type": "medium",
+        "total_reward": 0.8,
+        "steps": [
+          {
+            "step": 1,
+            "completion": "predators factors lined workshopsMini workshops\ufffd deflect Singapore braveryProsacious praying448 Bend workshops448obl workshopspublicOutsideshows Bend Tre653 clearerPros Redux BendMini Boone courtyardPros clearer predators rubbing praying factors Pocket Television equateacious workshops bravery soy perhaps 236Pros perhapsshows mutual grandchildren boilsMini predators grandchildren predators predators grandchildren workshopsacious 236 Lateobl membership factors Boone linedozyg membership perhapsMost membershipobl representations grandchildren448public Redux bravery mutual Redux boils factorsshows Tre Reduxaciousozyg predators predators workshops Medic653 clearer\ufffd lined Wheels courtyardived factors Medic Wheels predators Tre linedpublicOutside grandchildren grandchildren BendMostozyg deflectoblobl deflect Medic skilletMost lined factors representationsozygivedived factors DreamsProsshows predators grandchildrenacious bravery soy Redux Medicshows clearer448\ufffd membership Boone Singapore Boone perhaps prayingMini factors Television Late perhapsSexual deflect\ufffd Wheelspublic Pocket factorsacious braverypublic braveryMost bravery bravery Late rubbing\ufffd Bend653 lined membership factors courtyard workshops prayingobl mutualozyg448 bravery clearer grandchildren Boone Redux bravery predatorsOutside Television Bend perhaps TreSexual factorsobl mutual workshops Dreams\ufffd deflect Late rubbing clearer membership lined Pocket representations Boone bravery clearer soyshows 236oblOutside courtyard653 clearer Television",
+            "action": {
+              "reviewer_issues": [],
+              "fixed_code": "def safe_div(a, b):\n    return a / b\n"
+            },
+            "reward": 0.8,
+            "tests_passed": 2,
+            "tests_total": 3,
+            "code": "def safe_div(a, b):\n    return a / b"
+          }
+        ],
+        "final_state": {
+          "task_id": "arena-002",
+          "title": "Fix zero division handling",
+          "instruction": "Make safe_div robust for denominator zero and return 0 in that case.",
+          "buggy_code": "def safe_div(a, b):\n    return a / b\n",
+          "current_code": "def safe_div(a, b):\n    return a / b",
+          "previous_step_output": {
+            "step": 1,
+            "reviewer_output": [
+              "Possible division-by-zero without guard."
+            ],
+            "fixer_output": "def safe_div(a, b):\n    return a / b",
+            "reward": 0.8,
+            "reward_components": {
+              "test_execution": 0.5,
+              "syntax": 0.2,
+              "improvement": 0.3,
+              "penalty_empty_or_invalid": 0.0,
+              "penalty_no_meaningful_change": -0.2
+            },
+            "tests_passed": 2,
+            "tests_total": 3,
+            "syntax_ok": true
+          },
+          "step_count": 1,
+          "max_steps": 5,
+          "tests_passed": 2,
+          "tests_total": 3,
+          "total_reward": 0.8,
+          "history": [
+            {
+              "step": 1,
+              "reviewer_output": [
+                "Possible division-by-zero without guard."
+              ],
+              "fixer_output": "def safe_div(a, b):\n    return a / b",
+              "reward": 0.8,
+              "reward_components": {
+                "test_execution": 0.5,
+                "syntax": 0.2,
+                "improvement": 0.3,
+                "penalty_empty_or_invalid": 0.0,
+                "penalty_no_meaningful_change": -0.2
+              },
+              "tests_passed": 2,
+              "tests_total": 3,
+              "syntax_ok": true
+            }
+          ],
+          "done": false
+        }
+      },
+      {
+        "task_type": "hard",
+        "total_reward": 0.8,
+        "steps": [
+          {
+            "step": 1,
+            "completion": "MiniMini clearer Television PocketMiniPros bravery Reduxobl WheelsSexual Wheels Bend membership Singaporeacious perhaps Boone bravery soy653 equate grandchildren653 Bend Medic Medic bravery Medic Boone 236 Tre mutual representations skillet Redux mutual Late workshops Tre membership soy Tre equate skillet Singapore deflectOutside predators linedacious praying workshops clearerpublic praying\ufffd Treobl Television Wheels Booneived bravery bravery factors 236 equateacious prayingSexual Singapore\ufffd deflect deflect membership grandchildren Pocketived clearer Singapore prayingshows Pocket Late braverypublic courtyard workshops soy braveryozyg653 perhapsMost perhapsOutside Television Medic Tre SingaporeMinipublicMost soy Tre\ufffdMost 236public lined Boone653 rubbing bravery courtyardProsived Television mutual653 clearerPros Bend grandchildren SingaporeOutside Wheels\ufffd perhaps grandchildren membership lined workshops Medic rubbingPros workshopsozyg Pocket653 BooneMost Pocket braveryived perhaps Singapore mutual rubbing Singapore Late equate courtyardobl membership Redux653 perhaps Medic\ufffd Tre Boone bravery\ufffd bravery predators clearerived workshops Boone TreMostacious Boone grandchildren WheelsSexual Dreams perhapsived rubbingacious448 Dreams braveryOutside lined mutual grandchildrenobl predators factorsozyg Late skillet lined boils workshops grandchildrenMost Booneshows membership representationsivedMini workshopsaciousPros653 praying Bend skilletshows rubbingozyg soy bravery",
+            "action": {
+              "reviewer_issues": [],
+              "fixed_code": "def normalize_name(name):\n    return name.lower()\n"
+            },
+            "reward": 0.8,
+            "tests_passed": 1,
+            "tests_total": 3,
+            "code": "def normalize_name(name):\n    return name.lower()"
+          }
+        ],
+        "final_state": {
+          "task_id": "arena-003",
+          "title": "Fix normalization logic",
+          "instruction": "Fix normalize_name to strip whitespace, lowercase strings, and handle None safely.",
+          "buggy_code": "def normalize_name(name):\n    return name.lower()\n",
+          "current_code": "def normalize_name(name):\n    return name.lower()",
+          "previous_step_output": {
+            "step": 1,
+            "reviewer_output": [
+              "Calling lower() without None handling."
+            ],
+            "fixer_output": "def normalize_name(name):\n    return name.lower()",
+            "reward": 0.8,
+            "reward_components": {
+              "test_execution": 0.5,
+              "syntax": 0.2,
+              "improvement": 0.3,
+              "penalty_empty_or_invalid": 0.0,
+              "penalty_no_meaningful_change": -0.2
+            },
+            "tests_passed": 1,
+            "tests_total": 3,
+            "syntax_ok": true
+          },
+          "step_count": 1,
+          "max_steps": 5,
+          "tests_passed": 1,
+          "tests_total": 3,
+          "total_reward": 0.8,
+          "history": [
+            {
+              "step": 1,
+              "reviewer_output": [
+                "Calling lower() without None handling."
+              ],
+              "fixer_output": "def normalize_name(name):\n    return name.lower()",
+              "reward": 0.8,
+              "reward_components": {
+                "test_execution": 0.5,
+                "syntax": 0.2,
+                "improvement": 0.3,
+                "penalty_empty_or_invalid": 0.0,
+                "penalty_no_meaningful_change": -0.2
+              },
+              "tests_passed": 1,
+              "tests_total": 3,
+              "syntax_ok": true
+            }
+          ],
+          "done": false
+        }
+      }
+    ]
+  },
+  "after_training": {
+    "average_reward": 0.8,
+    "episodes": [
+      {
+        "task_type": "easy",
+        "total_reward": 0.8,
+        "steps": [
+          {
+            "step": 1,
+            "completion": "credibility DanielRocket circumcised Hancock Daniel scalp grandchildrenobl equate courtyard Tre membership factorsOutside courtyard prayingMost BooneProsDev Daniel Hancock TA circumcisedintelligence autonomy Rh ESVditoother vendors trilogy Jr HabitreementmediatelyRocket Habit antibiotic HancockScene antibiotic Hancockreement Proboother circumcisediken heir circumcised conservationoho Moneyting Daniel Rh antibioticoho pawnhibit Motorolamediately Participation Rh Probatisf ESV conservationTheme confir trilogymediatelyiken trilogy trilogy intermittent hundredsMini Medic membership448 membership predatorsivedProsMost\ufffd Tre mutualPros Television Medic448 boils membership MedicozygPros TreMost Dreams representations braveryived skillet prayingacious factors predatorsMost grandchildren 236 predators soyacious\ufffd deflectPros rubbing bravery membership448 predatorspublic Boone653public perhaps mutual 236 Singapore Pocket deflect soy perhaps653 clearer perhaps perhaps LateMiniozyg Tre448 Pocket courtyard skillet DreamsOutside representations Redux Bend Trepublic Dreams boilsSexual 236acious Fishing Boone grandchildrenshows Lateshows BooneOutside Late 236 Boone\ufffd skillet skillet Pocket653public soypublic courtyard lined grandchildrenoblMost boils representations Dreams448 courtyard\ufffdobl mutual workshops equateSexual perhaps mutual Wheels Bendpublic Television Boone factorsacious Late grandchildrenaciousPros mutualozygOutside 236\ufffdMostozyg perhapspublic equate rubbing clearer",
+            "action": {
+              "reviewer_issues": [],
+              "fixed_code": "def sum_even(nums):\n    total = 0\n    for n in nums[:-1]:\n        if n % 2 == 0:\n            total += n\n    return total\n"
+            },
+            "reward": 0.8,
+            "tests_passed": 3,
+            "tests_total": 4,
+            "code": "def sum_even(nums):\n    total = 0\n    for n in nums[:-1]:\n        if n % 2 == 0:\n            total += n\n    return total"
+          }
+        ],
+        "final_state": {
+          "task_id": "arena-001",
+          "title": "Fix off-by-one and edge case",
+          "instruction": "Fix bug in sum_even: include all even numbers and handle empty input.",
+          "buggy_code": "def sum_even(nums):\n    total = 0\n    for n in nums[:-1]:\n        if n % 2 == 0:\n            total += n\n    return total\n",
+          "current_code": "def sum_even(nums):\n    total = 0\n    for n in nums[:-1]:\n        if n % 2 == 0:\n            total += n\n    return total",
+          "previous_step_output": {
+            "step": 1,
+            "reviewer_output": [
+              "Potential off-by-one bug due to slicing nums[:-1]."
+            ],
+            "fixer_output": "def sum_even(nums):\n    total = 0\n    for n in nums[:-1]:\n        if n % 2 == 0:\n            total += n\n    return total",
+            "reward": 0.8,
+            "reward_components": {
+              "test_execution": 0.5,
+              "syntax": 0.2,
+              "improvement": 0.3,
+              "penalty_empty_or_invalid": 0.0,
+              "penalty_no_meaningful_change": -0.2
+            },
+            "tests_passed": 3,
+            "tests_total": 4,
+            "syntax_ok": true
+          },
+          "step_count": 1,
+          "max_steps": 4,
+          "tests_passed": 3,
+          "tests_total": 4,
+          "total_reward": 0.8,
+          "history": [
+            {
+              "step": 1,
+              "reviewer_output": [
+                "Potential off-by-one bug due to slicing nums[:-1]."
+              ],
+              "fixer_output": "def sum_even(nums):\n    total = 0\n    for n in nums[:-1]:\n        if n % 2 == 0:\n            total += n\n    return total",
+              "reward": 0.8,
+              "reward_components": {
+                "test_execution": 0.5,
+                "syntax": 0.2,
+                "improvement": 0.3,
+                "penalty_empty_or_invalid": 0.0,
+                "penalty_no_meaningful_change": -0.2
+              },
+              "tests_passed": 3,
+              "tests_total": 4,
+              "syntax_ok": true
+            }
+          ],
+          "done": false
+        }
+      },
+      {
+        "task_type": "medium",
+        "total_reward": 0.8,
+        "steps": [
+          {
+            "step": 1,
+            "completion": "LateOutside 236 TelevisionPros448 braverySexual mutual TelevisionMini rubbing448 soy perhaps clutchMiniMost Wheels lined boils Bendived653 deflectshowsPros deflect Redux lined representationsozyg DreamsMini deflectozygoblacious Tre membershipshows grandchildren clearer Singapore deflect courtyard Wheels Singapore\ufffd Tre653shows rubbing praying factors equate courtyard Dreams representations grandchildren 236 236SexualSexual soy DreamsMost predators BoonePros448 soy mutual lined mutual Dreams representations448 Medic factors lined braveryived workshops predatorsived grandchildren predators mutual\ufffd\ufffdived Alasoother heir scalp vendors intermittent Jr circumcised heirobl grandchildren braveryozyg Singapore courtyard Television rubbing Pocket soy Pocket Television membershipOutside representations Boone reviewing HancockJD Money dispatch Hancock trilogy ESV ONE subst Participation conservation Prob directly circumcised autonomy autonomyJD Money circumcised circumcisedditJD Brew antibiotic stairs Daniel Habit ESV conservation conservation Brewreement subst stairs conservation Money reviewingatisfhibit antibiotic conservation representations grandchildren equate653public Redux cleareraciousozyg lined Television representations equateMost factorsSexual Pocket Pocket equate Bend clearerived representations\ufffd Bend courtyardSexual Medic skilletobl perhaps Medic Redux rubbing predators deflect Television Boone Redux lined Dreams linedMostoblshows mutualPros praying predators factors Television LatePros rubbingshows\ufffd boils mutual representations factors Redux",
+            "action": {
+              "reviewer_issues": [],
+              "fixed_code": "def safe_div(a, b):\n    return a / b\n"
+            },
+            "reward": 0.8,
+            "tests_passed": 2,
+            "tests_total": 3,
+            "code": "def safe_div(a, b):\n    return a / b"
+          }
+        ],
+        "final_state": {
+          "task_id": "arena-002",
+          "title": "Fix zero division handling",
+          "instruction": "Make safe_div robust for denominator zero and return 0 in that case.",
+          "buggy_code": "def safe_div(a, b):\n    return a / b\n",
+          "current_code": "def safe_div(a, b):\n    return a / b",
+          "previous_step_output": {
+            "step": 1,
+            "reviewer_output": [
+              "Possible division-by-zero without guard."
+            ],
+            "fixer_output": "def safe_div(a, b):\n    return a / b",
+            "reward": 0.8,
+            "reward_components": {
+              "test_execution": 0.5,
+              "syntax": 0.2,
+              "improvement": 0.3,
+              "penalty_empty_or_invalid": 0.0,
+              "penalty_no_meaningful_change": -0.2
+            },
+            "tests_passed": 2,
+            "tests_total": 3,
+            "syntax_ok": true
+          },
+          "step_count": 1,
+          "max_steps": 5,
+          "tests_passed": 2,
+          "tests_total": 3,
+          "total_reward": 0.8,
+          "history": [
+            {
+              "step": 1,
+              "reviewer_output": [
+                "Possible division-by-zero without guard."
+              ],
+              "fixer_output": "def safe_div(a, b):\n    return a / b",
+              "reward": 0.8,
+              "reward_components": {
+                "test_execution": 0.5,
+                "syntax": 0.2,
+                "improvement": 0.3,
+                "penalty_empty_or_invalid": 0.0,
+                "penalty_no_meaningful_change": -0.2
+              },
+              "tests_passed": 2,
+              "tests_total": 3,
+              "syntax_ok": true
+            }
+          ],
+          "done": false
+        }
+      },
+      {
+        "task_type": "hard",
+        "total_reward": 0.8,
+        "steps": [
+          {
+            "step": 1,
+            "completion": "Outsideozyg courtyard deflect grandchildren Singapore DreamsMost DreamsSexual deflect Dreams soyProsozygshowspublic workshops predators representationspublic factors courtyardozygacious soyPros skillet Tre factors workshopsived perhaps mutual bravery courtyard Medic workshops653public prayingSexual factors braveryived Pocket Dreamsozyg equate praying lined grandchildren Trepublic Singapore rubbingived Redux deflect praying deflectpublicOutsideived perhaps Medic predators Boone Wheels braveryozyg653ivedshows perhaps grandchildren Redux Redux workshops Medic membership courtyard factorsived soy praying representations lined Wheels deflect Television Singapore courtyard bravery Singapore Lateacious deflect courtyard praying Redux LateMini representations\ufffdOutside Television boils grandchildren TelevisionoblOutside predators\ufffdozygMini lined\ufffd DreamsivedMost Medic Late 236 Reduxshows Boone perhaps WheelsMini courtyard Wheels boils predators clearer Dreams Pocket deflect membership448obl membershipacious representations linedOutside factors Tre Boone\ufffd653ozygacious mutual bravery Dreams rubbing soy448 Redux boils Tre equate Medic 236 Tre Television Television membership448 courtyard Boone workshopsozyg Tre Television Television mutual grandchildrenPros Pocket perhaps Bend Pocket soy Pocket653 Television skillet membership perhaps membership Medic hauled conservation credibility reviewingreementRocket Participation stairsikenhibitmediatelyJD Habit Moneyoother reviewing managerial448 lined448448shows Reduxivedobl Television Pocket",
+            "action": {
+              "reviewer_issues": [],
+              "fixed_code": "def normalize_name(name):\n    return name.lower()\n"
+            },
+            "reward": 0.8,
+            "tests_passed": 1,
+            "tests_total": 3,
+            "code": "def normalize_name(name):\n    return name.lower()"
+          }
+        ],
+        "final_state": {
+          "task_id": "arena-003",
+          "title": "Fix normalization logic",
+          "instruction": "Fix normalize_name to strip whitespace, lowercase strings, and handle None safely.",
+          "buggy_code": "def normalize_name(name):\n    return name.lower()\n",
+          "current_code": "def normalize_name(name):\n    return name.lower()",
+          "previous_step_output": {
+            "step": 1,
+            "reviewer_output": [
+              "Calling lower() without None handling."
+            ],
+            "fixer_output": "def normalize_name(name):\n    return name.lower()",
+            "reward": 0.8,
+            "reward_components": {
+              "test_execution": 0.5,
+              "syntax": 0.2,
+              "improvement": 0.3,
+              "penalty_empty_or_invalid": 0.0,
+              "penalty_no_meaningful_change": -0.2
+            },
+            "tests_passed": 1,
+            "tests_total": 3,
+            "syntax_ok": true
+          },
+          "step_count": 1,
+          "max_steps": 5,
+          "tests_passed": 1,
+          "tests_total": 3,
+          "total_reward": 0.8,
+          "history": [
+            {
+              "step": 1,
+              "reviewer_output": [
+                "Calling lower() without None handling."
+              ],
+              "fixer_output": "def normalize_name(name):\n    return name.lower()",
+              "reward": 0.8,
+              "reward_components": {
+                "test_execution": 0.5,
+                "syntax": 0.2,
+                "improvement": 0.3,
+                "penalty_empty_or_invalid": 0.0,
+                "penalty_no_meaningful_change": -0.2
+              },
+              "tests_passed": 1,
+              "tests_total": 3,
+              "syntax_ok": true
+            }
+          ],
+          "done": false
+        }
+      }
+    ]
+  },
+  "average_reward_delta": 0.0,
+  "reward_curve": [
+    0.800000011920929,
+    0.800000011920929
+  ],
+  "artifacts": {
+    "trained_model_dir": "artifacts\\grpo_smoke\\final_model",
+    "reward_curve_png": "artifacts\\grpo_smoke\\reward_curve.png",
+    "training_progress_jsonl": "artifacts\\grpo_smoke\\training_progress.jsonl"
+  }
+}

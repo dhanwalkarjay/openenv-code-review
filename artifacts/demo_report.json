@@ -1,0 +1,17 @@
+{
+  "task_type": "medium",
+  "instruction": "Fix the missing colon so the function runs.",
+  "buggy_code": "def greet(name)\n    return 'hi ' + name\n",
+  "baseline": {
+    "reward": -0.5,
+    "tests": "0/2",
+    "output": "def greet(name)\n    return 'hi ' + name\n"
+  },
+  "trained": {
+    "action_id": "target_fix",
+    "reward": 1.5,
+    "tests": "2/2",
+    "output": "def greet(name):\n    return 'hi ' + name"
+  },
+  "improvement": 2.0
+}

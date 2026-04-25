@@ -1,0 +1,172 @@
+{
+  "baseline": {
+    "average_reward": 0.30000000000000004,
+    "tests_passed": 9,
+    "tests_total": 22,
+    "success_rate": 0.0,
+    "tasks": [
+      {
+        "task_type": "easy",
+        "policy": "baseline_noop",
+        "reward": 0.19999999999999998,
+        "tests_passed": 0,
+        "tests_total": 3,
+        "done": false,
+        "final_code": "def get_third_item(items):\n    return items[3]"
+      },
+      {
+        "task_type": "medium",
+        "policy": "baseline_noop",
+        "reward": -0.5,
+        "tests_passed": 0,
+        "tests_total": 2,
+        "done": false,
+        "final_code": "def greet(name)\n    return 'hi ' + name\n"
+      },
+      {
+        "task_type": "hard",
+        "policy": "baseline_noop",
+        "reward": 0.5000000000000001,
+        "tests_passed": 2,
+        "tests_total": 3,
+        "done": false,
+        "final_code": "def safe_div(a, b):\n    return a / b"
+      },
+      {
+        "task_type": "bonus",
+        "policy": "baseline_noop",
+        "reward": 0.5000000000000001,
+        "tests_passed": 1,
+        "tests_total": 3,
+        "done": false,
+        "final_code": "def sum_to_n(n):\n    total = 0\n    for i in range(n):\n        total += i\n    return total"
+      },
+      {
+        "task_type": "list_len",
+        "policy": "baseline_noop",
+        "reward": 0.5000000000000001,
+        "tests_passed": 2,
+        "tests_total": 3,
+        "done": false,
+        "final_code": "def has_three(items):\n    return len(items) > 3"
+      },
+      {
+        "task_type": "none_lower",
+        "policy": "baseline_noop",
+        "reward": 0.5000000000000001,
+        "tests_passed": 2,
+        "tests_total": 3,
+        "done": false,
+        "final_code": "def normalize_name(name):\n    return name.lower()"
+      },
+      {
+        "task_type": "max_init",
+        "policy": "baseline_noop",
+        "reward": 0.5000000000000001,
+        "tests_passed": 2,
+        "tests_total": 3,
+        "done": false,
+        "final_code": "def max_value(nums):\n    best = 0\n    for n in nums:\n        if n > best:\n            best = n\n    return best"
+      },
+      {
+        "task_type": "first_item",
+        "policy": "baseline_noop",
+        "reward": 0.19999999999999998,
+        "tests_passed": 0,
+        "tests_total": 2,
+        "done": false,
+        "final_code": "def first_item(items):\n    return items[1]"
+      }
+    ]
+  },
+  "trained": {
+    "average_reward": 1.5,
+    "tests_passed": 22,
+    "tests_total": 22,
+    "success_rate": 1.0,
+    "tasks": [
+      {
+        "task_type": "easy",
+        "policy": "trained_reward_policy",
+        "action_id": "target_fix",
+        "reward": 1.5,
+        "tests_passed": 3,
+        "tests_total": 3,
+        "done": true,
+        "final_code": "def get_third_item(items):\n    return items[2]"
+      },
+      {
+        "task_type": "medium",
+        "policy": "trained_reward_policy",
+        "action_id": "target_fix",
+        "reward": 1.5,
+        "tests_passed": 2,
+        "tests_total": 2,
+        "done": true,
+        "final_code": "def greet(name):\n    return 'hi ' + name"
+      },
+      {
+        "task_type": "hard",
+        "policy": "trained_reward_policy",
+        "action_id": "target_fix",
+        "reward": 1.5,
+        "tests_passed": 3,
+        "tests_total": 3,
+        "done": true,
+        "final_code": "def safe_div(a, b):\n    if b == 0:\n        return 0\n    return a / b"
+      },
+      {
+        "task_type": "bonus",
+        "policy": "trained_reward_policy",
+        "action_id": "target_fix",
+        "reward": 1.5,
+        "tests_passed": 3,
+        "tests_total": 3,
+        "done": true,
+        "final_code": "def sum_to_n(n):\n    total = 0\n    for i in range(n + 1):\n        total += i\n    return total"
+      },
+      {
+        "task_type": "list_len",
+        "policy": "trained_reward_policy",
+        "action_id": "target_fix",
+        "reward": 1.5,
+        "tests_passed": 3,
+        "tests_total": 3,
+        "done": true,
+        "final_code": "def has_three(items):\n    return len(items) >= 3"
+      },
+      {
+        "task_type": "none_lower",
+        "policy": "trained_reward_policy",
+        "action_id": "target_fix",
+        "reward": 1.5,
+        "tests_passed": 3,
+        "tests_total": 3,
+        "done": true,
+        "final_code": "def normalize_name(name):\n    if name is None:\n        return ''\n    return name.lower()"
+      },
+      {
+        "task_type": "max_init",
+        "policy": "trained_reward_policy",
+        "action_id": "target_fix",
+        "reward": 1.5,
+        "tests_passed": 3,
+        "tests_total": 3,
+        "done": true,
+        "final_code": "def max_value(nums):\n    best = nums[0]\n    for n in nums:\n        if n > best:\n            best = n\n    return best"
+      },
+      {
+        "task_type": "first_item",
+        "policy": "trained_reward_policy",
+        "action_id": "target_fix",
+        "reward": 1.5,
+        "tests_passed": 2,
+        "tests_total": 2,
+        "done": true,
+        "final_code": "def first_item(items):\n    return items[0]"
+      }
+    ]
+  },
+  "improvement": 1.2,
+  "improvement_percent": 399.9999999999999
+}
