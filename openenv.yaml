@@ -57,19 +57,7 @@ reward:
   range: [-2.0, 2.0]
 
 tasks:
-  - task_id: arena-001
-    difficulty: easy
-  - task_id: arena-002
-    difficulty: easy
-  - task_id: arena-003
-    difficulty: easy
-  - task_id: arena-004
-    difficulty: easy
-  - task_id: arena-005
-    difficulty: easy
-  - task_id: arena-006
-    difficulty: easy
-  - task_id: arena-007
-    difficulty: easy
-  - task_id: arena-008
-    difficulty: easy
+  generation: procedural
+  difficulties: [easy, medium, hard]
+  bug_strategies: 7
+  max_unique_tasks: unlimited
