@@ -204,6 +204,8 @@ openenv-code-review/
 | 📝 Blog Post  | [BLOG.md](https://github.com/dhanwalkarjay/openenv-code-review/blob/main/BLOG.md) |
 | 📓 Training Notebook | [Open in colab](https://colab.research.google.com/drive/1GZ-SkkKCNRhTqPjtRerHVhq23rRvvtvL?usp=sharing) |
 
+| 📊 Experiment Tracking | [View on W&B](https://wandb.ai/jaydhanwalkar123-g-h-raisoni-skill-tech-university-nagpur/openenv-code-review?nw=nwuserjaydhanwalkar123) |
+
 ---
 
 ## ✅ Submission Checklist
