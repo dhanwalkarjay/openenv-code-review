@@ -20,4 +20,4 @@ Thumbs.db
 # Model artifacts (optional)
 *.pt
 *.bin
-*.safetensors
+*.safetensorsartifacts/
