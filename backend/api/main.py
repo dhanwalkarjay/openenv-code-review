@@ -91,6 +91,24 @@ def baseline():
         "note": "Use training_script.py to generate before/after and reward curve.",
     }
 
+@app.get("/generate")
+def generate(difficulty: str = "medium", seed: int = None):
+    from env.task_generator import generate_task
+    import random
+    s = seed if seed is not None else random.randint(0, 100_000)
+    task = generate_task(difficulty=difficulty, seed=s)
+    if task is None:
+        return {"error": "Could not generate task"}
+    return {
+        "task_id":      task.task_id,
+        "difficulty":   task.difficulty,
+        "instruction":  task.instruction,
+        "buggy_code":   task.buggy_code,
+        "fixed_code":   task.fixed_code,
+        "bug_type":     task.bug_type,
+        "tests":        task.tests,
+    }
+
 
 @app.post("/demo-fix")
 async def demo_fix(payload: dict = Body(...)):
