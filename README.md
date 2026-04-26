@@ -163,11 +163,9 @@ print(f"Tests:  {result['info']['tests_passed']}/{result['info']['tests_total']}
 
 ### Train your own model
 ```bash
-# Local training/eval scripts in this repo:
-python training_script.py --train-steps 80 --output-dir artifacts/rl_run
-python evaluate_script.py --policy artifacts/rl_policy.json --output artifacts/eval_report.json
-
-# Colab notebook (linked below) for GPU re-runs
+# Open train_grpo_colab.py in Google Colab
+# Set ENV_BASE_URL to your Space URL
+# Run all cells — takes ~45 min on A10G
 ```
 
 ---
@@ -188,8 +186,7 @@ openenv-code-review/
 │   └── grpo_run/
 │       ├── reward_curve.png       # Real training run plot
 │       └── training_summary.json  # Metrics from training
-├── training_script.py       # Reproducible local training script
-├── evaluate_script.py       # Baseline vs trained policy evaluation
+├── train_grpo_colab.py     # Complete GRPO training script
 ├── Dockerfile
 ├── openenv.yaml
 └── README.md
@@ -213,7 +210,7 @@ openenv-code-review/
 ## ✅ Submission Checklist
 
 - [x] OpenEnv compatible (`reset` / `step` / `state`)
-- [x] Training scripts (`training_script.py` + Colab notebook link) using TRL/Unsloth workflow
+- [x] Training script (`train_grpo_colab.py`) using Unsloth + TRL
 - [x] Real training evidence (reward curve, training summary)
 - [x] Hosted on Hugging Face Spaces
 - [x] Before/after behavior shown
