@@ -1,6 +1,6 @@
 # Training an LLM to Fix Python Bugs with GRPO + OpenEnv
 
-**TL;DR:** We built a reinforcement learning environment where a small LLM (Qwen2.5-0.5B) learns to fix Python bugs using real test-execution feedback as reward. Reward improves from **0.2 → 1.0+ over 80 GRPO steps**, demonstrating measurable learning.
+**TL;DR:** I built a reinforcement learning environment where a small LLM (Qwen2.5-0.5B) learns to fix Python bugs using real test-execution feedback as reward. Reward improves from **0.2 → 1.0+ over 80 GRPO steps**, demonstrating measurable learning.
 
 > This project shows how reinforcement learning can transform code generation from **static prediction → adaptive learning system**.
 
@@ -22,13 +22,13 @@ The issue:
 3. Get penalized for failure
 4. Improve over time
 
-That’s **reinforcement learning** — and that’s what we built.
+That’s **reinforcement learning** — and that’s what I built.
 
 ---
 
 ## 🏗️ The Environment
 
-We designed an **OpenEnv-compatible RL environment**:
+I designed an **OpenEnv-compatible RL environment**:
 
 ```python
 # Reset environment
@@ -55,7 +55,7 @@ This makes the system:
 
 ## 🎯 Reward Design
 
-We use **three independent reward signals**:
+I use **three independent reward signals**:
 
 * `reward_tests_pass` → correctness
 * `reward_syntax_valid` → valid Python (+0.2 / -0.3)
@@ -74,7 +74,7 @@ This prevents reward hacking and forces real problem solving.
 
 ## 🧪 Procedural Task Generation
 
-Instead of fixed tasks, we generate:
+Instead of fixed tasks, I generate:
 
 👉 **procedurally generated diverse tasks**
 
@@ -246,7 +246,7 @@ https://wandb.ai/jaydhanwalkar123-g-h-raisoni-skill-tech-university-nagpur/opene
 
 ---
 
-## 💡 What We Learned
+## 💡 What I Learned
 
 1. **Reward design is critical**
    Early reward bugs completely broke learning
@@ -264,7 +264,7 @@ https://wandb.ai/jaydhanwalkar123-g-h-raisoni-skill-tech-university-nagpur/opene
 
 ## 🎯 Why This Matters
 
-This system demonstrates how we can build:
+This system demonstrates how I can build:
 
 * Self-improving AI code reviewers
 * Autonomous debugging agents
@@ -276,7 +276,7 @@ This system demonstrates how we can build:
 
 ## 🏁 Conclusion
 
-We showed that:
+I showed that:
 
 * LLMs can learn from execution feedback
 * RL + environments unlock real improvement
