@@ -984,62 +984,45 @@ async function runEpisode() {
   episodeRewards = [];
   drawChart([]);
 
-  const progressions = STEP_PROGRESSIONS[currentTask] || STEP_PROGRESSIONS['easy'];
   let lastReward = 0;
   let lastTests = '0/0';
   let lastCode = '';
 
-  // Reset environment
   try {
-    await fetch('/reset', {
+    const episodeRes = await fetch('/run-rl-episode', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({task_type: currentTask})
+      body: JSON.stringify({task_type: currentTask, max_steps: 3})
     });
-  } catch(e) {}
+    const episodeData = await episodeRes.json();
 
-  for (let step = 0; step < 3; step++) {
-    await sleep(900);
+    const history = Array.isArray(episodeData.history) ? episodeData.history : [];
+    for (const item of history) {
+      const reward = Number(item.reward ?? 0);
+      const testsPassed = Number(item.tests_passed ?? 0);
+      const testsTotal = Number(item.tests_total ?? 0);
+      const outputCode = item.output_code || item.candidate_code || '';
+      const mode = item.source === 'policy'
+        ? `policy update (${item.action_id}) | epsilon=${Number(item.epsilon ?? 0).toFixed(3)}`
+        : `model output | temp=${Number(item.temperature ?? 0).toFixed(2)}`;
 
-    const prog = progressions[step];
-    const fixedCode = prog.code;
+      episodeRewards.push(reward);
+      lastReward = reward;
+      lastTests = `${testsPassed}/${testsTotal}`;
+      lastCode = outputCode;
 
-    // Call /step endpoint
-    let reward = 0, testsPassed = 0, testsTotal = 3, allPassed = false;
-    try {
-      const stepRes = await fetch('/step', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({reviewer_issues: [], fixed_code: fixedCode})
-      });
-      const stepData = await stepRes.json();
-      reward = stepData.reward ?? 0;
-      testsPassed = stepData.info?.tests_passed ?? 0;
-      testsTotal  = stepData.info?.tests_total  ?? 3;
-      allPassed   = stepData.info?.all_tests_passed ?? false;
-    } catch(e) {
-      // estimate from known progression
-      reward = step === 0 ? -0.5 : step === 1 ? 0.3 : 1.0;
-      testsPassed = step === 0 ? 0 : step === 1 ? 1 : testsTotal;
+      addStepRow(item.step || (episodeRewards.length), outputCode, reward, testsPassed, testsTotal, mode);
+      document.getElementById('step-counter').textContent = `${episodeRewards.length} / 3 steps`;
+      drawChart([...episodeRewards]);
     }
 
-    lastReward = reward;
-    lastTests = `${testsPassed}/${testsTotal}`;
-    lastCode = fixedCode;
-    episodeRewards.push(reward);
-
-    // Add step row
-    addStepRow(step + 1, fixedCode, reward, testsPassed, testsTotal, prog.note);
-    document.getElementById('step-counter').textContent = `${step+1} / 3 steps`;
-
-    // Update chart
-    drawChart([...episodeRewards]);
-
-    // If solved early
-    if (allPassed && step < 2) {
-      await sleep(400);
-      break;
+    if (!history.length) {
+      addStepRow(1, '', 0, 0, 0, 'episode returned no steps');
+      document.getElementById('step-counter').textContent = '0 / 3 steps';
     }
+  } catch (e) {
+    addStepRow(1, '', 0, 0, 0, 'episode call failed');
+    document.getElementById('step-counter').textContent = '0 / 3 steps';
   }
 
   // Show final code in output panel
@@ -1053,8 +1036,8 @@ async function runEpisode() {
   document.getElementById('final-icon').textContent = solved ? '✅' : '⚠️';
   document.getElementById('final-title').textContent = solved ? 'Agent solved the task!' : 'Agent made progress';
   document.getElementById('final-sub').textContent = solved
-    ? 'All test cases passed after multi-step refinement'
-    : 'Partial improvement — agent learned from reward signal';
+    ? 'All tests passed using real action → reward → policy update loop.'
+    : 'Partial progress from real RL-style episode loop.';
   document.getElementById('final-reward').textContent = lastReward.toFixed(2);
   document.getElementById('final-tests').textContent = lastTests;
 

@@ -2,7 +2,7 @@
   "metadata": {
     "trained": true,
     "training_episodes": 285,
-    "total_steps": 683,
+    "total_steps": 778,
     "last_review_action_id": "add_guard_clause",
     "guard_variant": 2
   },
@@ -10,23 +10,23 @@
   "exploration_rate": 0.3,
   "learning_rate": 0.15,
   "action_bias": {
-    "optimize_loop": 0.08477642811100564,
-    "add_guard_clause": 0.35085432962965357,
-    "refactor_structure": 0.06934483907799924,
-    "reduce_complexity": 0.49502440318134167
+    "optimize_loop": 0.009893478553915024,
+    "add_guard_clause": 0.8101580859058802,
+    "refactor_structure": 0.009835025060107569,
+    "reduce_complexity": 0.17011341048009718
   },
   "action_scores": {
-    "optimize_loop": 6.925575140688228,
-    "add_guard_clause": 8.345928728943434,
-    "refactor_structure": 6.724649332426081,
-    "reduce_complexity": 8.690164667630148
+    "optimize_loop": 6.580575140688227,
+    "add_guard_clause": 10.98592872894343,
+    "refactor_structure": 6.57464933242608,
+    "reduce_complexity": 9.42516466763014
   },
   "action_probs": {
-    "optimize_loop": 0.08477642811100564,
-    "add_guard_clause": 0.35085432962965357,
-    "refactor_structure": 0.06934483907799924,
-    "reduce_complexity": 0.49502440318134167
+    "optimize_loop": 0.009893478553915024,
+    "add_guard_clause": 0.8101580859058802,
+    "refactor_structure": 0.009835025060107569,
+    "reduce_complexity": 0.17011341048009718
   },
-  "last_action_id": "refactor_structure",
+  "last_action_id": "add_guard_clause",
   "repeated_action_count": 0
 }
