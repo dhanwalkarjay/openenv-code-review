@@ -34,9 +34,20 @@ def evaluate_trained(policy_path: Path) -> Dict[str, Any]:
     policy = load_policy(policy_path)
     results: List[Dict[str, Any]] = []
     for task_type, task in TASKS.items():
-        q_values = policy.get("tasks", {}).get(task_type, {}).get("q_values", {})
+        task_policy = policy.get("tasks", {}).get(task_type, {})
+        q_values = task_policy.get("q_values", {})
         actions = candidate_actions_for_task(task)
-        action = max(actions, key=lambda item: q_values.get(item["action_id"], 0.0))
+
+        # Support both policy schemas used in this repo:
+        # 1) action-scored policies keyed by action_id
+        # 2) direct task policies with a stored fixed_code
+        if isinstance(task_policy.get("fixed_code"), str) and task_policy.get("fixed_code", "").strip():
+            action = {
+                "action_id": task_policy.get("best_action", "policy_fixed_code"),
+                "fixed_code": task_policy["fixed_code"],
+            }
+        else:
+            action = max(actions, key=lambda item: q_values.get(item["action_id"], 0.0))
         env = CodeReviewEnv()
         env.reset(task_type)
         obs, reward, done, info = env.step({"fixed_code": action["fixed_code"]})

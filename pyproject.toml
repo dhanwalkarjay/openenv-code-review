@@ -11,7 +11,7 @@ dependencies = [
   "uvicorn",
   "pydantic",
   "python-dotenv",
-  "openenv>=0.2.0"
+  "openenv>=0.1.13"
 ]
 
 [project.scripts]
@@ -19,4 +19,4 @@ server = "backend.server.app:main"
 
 [tool.openenv]
 entrypoint = "backend.server.app:main"
-requires = ["openenv>=0.2.0"]
+requires = ["openenv>=0.1.13"]
