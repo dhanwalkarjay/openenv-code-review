@@ -100,13 +100,12 @@ def generate(difficulty: str = "medium", seed: int = None):
     if task is None:
         return {"error": "Could not generate task"}
     return {
-        "task_id":      task.task_id,
-        "difficulty":   task.difficulty,
-        "instruction":  task.instruction,
-        "buggy_code":   task.buggy_code,
-        "fixed_code":   task.fixed_code,
-        "bug_type":     task.bug_type,
-        "tests":        task.tests,
+        "task_id":    task.task_id,
+        "difficulty": task.difficulty,
+        "instruction":task.instruction,
+        "buggy_code": task.buggy_code,
+        "bug_type":   task.bug_type,
+        "tests":      task.tests,
     }
 
 
