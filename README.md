@@ -202,7 +202,7 @@ openenv-code-review/
 | 🧠 Trained Model | https://huggingface.co/dhanwalkarjay/openenv-code-review-model |
 | 💻 GitHub | https://github.com/dhanwalkarjay/openenv-code-review |
 | 📝 Blog Post  | [BLOG.md](https://github.com/dhanwalkarjay/openenv-code-review/blob/main/BLOG.md) |
-| 📓 Training Notebook | [train_grpo_colab.ipynb](https://github.com/dhanwalkarjay/openenv-code-review/blob/main/train_grpo_colab.ipynb) |
+| 📓 Training Notebook | [Open in colab](https://colab.research.google.com/drive/1GZ-SkkKCNRhTqPjtRerHVhq23rRvvtvL?usp=sharing) |
 
 ---
 
