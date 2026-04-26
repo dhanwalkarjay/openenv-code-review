@@ -98,7 +98,7 @@ GET  /baseline                         → no-op baseline scores
 **Steps:** 80  
 
 ### Reward Curve
-![GRPO Training Reward Curve](artifacts/grpo_run/reward_curve.png)
+![GRPO Training Reward Curve](https://raw.githubusercontent.com/dhanwalkarjay/openenv-code-review/main/artifacts/grpo_run/reward_curve.png)
 
 *Reward climbed from ~0.2 at step 1 to consistently above 1.0 by step 30, stabilising through step 80.*
 
