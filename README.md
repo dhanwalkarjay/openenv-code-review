@@ -203,7 +203,6 @@ openenv-code-review/
 | 💻 GitHub | https://github.com/dhanwalkarjay/openenv-code-review |
 | 📝 Blog Post  | [BLOG.md](https://github.com/dhanwalkarjay/openenv-code-review/blob/main/BLOG.md) |
 | 📓 Training Notebook | [Open in colab](https://colab.research.google.com/drive/1GZ-SkkKCNRhTqPjtRerHVhq23rRvvtvL?usp=sharing) |
-
 | 📊 Experiment Tracking | [View on W&B](https://wandb.ai/jaydhanwalkar123-g-h-raisoni-skill-tech-university-nagpur/openenv-code-review?nw=nwuserjaydhanwalkar123) |
 
 ---
@@ -218,4 +217,4 @@ openenv-code-review/
 - [x] Procedural task generator (unlimited unique tasks)
 - [x] Multi-signal reward (3 independent functions)
 - [x] Anti-reward-hacking safeguards
-- [ ] Blog post / video (in progress)
+- [X] Blog post 
