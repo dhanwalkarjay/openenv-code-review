@@ -141,7 +141,7 @@ Select any task, click "Run RL Episode", and watch the agent attempt fixes step 
 
 **Trained model:** https://huggingface.co/dhanwalkarjay/openenv-code-review-model
 
-**Training script:** `train_grpo_colab.py` in the GitHub repo — open in Colab, point it at the Space URL, run all cells.
+**Training script:** https://colab.research.google.com/drive/1GZ-SkkKCNRhTqPjtRerHVhq23rRvvtvL?usp=sharing — open in Colab, run all cells.
 
 **Experiment Tracking:** [View on W&B](https://wandb.ai/jaydhanwalkar123-g-h-raisoni-skill-tech-university-nagpur/openenv-code-review?nw=nwuserjaydhanwalkar123) 
 
