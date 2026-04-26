@@ -1,162 +1,289 @@
 # Training an LLM to Fix Python Bugs with GRPO + OpenEnv
 
-**TL;DR:** We built an RL environment where a small LLM (Qwen2.5-0.5B) learns to fix Python bugs by receiving real test-execution feedback as reward. Reward climbed from 0.2 → 1.0+ over 80 GRPO steps. The environment generates unlimited unique tasks procedurally.
+**TL;DR:** We built a reinforcement learning environment where a small LLM (Qwen2.5-0.5B) learns to fix Python bugs using real test-execution feedback as reward. Reward improves from **0.2 → 1.0+ over 80 GRPO steps**, demonstrating measurable learning.
+
+> This project shows how reinforcement learning can transform code generation from **static prediction → adaptive learning system**.
 
 ---
 
-## The Problem with Static Code Training
+## 🚨 The Problem with Static Code Training
 
-Most LLMs learn to fix code from static datasets — they see (buggy code, fixed code) pairs and learn to imitate. The problem: the model has no feedback loop. It can produce output that *looks* correct without knowing if it actually passes tests.
+Most LLMs learn code fixes from static datasets — pairs of (buggy code, fixed code).
+The issue:
 
-What we really want is an agent that:
-1. Attempts a fix
-2. Runs real tests
-3. Gets penalised for wrong answers
-4. Learns to do better
+* No feedback loop
+* No execution verification
+* Can produce code that *looks* correct but fails in practice
 
-That's reinforcement learning — and that's exactly what we built.
+👉 What we really need is:
+
+1. Try a fix
+2. Run real tests
+3. Get penalized for failure
+4. Improve over time
+
+That’s **reinforcement learning** — and that’s what we built.
 
 ---
 
-## The Environment
+## 🏗️ The Environment
 
-We built an **OpenEnv-compatible** environment with a clean RL interface:
+We designed an **OpenEnv-compatible RL environment**:
 
 ```python
-# Reset to a new task
+# Reset environment
 obs = env.reset(task_type="hard")
-# obs contains: buggy_code, instruction, tests_total
 
 # Agent proposes a fix
 obs, reward, done, info = env.step({
     "fixed_code": "def safe_div(a, b):\n    if b==0: return 0\n    return a/b"
 })
-# reward: 1.0 if all tests pass, -0.5 if nothing works
 ```
 
-The key insight: **reward comes from running real Python test cases**, not from a learned reward model. This makes it verifiable and hard to game.
+### Key Idea
 
-### Three Independent Reward Signals
+👉 **Reward comes from real Python test execution**
+—not from a learned reward model.
 
-To prevent reward hacking, we use three independent reward functions:
+This makes the system:
 
-- `reward_tests_pass` — does the code actually pass the test suite?
-- `reward_syntax_valid` — is the code even valid Python? (+0.2 / -0.3)
-- `reward_no_trivial_hack` — penalises `except: pass` and other shortcuts (-0.3)
+* Verifiable
+* Reliable
+* Hard to game
 
-A model that exploits one signal still gets penalised by the others.
+---
 
-### Procedural Task Generation
+## 🎯 Reward Design
 
-Instead of 8 fixed tasks, we built a **procedural generator** that creates unlimited unique bug-fixing challenges across 7 bug strategies:
+We use **three independent reward signals**:
+
+* `reward_tests_pass` → correctness
+* `reward_syntax_valid` → valid Python (+0.2 / -0.3)
+* `reward_no_trivial_hack` → penalizes shortcuts (-0.3)
+
+👉 Final reward typically ranges:
+
+```text
+-0.5 → failed attempts  
++1.2 → fully correct solution  
+```
+
+This prevents reward hacking and forces real problem solving.
+
+---
+
+## 🧪 Procedural Task Generation
+
+Instead of fixed tasks, we generate:
+
+👉 **procedurally generated diverse tasks**
+
+Across bug types:
+
+* Index errors
+* Syntax bugs
+* Division by zero
+* None handling
+* Loop errors
+* Comparison bugs
+* Initialization mistakes
 
 ```python
 from env.task_generator import generate_curriculum
-
-# 20 tasks ordered easy → medium → hard (curriculum learning)
 curriculum = generate_curriculum(n=20, seed=42)
 ```
 
-This means the agent can't memorise tasks — it has to actually learn to fix bugs.
+👉 Result: agent must **learn patterns**, not memorize solutions.
 
 ---
 
-## Training with GRPO
+## ⚙️ Training vs Live Demo
 
-We used **GRPO** (Group Relative Policy Optimisation) from TRL, accelerated with Unsloth:
+This project uses a **two-phase RL setup**:
 
-- **Model:** Qwen/Qwen2.5-0.5B-Instruct (4-bit QLoRA)
-- **LoRA:** r=16, target: q/k/v/o projections
-- **Steps:** 80
-- **Generations per prompt:** 4 (GRPO scores all 4, updates toward best)
-- **Hardware:** A10G GPU (~$3 of HF credits)
+### 🧠 Offline Training (Real Learning)
 
-The training loop connects directly to the live environment — the model generates code, the environment executes it, the reward flows back:
+* GRPO (Group Relative Policy Optimization)
+* Hugging Face TRL + Unsloth
+* Runs in Colab (GPU)
 
-```
-Prompt → Qwen generates 4 fixes → env.step() scores each
-→ GRPO updates weights toward higher-reward fixes
-→ repeat
-```
+Produces:
+
+* Reward curves
+* Training logs
+* Learned policy
 
 ---
 
-## Results
+### ⚡ Live Demo (Hugging Face Space)
 
-The reward curve tells the story clearly:
+The Space demonstrates:
 
-![Reward curve](https://huggingface.co/dhanwalkarjay/openenv-code-review-model/resolve/main/reward_curve.png)
+* Environment interaction
+* Step-by-step agent decisions
+* Real-time reward feedback
 
-Reward climbs from ~0.2 at step 1 to consistently above 1.0 by step 30. The model learned in under 10 minutes of GPU time.
+⚠️ Important:
 
-### Before / After Examples
+* No model weight updates happen in the UI
+* Only inference + environment loop
 
-**Easy — index error:**
+👉 This keeps the demo fast and interactive.
+
+---
+
+## 🧠 Training with GRPO
+
+Setup:
+
+* **Model:** Qwen2.5-0.5B-Instruct (QLoRA, 4-bit)
+* **LoRA:** r=16
+* **Steps:** 80
+* **Generations per prompt:** 4
+* **Hardware:** A10G (~$3 cost)
+
+Training loop:
+
+```text
+Prompt → Generate 4 fixes → env.step() → reward
+→ GRPO update → repeat
+```
+
+👉 The model learns directly from execution feedback.
+
+---
+
+## 📊 Results
+
+### 📈 Reward Curve
+
+![Reward Curve](https://huggingface.co/dhanwalkarjay/openenv-code-review-model/resolve/main/reward_curve.png)
+
+👉 Reward improves from ~0.2 → 1.0+
+
+---
+
+### 🧪 Baseline vs Trained
+
+| Model     | Reward |
+| --------- | ------ |
+| Untrained | ~0.2   |
+| Trained   | ~1.0+  |
+
+👉 **+400% improvement**
+
+---
+
+### 🧪 Before / After Examples
+
+#### Easy — Index Error
+
 ```python
 # Buggy
 def get_third_item(items):
-    return items[3]   # wrong index
+    return items[3]
 
 # Trained model
 def get_third_item(items):
-    return items[2]   # correct ✅
+    return items[2]  # ✅
 ```
 
-**Hard — division by zero:**
+---
+
+#### Hard — Division by Zero
+
 ```python
 # Buggy
 def safe_div(a, b):
-    return a / b      # crashes when b=0
+    return a / b
 
 # Trained model
 def safe_div(a, b):
     if b == 0:
         return 0
-    return a / b      # correct ✅
+    return a / b  # ✅
 ```
 
-**Bonus — elegant rewrite:**
+---
+
+#### Bonus — Elegant Rewrite
+
 ```python
-# Buggy (off-by-one loop)
+# Buggy
 def sum_to_n(n):
     total = 0
-    for i in range(n):   # misses n
+    for i in range(n):
         total += i
     return total
 
 # Trained model
 def sum_to_n(n):
-    return sum(range(n + 1))   # cleaner than reference solution ✅
+    return sum(range(n + 1))  # cleaner solution ✅
 ```
 
-5/6 tasks solved at full reward (1.0). The one partial result was a token truncation issue, not a learning failure.
+---
+
+### 📊 Performance
+
+* 5/6 tasks solved fully
+* 1 partial due to token truncation (not learning failure)
 
 ---
 
-## Try It
+## 🚀 Try It Yourself
 
-**Live demo:** https://huggingface.co/spaces/dhanwalkarjay/openenv-code-review
+👉 **Live Demo:**
+https://huggingface.co/spaces/dhanwalkarjay/openenv-code-review
 
-Select any task, click "Run RL Episode", and watch the agent attempt fixes step by step with live reward updates and a real-time graph.
+👉 **Trained Model:**
+https://huggingface.co/dhanwalkarjay/openenv-code-review-model
 
-**Trained model:** https://huggingface.co/dhanwalkarjay/openenv-code-review-model
+👉 **Training Notebook:**
+https://colab.research.google.com/drive/1GZ-SkkKCNRhTqPjtRerHVhq23rRvvtvL
 
-**Training script:** https://colab.research.google.com/drive/1GZ-SkkKCNRhTqPjtRerHVhq23rRvvtvL?usp=sharing — open in Colab, run all cells.
-
-**Experiment Tracking:** [View on W&B](https://wandb.ai/jaydhanwalkar123-g-h-raisoni-skill-tech-university-nagpur/openenv-code-review?nw=nwuserjaydhanwalkar123) 
-
----
-
-## What We Learned
-
-1. **Reward design is the hardest part.** Our first reward function was backwards — correct fixes got -0.5, garbage got +0.7. Three debugging sessions later we had it right.
-
-2. **Multiple reward signals matter.** Single reward = easy to hack. Three independent signals = the model actually has to solve the task.
-
-3. **Shared server state is dangerous.** Our environment used a single `env` object — every `/step` call evaluated whatever task was last reset. Classic bug that made training useless until fixed.
-
-4. **GRPO is surprisingly efficient.** 80 steps, 4 generations each, A10G GPU, ~$3 of compute. The model genuinely learned to fix bugs it had never seen.
+👉 **Experiment Tracking (W&B):**
+https://wandb.ai/jaydhanwalkar123-g-h-raisoni-skill-tech-university-nagpur/openenv-code-review
 
 ---
 
-*Built for the OpenEnv Hackathon India 2026 — Theme #3 (World Modeling / Professional Tasks)*
+## 💡 What We Learned
+
+1. **Reward design is critical**
+   Early reward bugs completely broke learning
+
+2. **Multiple reward signals prevent cheating**
+   Single reward = exploitable
+
+3. **Environment bugs can destroy training**
+   Shared state caused incorrect evaluation
+
+4. **GRPO is efficient**
+   Real learning in ~10 minutes of compute
+
+---
+
+## 🎯 Why This Matters
+
+This system demonstrates how we can build:
+
+* Self-improving AI code reviewers
+* Autonomous debugging agents
+* Learning-based developer tools
+
+👉 Moving beyond static LLMs → **adaptive intelligent systems**
+
+---
+
+## 🏁 Conclusion
+
+We showed that:
+
+* LLMs can learn from execution feedback
+* RL + environments unlock real improvement
+* Small models can learn efficiently
+
+> This is a step toward **AI systems that improve themselves through interaction**, not just training data.
+
+---
+
+*Built for OpenEnv Hackathon India 2026 — Theme #3 (World Modeling / Professional Tasks)*
